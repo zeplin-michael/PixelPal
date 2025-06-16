@@ -19,4 +19,9 @@ a{
 header#navbar a{
     background-color: #ffc9a2;
     padding: 0.5rem;
+    
+}
+
+header a#brand,header nav{
+    border: 1px solid #ffb27b;
 }
