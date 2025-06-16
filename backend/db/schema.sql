@@ -19,7 +19,7 @@ CREATE TABLE pets (
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR (15),
   status BOOLEAN DEFAULT TRUE,
-  birthday 
+  birthday DATE
 );
 
 CREATE TABLE shops (
