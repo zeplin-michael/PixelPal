@@ -9,3 +9,4 @@ console.log("🌱 Database seeded.");
 async function seed() {
   await createUser("foo", "bar");
 }
+//Hello
