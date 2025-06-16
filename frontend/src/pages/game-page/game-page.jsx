@@ -47,6 +47,7 @@ import "./game-page.css";
 
 function GamePage() {
   return (
+<<<<<<< HEAD
     <>
       <div>
         <Outlet />
@@ -58,6 +59,11 @@ function GamePage() {
       </footer>
     </>
 >>>>>>> 6b90f0d (bed and bath pages added)
+=======
+    <div>
+      <Outlet />
+    </div>
+>>>>>>> 62e2956 (login form completed (mostly))
   );
 }
 export default GamePage;
