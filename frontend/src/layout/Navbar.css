@@ -5,8 +5,17 @@ header#navbar {
   padding: 1em;
   background-color: #ffdac1;
   font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: #ffdac1;
+  font-size: 1rem;
 }
 
+header nav {
+  padding: 0.5rem 2rem;
+  background-color: #ffc9a2;
 header nav {
   padding: 0.5rem 2rem;
   background-color: #ffc9a2;
@@ -14,14 +23,24 @@ header nav {
 
 a {
   text-decoration: none;
+a {
+  text-decoration: none;
 }
 
 header#navbar a {
   background-color: #ffc9a2;
   padding: 0.5rem;
+header#navbar a {
+  background-color: #ffc9a2;
+  padding: 0.5rem;
+  color: #444444;
 }
 
 header a#brand,
 header nav {
   border: 1px solid #ffb27b;
+header a#brand,
+header nav {
+  border: 1px solid #ffb27b;
 }
+
