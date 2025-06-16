@@ -1,5 +1,5 @@
 {
-  "name": "foobar",
+  "name": "PixelPal",
   "type": "module",
   "imports": {
     "#*": "./*.js"
