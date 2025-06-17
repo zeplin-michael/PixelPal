@@ -1,28 +1,31 @@
-header#navbar {
+header .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1em;
   background-color: #ffdac1;
   font-size: 1rem;
-}
-
-header nav {
-  padding: 0.5rem 2rem;
-  background-color: #ffc9a2;
+  border-bottom: 1px solid #ffc59c;
 }
 
 a {
   text-decoration: none;
 }
 
-header#navbar a {
-  background-color: #ffc9a2;
-  padding: 0.5rem;
+.navbar-container nav a {
+  background-color: #ffc59c;
+  padding: 0.5em;
+  border-radius: 0.5rem;
   color: #444444;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  border: 1px solid #ffc59c;
 }
 
-header a#brand,
-header nav {
-  border: 1px solid #ffb27b;
+.navbar-container nav a:hover {
+  background-color: #ff8935;
+  color: white;
+  border: 1px solid #ff7716;
+  cursor: pointer;
 }
