@@ -2,7 +2,9 @@ import { Route, Routes } from "react-router";
 import Layout from "./layout/Layout";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import Bath from "./pages/game-page/bathtime";
+import GamePage from "./pages/game-page/game-page";
+import Bath from "./pages/game-page/components/bath";
+import Bed from "./pages/game-page/components/bed";
 
 export default function App() {
   return (
@@ -12,9 +14,9 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Route>
-      <Route element={<Bath />}>
-        <Route index element={<p>Play Game</p>} />
-        <Route path="/bathtime" element={<Bath />}></Route>
+      <Route path="/game-page" element={<GamePage />}>
+        <Route path="/game-page/bath" element={<Bath />} />
+        <Route path="/game-page/bed" element={<Bed />} />
       </Route>
     </Routes>
   );

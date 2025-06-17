@@ -1,0 +1,18 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 10 ch;
+  text-align: left;
+}
+
+button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  justify-content: space-between;
+  border: 1ch;
+  padding: 1em;
+  margin: 3ch;
+  color: black;
+}
