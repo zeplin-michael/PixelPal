@@ -11,7 +11,6 @@ import Meal from "./pages/game-page/components/meal";
 import Homepage from "./pages/Homepage";
 import LearnMore from "./pages/LearnMore";
 import Gallery from "./pages/Gallery";
->>>>>>> 467efe3 (home/learnmore/gallery pages)
 
 export default function App() {
   return (
