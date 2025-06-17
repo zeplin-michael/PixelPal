@@ -1,5 +1,6 @@
 h1 {
   display: flex;
+  padding: 2ch;
   justify-content: center;
   color: black;
   font-size: 5 ch;

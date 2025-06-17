@@ -4,7 +4,11 @@ function Meal() {
   return (
     <div>
       <h1>meal time</h1>
-      <img className="scene-img" src="/img/MealTime.png" alt="meal image" />
+      <img
+        className="scene-img"
+        src="/img/game-play/MealTime.png"
+        alt="meal image"
+      />
     </div>
   );
 }
