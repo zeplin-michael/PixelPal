@@ -12,8 +12,8 @@ export default function Homepage() {
         <div className="pet-placeholder">
           <img
             className="homepage-image"
-            src="/images/pertplaceholder.png"
-            alt="Your digital pet"
+            src="/images/home.alien.gif"
+            alt="Animated pet"
           />
         </div>
       </main>
