@@ -1,5 +1,5 @@
 import db from "#db/client";
-
+// dont need
 export async function getShopById(shopId) {
   const sql = `SELECT * FROM shops WHERE id = $1`;
   const {

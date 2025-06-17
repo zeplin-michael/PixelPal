@@ -25,7 +25,8 @@ CREATE TABLE pets (
 CREATE TABLE shops (
   id SERIAL PRIMARY KEY,
   name VARCHAR (30),
-  bank INT
+  bank INT 
+  -- bank to balance
 );
 
 -- should pet_id be unique?
@@ -39,7 +40,8 @@ CREATE TABLE pet_status (
   last_played_at TIMESTAMP,
   energy INT CHECK (energy BETWEEN 0 AND 50),
   last_slept_at TIMESTAMP,
-  heatlh INT CHECK (health BETWEEN 0 AND 50)
+  heatlh INT CHECK (health BETWEEN 0 AND 50),
+  dead BOOLEAN
 );
 
 CREATE TABLE items (
