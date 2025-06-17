@@ -3,13 +3,24 @@ import Layout from "./layout/Layout";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 
+import Homepage from "./pages/Homepage";
+import LearnMore from "./pages/LearnMore";
+import Gallery from "./pages/Gallery";
+
+
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<p>Home page</p>} />
+        <Route index element={<Homepage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/learn-more" element={<LearnMore />} />
+        <Route path="/gallery" element={<Gallery />} />
+      </Route>
+      <Route element={<Bath />}>
+        <Route index element={<p>Play Game</p>} />
+        <Route path="/bathtime" element={<Bath />}></Route>
       </Route>
     </Routes>
   );
