@@ -22,9 +22,10 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Route>
-      <Route element={<Bath />}>
-        <Route index element={<p>Play Game</p>} />
-        <Route path="/bathtime" element={<Bath />}></Route>
+      <Route path="/game-page" element={<GamePage />}>
+        <Route path="/game-page/bath" element={<Bath />} />
+        <Route path="/game-page/bed" element={<Bed />} />
+        <Route path="/game-page/meal" element={<Meal />} />
       </Route>
     </Routes>
   );

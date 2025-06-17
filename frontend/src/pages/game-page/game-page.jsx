@@ -47,9 +47,16 @@ import "./game-page.css";
 
 function GamePage() {
   return (
-    <div>
-      <Outlet />
-    </div>
+    <>
+      <div>
+        <Outlet />
+      </div>
+      <footer>
+        <button>Left</button>
+        <button>Center</button>
+        <button>Right</button>
+      </footer>
+    </>
 >>>>>>> 6b90f0d (bed and bath pages added)
   );
 }

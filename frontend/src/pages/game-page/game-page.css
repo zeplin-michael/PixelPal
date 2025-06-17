@@ -72,7 +72,7 @@ h1 {
   display: flex;
   justify-content: center;
   color: black;
-  font-size: 10 ch;
+  font-size: 5 ch;
   text-align: left;
 }
 
@@ -86,4 +86,10 @@ button {
   margin: 3ch;
   color: black;
 >>>>>>> 6b90f0d (bed and bath pages added)
+}
+
+.scene-img {
+  display: flex;
+  width: 35%;
+  justify-content: center;
 }

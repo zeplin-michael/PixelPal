@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import "/src/pages/game-page/game-page.css";
-=======
-import "./bath.css";
-
->>>>>>> 6b90f0d (bed and bath pages added)
 function Bath() {
   return (
     <div>
