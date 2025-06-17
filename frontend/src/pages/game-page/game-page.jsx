@@ -11,17 +11,17 @@ function GamePage() {
         <ul className="button-container">
           <li>
             <button className="button" onClick={() => {}}>
-              Left
+              <p>Left</p>
             </button>
           </li>
           <li>
             <button className="button" onClick={() => {}}>
-              Center
+              <p>Center</p>
             </button>
           </li>
           <li>
             <button className="button" onClick={() => {}}>
-              Right
+              <p>Right</p>
             </button>
           </li>
         </ul>

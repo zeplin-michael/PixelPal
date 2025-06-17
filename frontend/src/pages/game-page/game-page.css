@@ -6,8 +6,8 @@ h1 {
   padding: 2ch 0ch 1ch 0ch;
   justify-content: center;
   color: black;
-  font-size: 5 ch;
   text-align: left;
+  font-size: 2rem;
 }
 
 .button-container {
@@ -15,12 +15,19 @@ h1 {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-top: 20px;
 }
 
 .button {
-  border: 1.5px solid black;
+  /* border: 1.5px solid black; */
+  margin: 1ch;
+}
+
+p {
+  font-size: 1.5ch;
+  color: #d7fdd6;
+  background-color: black;
   padding: 1ch 1.5ch;
-  margin: 3ch;
 }
 
 .scene-img-container {
@@ -31,7 +38,19 @@ h1 {
   width: 100%;
 }
 
+.scene-img-frame {
+  width: 25%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 40px;
+  margin: 3ch 0 3ch 0;
+}
+
 .scene-img {
-  width: 35%;
-  margin: 5ch;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
 }

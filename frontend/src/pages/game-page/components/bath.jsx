@@ -4,11 +4,13 @@ function Bath() {
     <div>
       <h1>bath time</h1>
       <div className="scene-img-container">
-        <img
-          className="scene-img"
-          src="/img/game-play/BathTime.png"
-          alt="bath time img"
-        />
+        <div className="scene-img-frame">
+          <img
+            className="scene-img"
+            src="/img/game-play/BathTime.png"
+            alt="bath time img"
+          />
+        </div>
       </div>
     </div>
   );
