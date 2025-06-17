@@ -7,7 +7,6 @@ import Homepage from "./pages/Homepage";
 import LearnMore from "./pages/LearnMore";
 import Gallery from "./pages/Gallery";
 
-
 export default function App() {
   return (
     <Routes>
@@ -17,10 +16,6 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/learn-more" element={<LearnMore />} />
         <Route path="/gallery" element={<Gallery />} />
-      </Route>
-      <Route element={<Bath />}>
-        <Route index element={<p>Play Game</p>} />
-        <Route path="/bathtime" element={<Bath />}></Route>
       </Route>
     </Routes>
   );
