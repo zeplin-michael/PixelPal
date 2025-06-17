@@ -2,12 +2,18 @@ import { Route, Routes } from "react-router";
 import Layout from "./layout/Layout";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+<<<<<<< HEAD
 import EndScreen from "./pages/EndScreen";
 // <<<<<<< HEAD
 import GamePage from "./pages/game-page/game-page";
 import Bath from "./pages/game-page/components/bath";
 import Bed from "./pages/game-page/components/bed";
 import Meal from "./pages/game-page/components/meal";
+=======
+import Homepage from "./pages/Homepage";
+import LearnMore from "./pages/LearnMore";
+import Gallery from "./pages/Gallery";
+>>>>>>> 467efe3 (home/learnmore/gallery pages)
 // =======
 import Homepage from "./pages/Homepage";
 import LearnMore from "./pages/LearnMore";
@@ -21,6 +27,8 @@ export default function App() {
         <Route index element={<Homepage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/learn-more" element={<LearnMore />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Route>
       <Route path="/game-page" element={<GamePage />}>
         <Route path="/game-page/bath" element={<Bath />} />
