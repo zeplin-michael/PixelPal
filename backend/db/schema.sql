@@ -28,6 +28,7 @@ CREATE TABLE shops (
   bank INT
 );
 
+-- should pet_id be unique?
 CREATE TABLE pet_status (
   pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
   hunger INT CHECK (hunger BETWEEN 0 AND 50),
