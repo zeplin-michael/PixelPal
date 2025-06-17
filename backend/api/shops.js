@@ -14,7 +14,7 @@ import { getPetByUserId } from "#db/queries/pets";
 
 router.use(requireUser);
 
-// Param loader for :shopId
+// Param loader for :shopId c
 router.param("shopId", async (req, res, next, shopId) => {
   const shop = await getShopById(shopId);
   if (!shop) return res.status(404).send("Shop not found.");
