@@ -3,7 +3,7 @@ function Bath() {
   return (
     <div>
       <h1>bath time</h1>
-      <div>
+      <div className="scene-img-container">
         <img
           className="scene-img"
           src="/img/game-play/BathTime.png"

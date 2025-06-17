@@ -1,25 +1,37 @@
+* {
+  background-color: #d7fdd6;
+}
 h1 {
   display: flex;
-  padding: 2ch;
+  padding: 2ch 0ch 1ch 0ch;
   justify-content: center;
   color: black;
   font-size: 5 ch;
   text-align: left;
 }
 
-button {
+.button-container {
+  list-style-type: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  justify-content: space-between;
-  border: 1ch;
-  padding: 1em;
+  justify-content: center;
+  width: 100%;
+}
+
+.button {
+  border: 1.5px solid black;
+  padding: 1ch 1.5ch;
   margin: 3ch;
-  color: black;
+}
+
+.scene-img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .scene-img {
-  display: flex;
   width: 35%;
-  justify-content: center;
+  margin: 5ch;
 }

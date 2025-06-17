@@ -7,11 +7,25 @@ function GamePage() {
       <div>
         <Outlet />
       </div>
-      <footer>
-        <button>Left</button>
-        <button>Center</button>
-        <button>Right</button>
-      </footer>
+      <div>
+        <ul className="button-container">
+          <li>
+            <button className="button" onClick={() => {}}>
+              Left
+            </button>
+          </li>
+          <li>
+            <button className="button" onClick={() => {}}>
+              Center
+            </button>
+          </li>
+          <li>
+            <button className="button" onClick={() => {}}>
+              Right
+            </button>
+          </li>
+        </ul>
+      </div>
     </>
   );
 }

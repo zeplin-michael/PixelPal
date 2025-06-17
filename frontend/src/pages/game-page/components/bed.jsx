@@ -4,11 +4,13 @@ function Bed() {
   return (
     <div>
       <h1>bed time</h1>
-      <img
-        className="scene-img"
-        src="/img/game-play/BedTime.png"
-        alt="bed time image"
-      />
+      <div className="scene-img-container">
+        <img
+          className="scene-img"
+          src="/img/game-play/BedTime.png"
+          alt="bed time image"
+        />
+      </div>
     </div>
   );
 }
