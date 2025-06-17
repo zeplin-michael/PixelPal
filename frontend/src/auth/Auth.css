@@ -3,19 +3,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
   padding: 1em;
   gap: 1rem;
   flex-basis: 70%;
   border-radius: 1rem;
   min-width: 45%;
-=======
-  width: 50%;
-  gap: 1rem;
-
-  border-radius: 1rem;
-  padding: 3em;
->>>>>>> 293357c (login form completed (mostly))
   background-color: #ffc59c;
 }
 
