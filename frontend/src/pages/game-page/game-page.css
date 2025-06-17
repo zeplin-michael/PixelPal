@@ -2,7 +2,7 @@ h1 {
   display: flex;
   justify-content: center;
   color: black;
-  font-size: 10 ch;
+  font-size: 5 ch;
   text-align: left;
 }
 
@@ -15,4 +15,10 @@ button {
   padding: 1em;
   margin: 3ch;
   color: black;
+}
+
+.scene-img {
+  display: flex;
+  width: 35%;
+  justify-content: center;
 }

@@ -5,6 +5,7 @@ import Register from "./auth/Register";
 import GamePage from "./pages/game-page/game-page";
 import Bath from "./pages/game-page/components/bath";
 import Bed from "./pages/game-page/components/bed";
+import Meal from "./pages/game-page/components/meal";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/game-page" element={<GamePage />}>
         <Route path="/game-page/bath" element={<Bath />} />
         <Route path="/game-page/bed" element={<Bed />} />
+        <Route path="/game-page/meal" element={<Meal />} />
       </Route>
     </Routes>
   );
