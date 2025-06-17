@@ -1,9 +1,22 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import "./game-page.css";
 
 function GamePage() {
+  const navigate = useNavigate();
   return (
     <>
+      <div>
+        <div className="pet-gallery-button-container">
+          <button
+            className="pet-gallery-button"
+            onClick={() => {
+              navigate("frontend/src/pages/Gallery.jsx");
+            }}
+          >
+            <p>MyPets</p>
+          </button>
+        </div>
+      </div>
       <div>
         <Outlet />
       </div>

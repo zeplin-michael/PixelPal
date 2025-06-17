@@ -10,6 +10,11 @@ h1 {
   font-size: 2rem;
 }
 
+button:hover {
+  cursor: pointer;
+  border-color: orangered;
+}
+
 .button-container {
   list-style-type: none;
   display: flex;
@@ -30,6 +35,13 @@ p {
   padding: 1ch 1.5ch;
 }
 
+.pet-gallery-button-container {
+  display: flex;
+  flex-direction: column;
+  width: 10ch;
+  margin: 1ch;
+}
+
 .scene-img-container {
   display: flex;
   flex-direction: column;
@@ -47,6 +59,7 @@ p {
   align-content: center;
   border-radius: 40px;
   margin: 3ch 0 3ch 0;
+  border: 5px solid black;
 }
 
 .scene-img {
