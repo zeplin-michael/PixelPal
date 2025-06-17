@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Outlet, useNavigate } from "react-router";
 import "./game-page.css";
 
@@ -40,6 +41,16 @@ function GamePage() {
         </ul>
       </div>
     </>
+=======
+import { Outlet } from "react-router";
+import "./game-page.css";
+
+function GamePage() {
+  return (
+    <div>
+      <Outlet />
+    </div>
+>>>>>>> 6b90f0d (bed and bath pages added)
   );
 }
 export default GamePage;

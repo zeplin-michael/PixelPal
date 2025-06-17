@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   background-color: #d7fdd6;
 }
@@ -66,4 +67,23 @@ p {
   height: 100%;
   width: auto;
   object-fit: cover;
+=======
+h1 {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 10 ch;
+  text-align: left;
+}
+
+button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  justify-content: space-between;
+  border: 1ch;
+  padding: 1em;
+  margin: 3ch;
+  color: black;
+>>>>>>> 6b90f0d (bed and bath pages added)
 }

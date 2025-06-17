@@ -1,35 +1,30 @@
-header .navbar-container {
+header#navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1em;
   background-color: #ffdac1;
   font-size: 1rem;
-  border-bottom: 1px solid #ffc59c;
+}
+
+header nav {
+  padding: 0.5rem 2rem;
+  background-color: #ffc9a2;
 }
 
 a {
   text-decoration: none;
+a {
+  text-decoration: none;
 }
 
-.navbar-container nav a {
-  background-color: #ffc59c;
-  padding: 0.5em;
-  border-radius: 0.5rem;
-  color: #444444;
-  font-size: 1.5rem;
-  font-weight: bold;
-
-  border: 1px solid #ffc59c;
+header#navbar a {
+  background-color: #ffc9a2;
+  padding: 0.5rem;
 }
 
-.navbar-container nav a:hover {
-  background-color: #ff8935;
-  color: white;
-  border: 1px solid #ff7716;
-  cursor: pointer;
+header a#brand,
+header nav {
+  border: 1px solid #ffb27b;
 }
-<<<<<<< HEAD
->>>>>>> 6e948aa (bed and bath pages added)
-=======
->>>>>>> 293357c (login form completed (mostly))
+
