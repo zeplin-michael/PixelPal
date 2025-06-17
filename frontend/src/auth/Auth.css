@@ -3,11 +3,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  padding: 1em;
   gap: 1rem;
-
+  flex-basis: 70%;
   border-radius: 1rem;
-  padding: 3em;
+  min-width: 45%;
   background-color: #ffc59c;
 }
 
