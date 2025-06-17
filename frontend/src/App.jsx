@@ -17,9 +17,12 @@ export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
+        {" "}
         <Route index element={<Homepage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/learn-more" element={<LearnMore />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Route>
     </Routes>
   );
