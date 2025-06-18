@@ -4,7 +4,6 @@ function Bed() {
   return (
     <div>
       <h1>bed time</h1>
-<<<<<<< HEAD
       <div className="scene-img-container">
         <div className="scene-img-frame">
           <img
@@ -14,9 +13,6 @@ function Bed() {
           />
         </div>
       </div>
-=======
-      <img className="scene-img" src="/img/BedTime.png" alt="bed time image" />
->>>>>>> 6b90f0d (bed and bath pages added)
     </div>
   );
 }

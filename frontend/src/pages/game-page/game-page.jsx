@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Outlet, useNavigate } from "react-router";
 import "./game-page.css";
 
@@ -41,29 +40,6 @@ function GamePage() {
         </ul>
       </div>
     </>
-=======
-import { Outlet } from "react-router";
-import "./game-page.css";
-
-function GamePage() {
-  return (
-<<<<<<< HEAD
-    <>
-      <div>
-        <Outlet />
-      </div>
-      <footer>
-        <button>Left</button>
-        <button>Center</button>
-        <button>Right</button>
-      </footer>
-    </>
->>>>>>> 6b90f0d (bed and bath pages added)
-=======
-    <div>
-      <Outlet />
-    </div>
->>>>>>> 62e2956 (login form completed (mostly))
   );
 }
 export default GamePage;
