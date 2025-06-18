@@ -63,14 +63,14 @@
   transition: transform 0.3s ease;
 }
 
-.pet-placeholder:hover {
-  transform: scale(1.05);
-}
-
 .homepage-image {
   width: 100%;
   height: auto;
-  opacity: 0.5;
+}
+
+.homepage-image:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .homepage-footer {

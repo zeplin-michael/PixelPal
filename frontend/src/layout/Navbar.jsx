@@ -10,15 +10,18 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="navbar-brand">
           <NavLink id="brand" to="/">
-            <p>PixelPal</p>
+            <img src="/home-icon.svg" alt="Home" className="navbar-home-icon" />
           </NavLink>
         </div>
         <nav>
           <NavLink to="/gallery">Gallery</NavLink>
           {token ? (
-            <button onClick={logout} className="logout">
-              Log out
-            </button>
+            <>
+              <button onClick={logout} className="logout">
+                Log out
+              </button>
+              <NavLink to="/profile">Profile</NavLink>
+            </>
           ) : (
             <NavLink to="/login">Log in</NavLink>
           )}
