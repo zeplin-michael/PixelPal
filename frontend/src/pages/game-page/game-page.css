@@ -30,7 +30,7 @@ button:hover {
 }
 
 p {
-  font-size: 1.5ch;
+  font-size: 2.5ch;
   color: #d7fdd6;
   background-color: black;
   padding: 1ch 1.5ch;
@@ -39,7 +39,7 @@ p {
 .pet-gallery-button-container {
   display: flex;
   flex-direction: column;
-  width: 10ch;
+  width: 13ch;
   margin: 1ch;
 }
 
