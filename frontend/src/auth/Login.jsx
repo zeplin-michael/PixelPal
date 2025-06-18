@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-
+import "./Auth.css";
 import { useAuth } from "./AuthContext";
 
 /** A form that allows users to log into an existing account. */
@@ -9,6 +9,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onLogin = async (formData) => {
     const username = formData.get("username");
@@ -22,21 +23,34 @@ export default function Login() {
   };
 
   return (
-    <>
-      <h1>Log in to your account</h1>
-      <form action={onLogin}>
-        <label>
-          Username
-          <input type="username" name="username" required />
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" required />
-        </label>
-        <button>Login</button>
-        {error && <output>{error}</output>}
-      </form>
-      <Link to="/register">Need an account? Register here.</Link>
-    </>
+    <div className="auth-container">
+      <div className="auth-form">
+        <h1>Log in to your account</h1>
+        <form action={onLogin}>
+          <label>
+            <input
+              style={{ "--input-index": 0 }}
+              type="username"
+              name="username"
+              required
+              placeholder="Username"
+            />
+          </label>
+          <label>
+            <input
+              type="password"
+              name="password"
+              required
+              placeholder="Password"
+              style={{ "--input-index": 1 }}
+            />
+          </label>
+
+          <button>Login</button>
+          {error && <output>{error}</output>}
+        </form>
+        <Link to="/register">Need an account? Create one here.</Link>
+      </div>
+    </div>
   );
 }

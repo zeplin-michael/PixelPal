@@ -1,5 +1,6 @@
 import db from "#db/client";
 
+<<<<<<< HEAD
 //gets all items owned by specific pet
 export async function getPetItems(petId) {
   const sql = `
@@ -107,4 +108,18 @@ export async function usePetItem(petId, itemId) {
     await db.query(`ROLLBACK`);
     throw err;
   }
+=======
+export async function createPetItems(petId, itemId) {
+  const sql = `
+        INSERT INTO pet_items
+        (pet_id, item_id)
+        VALUES
+        ($1, $2)
+        RETURNING *
+    `;
+  const {
+    rows: [petItem],
+  } = await db.query(sql, [petId, itemId]);
+  return petItem;
+>>>>>>> 29f856726d95910490e0868710955df665c6cdd9
 }

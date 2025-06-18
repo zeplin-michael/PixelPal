@@ -1,5 +1,6 @@
 import db from "#db/client";
 
+<<<<<<< HEAD
 //question on [status]. Pulls the status of pet in single row but pulls everything? =================
 export async function getPetStatusById(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
@@ -11,10 +12,15 @@ export async function getPetStatusById(petId) {
 
 //updates every status, should it do partial updates? Sending back singlke status updates ======================
 export async function updatePetStatus({
+=======
+export async function createPetStatus(
+  petId,
+>>>>>>> 29f856726d95910490e0868710955df665c6cdd9
   hunger,
   cleanliness,
   happiness,
   energy,
+<<<<<<< HEAD
   health,
   petId,
 }) {
@@ -29,11 +35,27 @@ export async function updatePetStatus({
   const {
     rows: [status],
   } = await db.query(sql, [
+=======
+  health
+) {
+  const sql = `
+        INSERT INTO pet_status
+        (pet_id, hunger, cleanliness, happiness, energy, health)
+        VALUES
+        ($1, $2, $3, $4, $5, $6)
+        RETURNING *
+    `;
+  const {
+    rows: [pet],
+  } = await db.query(sql, [
+    petId,
+>>>>>>> 29f856726d95910490e0868710955df665c6cdd9
     hunger,
     cleanliness,
     happiness,
     energy,
     health,
+<<<<<<< HEAD
     petId,
   ]);
   return status;
@@ -90,4 +112,8 @@ export async function decayPetStatusIfNeeded(petId) {
   );
 
   return { ...current, ...updated };
+=======
+  ]);
+  return pet;
+>>>>>>> 29f856726d95910490e0868710955df665c6cdd9
 }

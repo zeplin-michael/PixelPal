@@ -1,27 +1,113 @@
-header#navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em;
-background-color: #FFDAC1;
-font-size: 1rem;
+header .navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: #ffdac1;
+  font-size: 1rem;
+  border-bottom: 1px solid #ffc59c;
+  animation: navSlideDown 0.5s ease-out;
 }
 
-header nav{
-    padding:  0.5rem 2rem;
-    background-color: #ffc9a2;
+a {
+  text-decoration: none;
 }
 
-a{
-    text-decoration: none;
+.navbar-container nav a {
+  background-color: #ffc59c;
+  padding: 0.5em;
+  border-radius: 0.5rem;
+  color: #444444;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 1px solid #ffc59c;
+  transition: all 0.2s steps(4);
+  image-rendering: pixelated;
+  position: relative;
+  box-shadow: 0 2px 0 #ff7716;
 }
 
-header#navbar a{
-    background-color: #ffc9a2;
-    padding: 0.5rem;
-    
+.navbar-container nav a:hover {
+  background-color: #ff8935;
+  color: white;
+  border: 1px solid #ff7716;
+  cursor: pointer;
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #ff7716;
 }
 
-header a#brand,header nav{
-    border: 1px solid #ffb27b;
+.navbar-container nav a:active {
+  transform: translateY(4px);
+  background-color: #ff7716;
+}
+
+.navbar-container .brand {
+  animation: pixelFloat 2s ease-in-out infinite;
+  image-rendering: pixelated;
+}
+
+@keyframes navSlideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pixelFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.navbar-container nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-container nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #ff7716;
+  transition: all 0.2s steps(4);
+  transform: translateX(-50%);
+}
+
+.navbar-container nav a:hover::after {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-container,
+  .navbar-container .brand,
+  .navbar-container nav a {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container nav {
+    animation: mobileMenuSlide 0.3s steps(4);
+  }
+}
+
+@keyframes mobileMenuSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
