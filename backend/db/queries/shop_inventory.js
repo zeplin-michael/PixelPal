@@ -1,6 +1,5 @@
 import db from "#db/client";
 
-<<<<<<< HEAD
 //gets inventory for shop
 export async function getInventoryByShopId(shopId) {
   const sql = `
@@ -64,18 +63,3 @@ export async function removeItemFromShop(shopId, itemId) {
   await db.query(sql, [shopId, itemId]);
 }
 //should i return deleted item in case or not?
-=======
-export async function createShopInventory(shopId, itemId, quantity, price) {
-  const sql = `
-        INSERT INTO shop_inventory
-        (shop_id, item_id, quantity, price)
-        VALUES
-        ($1, $2, $3, $4)
-        RETURNING *
-    `;
-  const {
-    rows: [inventory],
-  } = await db.query(sql, [shopId, itemId, quantity, price]);
-  return inventory;
-}
->>>>>>> 29f856726d95910490e0868710955df665c6cdd9

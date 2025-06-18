@@ -1,6 +1,5 @@
 import db from "#db/client";
 
-<<<<<<< HEAD
 //check this function ================
 export async function createPet(userId, name) {
   const createPetSql = `
@@ -90,18 +89,3 @@ export async function restPet(petId) {
 }
 
 // DONE
-=======
-export async function createPet(userId, name) {
-  const sql = `
-        INSERT INTO pets
-        (user_id, name)
-        VALUES
-        ($1, $2)
-        RETURNING *
-    `;
-  const {
-    rows: [pet],
-  } = await db.query(sql, [userId, name]);
-  return pet;
-}
->>>>>>> 29f856726d95910490e0868710955df665c6cdd9
