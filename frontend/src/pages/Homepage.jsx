@@ -12,7 +12,7 @@ export default function Homepage() {
         <div className="pet-placeholder">
           <img
             className="homepage-image"
-            src="/images/home.alien.gif"
+            src="/public/img/game-play/home.alien.gif"
             alt="Animated pet"
           />
         </div>
