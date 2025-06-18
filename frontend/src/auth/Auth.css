@@ -9,6 +9,8 @@
   border-radius: 1rem;
   min-width: 50%;
   background-color: #ffc59c;
+  animation: formAppear 0.5s ease-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .auth-container {
@@ -18,12 +20,15 @@
   background-color: #ffd6b9;
   justify-content: center;
   align-items: center;
+  animation: containerFadeIn 0.8s ease-out;
 }
 
 .auth-form form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  animation: slideUp 0.5s ease-out;
 }
 
 .auth-form form input {
@@ -31,24 +36,53 @@
   border-radius: 0.5rem;
   border: 1px solid #ffc59c;
   font-size: 1.5rem;
+  transition: all 0.3s ease;
+  animation: inputAppear 0.5s ease-out backwards;
+  animation-delay: calc(var(--input-index, 0) * 0.1s + 0.3s);
 }
 
 .auth-form form input:focus {
   outline: none;
   border: 1px solid #ffc59c;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .auth-form a {
   color: #444444;
   font-family: "Lexend Deca", sans-serif;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.auth-form a:hover {
+  color: #ff7716;
+  transform: translateY(-1px);
+}
+
+.auth-form a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #ff7716;
+  transition: width 0.3s ease;
+}
+
+.auth-form a:hover::after {
+  width: 100%;
 }
 
 .auth-form form input::placeholder {
   color: #ffc59c;
+  transition: color 0.3s ease;
 }
 
 .auth-form form input:focus::placeholder {
   color: #ff9950;
+  transform: translateX(5px);
 }
 
 .auth-form form button {
@@ -58,19 +92,106 @@
   padding: 0.5em;
   border-radius: 0.5em;
   font-size: 1.5rem;
+  transition: all 0.2s steps(4);
+  position: relative;
+  box-shadow: 0 4px 0 #ff7716;
+  animation: buttonAppear 0.5s ease-out backwards;
+  animation-delay: 0.8s;
 }
 
 .auth-form form button:hover {
   background-color: #ff8935;
   color: white;
   border: 1px solid #ff7716;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  font-size: 1.5rem;
   cursor: pointer;
+  transform: translateY(-2px);
+}
+
+.auth-form form button:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #ff7716;
 }
 
 .auth-form form output {
   color: red;
   align-self: center;
+  animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes containerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes inputAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes buttonAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes errorShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.pixel-transition {
+  image-rendering: pixelated;
+  transition: all 0.2s steps(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

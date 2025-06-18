@@ -28,6 +28,7 @@ export default function Login() {
         <form action={onLogin}>
           <label>
             <input
+              style={{ "--input-index": 0 }}
               type="username"
               name="username"
               required
@@ -36,6 +37,7 @@ export default function Login() {
           </label>
           <label>
             <input
+              style={{ "--input-index": 1 }}
               type="password"
               name="password"
               required
