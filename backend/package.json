@@ -1,7 +1,11 @@
 {
+<<<<<<< HEAD
 
   "name": "PixelPal",
 
+=======
+  "name": "PixelPal",
+>>>>>>> 5f62961 (Fully stage all local changes before pulling main)
   "type": "module",
   "imports": {
     "#*": "./*.js"
@@ -10,9 +14,13 @@
     "start": "node --env-file=.env server.js",
     "dev": "node --watch --env-file=.env server.js",
     "test": "vitest",
+<<<<<<< HEAD
 
     "db:schema": "psql -d PixelPal -f db/schema.sql",
 
+=======
+    "db:schema": "psql -d PixelPal -f db/schema.sql",
+>>>>>>> 5f62961 (Fully stage all local changes before pulling main)
     "db:seed": "node --env-file=.env db/seed.js",
     "db:reset": "npm run db:schema && npm run db:seed"
   },
