@@ -9,6 +9,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onLogin = async (formData) => {
     const username = formData.get("username");
@@ -37,13 +38,14 @@ export default function Login() {
           </label>
           <label>
             <input
-              style={{ "--input-index": 1 }}
               type="password"
               name="password"
               required
               placeholder="Password"
+              style={{ "--input-index": 1 }}
             />
           </label>
+
           <button>Login</button>
           {error && <output>{error}</output>}
         </form>

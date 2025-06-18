@@ -7,10 +7,10 @@
   gap: 1rem;
   flex-basis: 70%;
   border-radius: 1rem;
-  min-width: 50%;
+  max-width: 90%;
   background-color: #ffc59c;
   animation: formAppear 0.5s ease-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .auth-container {
@@ -32,26 +32,27 @@
 }
 
 .auth-form form input {
+  width: 100%;
   padding: 0.5em;
   border-radius: 0.5rem;
-  border: 1px solid #ffc59c;
+  border: 0.0625rem solid #ffc59c;
   font-size: 1.5rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease;
   animation: inputAppear 0.5s ease-out backwards;
   animation-delay: calc(var(--input-index, 0) * 0.1s + 0.3s);
 }
 
 .auth-form form input:focus {
   outline: none;
-  border: 1px solid #ffc59c;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-color: #ff9950;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 .auth-form a {
   color: #444444;
   font-family: "Lexend Deca", sans-serif;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
   position: relative;
 }
 
@@ -76,7 +77,7 @@
 }
 
 .auth-form form input::placeholder {
-  color: #ffc59c;
+  color: #ff9950;
   transition: color 0.3s ease;
 }
 
@@ -88,13 +89,14 @@
 .auth-form form button {
   background-color: #ff9950;
   color: white;
-  border: 1px solid #ff9950;
+  border: 0.0625rem solid #ff9950;
   padding: 0.5em;
   border-radius: 0.5em;
   font-size: 1.5rem;
-  transition: all 0.2s steps(4);
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
   position: relative;
-  box-shadow: 0 4px 0 #ff7716;
+  box-shadow: 0 0.25rem 0 #ff7716;
   animation: buttonAppear 0.5s ease-out backwards;
   animation-delay: 0.8s;
 }
@@ -113,7 +115,8 @@
 }
 
 .auth-form form output {
-  color: red;
+  color: #d00;
+  font-weight: bold;
   align-self: center;
   animation: errorShake 0.5s ease-in-out;
 }
@@ -194,4 +197,22 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+@media (max-width: 37.5rem) {
+  .auth-form {
+    flex-basis: 100%;
+    max-width: 95%;
+    padding: 0.75em;
+  }
+
+  .auth-form form input,
+  .auth-form form button {
+    font-size: 1.25rem;
+  }
+}
+
+.auth-form form input:focus-visible {
+  outline: 0.125rem solid #ff7716;
+  outline-offset: 0.25rem;
 }
