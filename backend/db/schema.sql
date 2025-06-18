@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS pets;
-DROP TABLE IF EXISTS shops;
+DROP TABLE IF EXISTS shop;
 DROP TABLE IF EXISTS pet_status;
 DROP TABLE IF EXISTS items;
 DROP TABLE IF EXISTS shop_inventory;
@@ -22,10 +22,11 @@ CREATE TABLE pets (
   birthday DATE
 );
 
-CREATE TABLE shops (
+-- turned shop into bank
+CREATE TABLE shop (
   id SERIAL PRIMARY KEY,
   name VARCHAR (30),
-  bank INT 
+  balance INT 
   -- bank to balance
 );
 
@@ -40,7 +41,7 @@ CREATE TABLE pet_status (
   last_played_at TIMESTAMP,
   energy INT CHECK (energy BETWEEN 0 AND 50),
   last_slept_at TIMESTAMP,
-  heatlh INT CHECK (health BETWEEN 0 AND 50),
+  health INT CHECK (health BETWEEN 0 AND 50),
   dead BOOLEAN
 );
 
@@ -62,5 +63,5 @@ CREATE TABLE shop_inventory (
 CREATE TABLE pet_items (
   pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
   item_id INT NOT NULL REFERENCES items(id) ON DELETE CASCADE,
-  quanitity INT DEFAULT 0
+  quantity INT DEFAULT 0
 );

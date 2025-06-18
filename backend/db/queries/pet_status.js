@@ -91,3 +91,4 @@ export async function decayPetStatusIfNeeded(petId) {
 
   return { ...current, ...updated };
 }
+//connect the status to health bar ==================

@@ -1,12 +1,12 @@
 import db from "#db/client";
-// dont need
-export async function getShopById(shopId) {
-  const sql = `SELECT * FROM shops WHERE id = $1`;
-  const {
-    rows: [shop],
-  } = await db.query(sql, [shopId]);
-  return shop;
-}
+// // dont need
+// export async function getShopById(shopId) {
+//   const sql = `SELECT * FROM shops WHERE id = $1`;
+//   const {
+//     rows: [shop],
+//   } = await db.query(sql, [shopId]);
+//   return shop;
+// }
 
 export async function getShopInventory(shopId) {
   const sql = `SELECT si.item_id, i.name, i.description, i.image_url, si.price, si.quantity
@@ -21,6 +21,7 @@ export async function getShopInventory(shopId) {
 }
 
 //gets item from shop inventory
+//function is good as is
 export async function buyItemForPet({ shopId, itemId, userId, petId }) {
   const sql = `SELECT * FROM shop_inventory WHERE shop_id = $1 AND item_id = $2`;
   const {
