@@ -49,7 +49,8 @@
   max-width: 150px;
   height: auto;
   margin-bottom: 0.5rem;
-  border: 2px dashed red;
+  border: none !important;
+  outline: none !important;
 }
 
 .feature-text {
