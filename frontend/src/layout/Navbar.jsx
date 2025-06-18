@@ -14,8 +14,11 @@ export default function Navbar() {
           </NavLink>
         </div>
         <nav>
+          <NavLink to="/gallery">Gallery</NavLink>
           {token ? (
-            <button onClick={logout}>Log out</button>
+            <button onClick={logout} className="logout">
+              Log out
+            </button>
           ) : (
             <NavLink to="/login">Log in</NavLink>
           )}
