@@ -29,6 +29,7 @@ CREATE TABLE shops (
 );
 
 CREATE TABLE pet_status (
+  id SERIAL PRIMARY KEY,
   pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
   hunger INT CHECK (hunger BETWEEN 0 AND 50),
   last_fed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -50,6 +51,7 @@ CREATE TABLE items (
 );
 
 CREATE TABLE shop_inventory (
+  
   shop_id INT NOT NULL REFERENCES shops(id) ON DELETE CASCADE,
   item_id INT NOT NULL REFERENCES items(id) ON DELETE CASCADE,
   quantity INT NOT NULL,
@@ -58,6 +60,7 @@ CREATE TABLE shop_inventory (
 );
 
 CREATE TABLE pet_items (
+  id SERIAL PRIMARY KEY,
   pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
   item_id INT NOT NULL REFERENCES items(id) ON DELETE CASCADE,
   quanitity BOOLEAN DEFAULT FALSE

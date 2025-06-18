@@ -11,7 +11,7 @@ export default function LearnMore() {
         <div className="feature-gallery">
           <div className="feature-item">
             <img
-              src="/public/img/game-play/BedTime.png"
+              src="/img/game-play/alien_sleeping_360.gif"
               alt="Sleeping PixelPal"
               className="feature-image"
             />
@@ -20,7 +20,7 @@ export default function LearnMore() {
 
           <div className="feature-item">
             <img
-              src="/public/img/game-play/MealTime.png"
+              src="/img/game-play/MealTime.png"
               alt="Eating PixelPal"
               className="feature-image"
             />
@@ -29,7 +29,7 @@ export default function LearnMore() {
 
           <div className="feature-item">
             <img
-              src="/public/img/game-play/PlayTime.png"
+              src="/img/game-play/PlayTime.png"
               alt="Playing PixelPal"
               className="feature-image"
             />
