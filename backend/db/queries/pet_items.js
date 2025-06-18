@@ -50,43 +50,59 @@ export async function removeItemFromPet(petId, itemId) {
   await db.query(sql, [petId, itemId]);
 }
 
-// function for using an item to change pet status, i.e happiness in this scenerio =================
 export async function usePetItem(petId, itemId) {
-  const sql = `
-    SELECT quantity FROM pet_items
-    WHERE pet_id = $1 AND item_id = $2
-    `;
+  // Get the item effect
   const {
     rows: [item],
-  } = await db.query(sql, [petId, itemId]);
+  } = await db.query(
+    `
+    SELECT pi.quantity, i.effect_target, i.effect_value
+    FROM pet_items pi
+    JOIN items i ON i.id = pi.item_id
+    WHERE pi.pet_id = $1 AND pi.item_id = $2
+    `,
+    [petId, itemId]
+  );
 
   if (!item || item.quantity <= 0) {
     throw new Error("Item not available in inventory.");
   }
 
+  // Safety: only allow valid target stat fields
+  const validTargets = [
+    "hunger",
+    "cleanliness",
+    "happiness",
+    "energy",
+    "health",
+  ];
+  if (!validTargets.includes(item.effect_target)) {
+    throw new Error("Invalid item effect target.");
+  }
+
   try {
     await db.query(`BEGIN`);
 
+    // Reduce item quantity
     await db.query(
-      `
-      UPDATE pet_items
-      SET quantity = quantity - 1
-      WHERE pet_id = $1 AND item_id = $2
-      `,
+      `UPDATE pet_items
+       SET quantity = quantity - 1
+       WHERE pet_id = $1 AND item_id = $2`,
       [petId, itemId]
     );
 
-    await db.query(
-      `
+    // Dynamically update the correct stat, capped at 50
+    const updateSql = `
       UPDATE pet_status
-      SET happiness = LEAST(happiness + 10, 50)
-      WHERE pet_id = $1
-      `,
-      [petId]
-    );
+      SET ${item.effect_target} = LEAST(${item.effect_target} + $1, 50)
+      WHERE pet_id = $2
+    `;
+    await db.query(updateSql, [item.effect_value, petId]);
 
     await db.query(`COMMIT`);
-    return { message: "Item used!" };
+    return {
+      message: `Increased ${item.effect_target} by ${item.effect_value}!`,
+    };
   } catch (err) {
     await db.query(`ROLLBACK`);
     throw err;

@@ -87,3 +87,5 @@ export async function restPet(petId) {
   `;
   await db.query(sql, [petId]);
 }
+
+// DONE

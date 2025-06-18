@@ -9,7 +9,7 @@ export async function getPetStatusById(petId) {
   return status;
 }
 
-//updates every status, should it do partial updates? ======================
+//updates every status, should it do partial updates? Sending back singlke status updates ======================
 export async function updatePetStatus({
   hunger,
   cleanliness,
@@ -39,8 +39,8 @@ export async function updatePetStatus({
   return status;
 }
 
-//decay pet status overtime based on last interactions
-//decays everything except health overtime, health is based on other factors unless fixed here=================
+// add a calculation to make decay affect health======================
+
 export async function decayPetStatusIfNeeded(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
   const { rows } = await db.query(sql, [petId]);
@@ -55,7 +55,7 @@ export async function decayPetStatusIfNeeded(petId) {
     return timestamp ? Math.floor((now - new Date(timestamp)) / 60000) : 0;
   }
 
-  //each stat decay calculation, down 1 every 10, 15, 20, 30 minutes (adjustable)=========
+  //each stat decay calculation, down 1 every 10, 15, 20, 30 minutes (adjustable)
   const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 10);
   const cleanlinessLoss = Math.floor(
     minutesSince(current.last_cleaned_at) / 15
@@ -91,4 +91,3 @@ export async function decayPetStatusIfNeeded(petId) {
 
   return { ...current, ...updated };
 }
-//connect the status to health bar ==================

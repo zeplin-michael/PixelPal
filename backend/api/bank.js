@@ -5,15 +5,7 @@ export default router;
 import requireUser from "#middleware/requireUser";
 import requireBody from "#middleware/requireBody";
 
-<<<<<<< HEAD
-import {
-  getShopById,
-  getShopInventory,
-  buyItemForPet,
-} from "#db/queries/shop";
-=======
 import { getShopById, getShopInventory, buyItemForPet } from "#db/queries/shop";
->>>>>>> c07c063 (Frame code)
 import { getPetByUserId } from "#db/queries/pets";
 
 router.use(requireUser);

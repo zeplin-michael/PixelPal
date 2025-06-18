@@ -1,14 +1,19 @@
 import db from "#db/client";
 
 //adds new item to table
-//Do we need add item function if items come preloaded? ===================
-export async function createItem({ name, description, image_url, price }) {
-  const sql = `INSERT INTO items (name, description, image_url, price)
-     VALUES ($1, $2, $3, $4)
+export async function createItem({
+  name,
+  description,
+  image_url,
+  price,
+  type,
+}) {
+  const sql = `INSERT INTO items (name, description, image_url, price, type)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`;
   const {
     rows: [item],
-  } = await db.query(sql, [name, description, image_url, price]);
+  } = await db.query(sql, [name, description, image_url, price, type]);
   return item;
 }
 
