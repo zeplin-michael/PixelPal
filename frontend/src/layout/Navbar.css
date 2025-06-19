@@ -3,10 +3,24 @@ header .navbar-container {
   justify-content: space-between;
   align-items: center;
   padding: 1em;
-  background-color: #ffdac1;
+
   font-size: 1rem;
   border-bottom: 1px solid #ffc59c;
   animation: navSlideDown 0.5s ease-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(255, 218, 193, 0.5);
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: none;
+}
+
+header .navbar-container.scrolled {
+  background-color: rgba(255, 218, 193, 0.7);
+  box-shadow: 0 2px 8px rgba(255, 197, 156, 0.3);
 }
 
 .navbar-home-icon {

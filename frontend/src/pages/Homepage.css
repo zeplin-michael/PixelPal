@@ -8,7 +8,8 @@
   position: relative;
   flex-grow: 1;
   background-color: #d7fdd6;
-  padding: 2rem;
+  padding: 6rem 2rem;
+
   text-align: center;
 
   display: flex;

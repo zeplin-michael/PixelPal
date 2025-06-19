@@ -37,15 +37,6 @@ export default function LearnMore() {
           </div>
         </div>
       </main>
-
-      <footer className="learnmore-footer">
-        <NavLink to="/" className="button-link">
-          Home
-        </NavLink>
-        <NavLink to="/gallery" className="button-link">
-          Gallery
-        </NavLink>
-      </footer>
     </div>
   );
 }

@@ -27,11 +27,6 @@ export default function Homepage() {
           </div>
         </main>
       </div>
-      <footer className="homepage-footer">
-        <NavLink to="/learn-more" className="button-link">
-          Learn More
-        </NavLink>
-      </footer>
     </>
   );
 }
