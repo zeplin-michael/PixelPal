@@ -5,7 +5,7 @@ import Register from "./auth/Register";
 import EndScreen from "./pages/EndScreen";
 
 import Homepage from "./pages/Homepage";
-import LearnMore from "./pages/LearnMore";
+
 import Gallery from "./pages/Gallery";
 
 import GamePage from "./pages/game-page/game-page";
@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/deathscreen" element={<EndScreen />} />
-        <Route path="/learn-more" element={<LearnMore />} />
+
         <Route path="/gallery" element={<Gallery />} />
       </Route>
       <Route path="/game-page" element={<GamePage />}>

@@ -1,4 +1,3 @@
-import { NavLink } from "react-router";
 import "./LearnMore.css";
 
 export default function LearnMore() {
