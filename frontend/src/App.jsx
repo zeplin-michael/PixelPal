@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router";
 import Layout from "./layout/Layout";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import EndScreen from "./pages/EndScreen";
+import EndScreen from "./pages/deathscreen/EndScreen";
 
 import Homepage from "./pages/Homepage";
 import LearnMore from "./pages/LearnMore";
