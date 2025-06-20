@@ -8,6 +8,7 @@ import Homepage from "./pages/Homepage";
 
 import Gallery from "./pages/Gallery";
 import PalLayout from "./pages/PalLayout";
+import ProfilePage from "./pages/ProfilePage";
 
 import GamePage from "./pages/game-page/game-page";
 import Bath from "./pages/game-page/components/bath";
@@ -25,6 +26,7 @@ export default function App() {
 
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/pal" element={<PalLayout />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
       <Route path="/game-page" element={<GamePage />}>
         <Route path="/game-page/bath" element={<Bath />} />
