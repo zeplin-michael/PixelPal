@@ -25,7 +25,7 @@ export default function Homepage() {
   return (
     // logo for link to homepage
 
-    <div className="homepage" style={{ position: "relative" }}>
+    <div className="homepage">
       <main className="homepage-main">
         <h2 className="homepage-title">Welcome to PixelPal</h2>
         <p className="homepage-subtitle">Adopt a virtual pet today!</p>
