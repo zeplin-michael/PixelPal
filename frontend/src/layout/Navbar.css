@@ -1,49 +1,91 @@
 header .navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 1em;
-  background-color: #ffdac1;
   font-size: 1rem;
   border-bottom: 1px solid #ffc59c;
   animation: navSlideDown 0.5s ease-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(255, 218, 193, 0.5);
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: none;
+}
+
+header .navbar-container.scrolled {
+  background-color: rgba(255, 218, 193, 0);
+  box-shadow: 0 2px 8px rgba(255, 197, 156, 0.3);
+  border-bottom: transparent;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-home-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #ffc79f;
+  border-radius: 5px;
+  padding: 0.5em;
+  border: 1px solid #ffaf77;
+  image-rendering: pixelated;
+}
+
+.navbar-home-icon:hover {
+  background-color: #ffaf77;
+  border: 1px solid #ffc79f;
+  cursor: pointer;
+  transform: translateY(2px);
 }
 
 a {
   text-decoration: none;
 }
 
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-container nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .navbar-container nav a {
-  background-color: #ffc59c;
-  padding: 0.5em;
+  background-color: rgba(255, 197, 156, 0.4);
+  padding: 0.5em 1em;
   border-radius: 0.5rem;
   color: #444444;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  border: 1px solid #ffc59c;
+  border: 2px solid rgba(255, 197, 156, 0.7);
   transition: all 0.2s steps(4);
   image-rendering: pixelated;
   position: relative;
-  box-shadow: 0 2px 0 #ff7716;
+  box-shadow: 0 2px 0 rgba(255, 119, 22, 0.3);
+  backdrop-filter: blur(2px);
 }
 
-.navbar-container nav a:hover {
-  background-color: #ff8935;
+.navbar-container nav a:hover,
+.navbar-container nav a:focus {
+  background-color: rgba(255, 137, 53, 0.5);
   color: white;
-  border: 1px solid #ff7716;
+  border: 2px solid rgba(255, 119, 22, 0.7);
   cursor: pointer;
   transform: translateY(2px);
-  box-shadow: 0 0 0 #ff7716;
+  box-shadow: 0 0 0 rgba(255, 119, 22, 0.3);
 }
 
 .navbar-container nav a:active {
   transform: translateY(4px);
-  background-color: #ff7716;
-}
-
-.navbar-container .brand {
-  animation: pixelFloat 2s ease-in-out infinite;
-  image-rendering: pixelated;
+  background-color: rgba(255, 119, 22, 0.7);
 }
 
 @keyframes navSlideDown {
@@ -63,11 +105,6 @@ a {
   50% {
     transform: translateY(-4px);
   }
-}
-
-.navbar-container nav {
-  display: flex;
-  gap: 1rem;
 }
 
 .navbar-container nav a::after {
@@ -110,4 +147,33 @@ a {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* Logout button styled like a link */
+.navbar-container nav .logout {
+  background-color: rgba(255, 197, 156, 0.4);
+  padding: 0.5em 1em;
+  border-radius: 0.5rem;
+  color: #444444;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid rgba(255, 197, 156, 0.7);
+  transition: all 0.2s steps(4);
+  box-shadow: 0 2px 0 rgba(255, 119, 22, 0.3);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.navbar-container nav .logout:hover,
+.navbar-container nav .logout:focus {
+  background-color: rgba(255, 137, 53, 0.5);
+  color: white;
+  border: 2px solid rgba(255, 119, 22, 0.7);
+  transform: translateY(2px);
+}
+
+.navbar-container nav .logout:active {
+  transform: translateY(4px);
+  background-color: rgba(255, 119, 22, 0.7);
 }

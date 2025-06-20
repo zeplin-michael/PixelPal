@@ -1,12 +1,29 @@
-import { NavLink } from "react-router";
+import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+import LearnMore from "./LearnMore";
+
+import { useAuth } from "../auth/AuthContext";
 import "./Homepage.css";
 
 export default function Homepage() {
+  const navigate = useNavigate();
+  const { token } = useAuth();
+  const [showLearnMore, setShowLearnMore] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight / 2) {
+        setShowLearnMore(true);
+      } else {
+        setShowLearnMore(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     // logo for link to homepage
-
-    <>
-    
 
     <div className="homepage">
       <main className="homepage-main">
@@ -16,19 +33,16 @@ export default function Homepage() {
         <div className="pet-placeholder">
           <img
             className="homepage-image"
-            src="/public/img/game-play/home.alien.gif"
+            src="/img/game-play/alien_idle_360.gif"
             alt="Animated pet"
+            onClick={() => (token ? navigate("/profile") : navigate("/login"))}
           />
         </div>
+        <div style={{ height: "85vh" }}></div>
       </main>
-
-
+      <div className={`learn-more-overlay${showLearnMore ? " visible" : ""}`}>
+        <LearnMore />
       </div>
-      <footer className="homepage-footer">
-        <NavLink to="/learn-more" className="button-link">
-          Learn More
-        </NavLink>
-      </footer>
-    </>
+    </div>
   );
 }
