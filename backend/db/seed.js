@@ -25,15 +25,6 @@ async function seed() {
       const user = await createUser(`user${i}`, "password");
       const pet = await createPet(user.id, `pet${i}`);
 
-      // pet status
-      await db.query(
-        `
-        INSERT INTO pet_status (pet_id, hunger, cleanliness, happiness, energy, health)
-        VALUES ($1, 50, 50, 50, 50, 50)
-      `,
-        [pet.id]
-      );
-
       // pet overall stats
       await db.query(
         `
