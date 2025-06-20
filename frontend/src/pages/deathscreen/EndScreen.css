@@ -1,0 +1,136 @@
+/* EndScreen.css */
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #d7fdd6;
+}
+
+.endscreen-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #d7fdd6;
+  padding: 2rem;
+}
+
+.gravestone-background {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("./gravestone_img.png") no-repeat center center;
+  background-size: contain;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 2rem;
+}
+
+.tombstone-content {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -22%);
+  width: 80%;
+  text-align: center;
+  color: #444;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 2px 8px #fff, 0 1px 2px #aaa;
+}
+
+.endscreen-buttons {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+}
+
+.endscreen-button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 24px;
+  background: #222;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.endscreen-button:hover {
+  background: #444;
+}
+
+#gravestone-emoji {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  transform: translateX(-30%);
+  font-size: 4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  /* transform: translateX(-50%); */
+  display: flex;
+  gap: 160px;
+  font-size: 1.7rem; /* Increased font size */
+  padding: 24px 64px; /* Increased padding for larger buttons */
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #444;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: white 2px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #524444;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #b42525;
+}
