@@ -34,6 +34,14 @@ export default function LearnMore() {
             />
             <p className="feature-text">Play</p>
           </div>
+          <div className="feature-item">
+            <img
+              src="/img/game-play/BathTime.png"
+              alt="Bathe PixelPal"
+              className="feature-image"
+            />
+            <p className="feature-text">Bathe</p>
+          </div>
         </div>
       </main>
     </div>
