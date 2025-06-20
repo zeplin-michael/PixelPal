@@ -84,7 +84,6 @@ CREATE TABLE shop_inventory (
 
 -- pet items 
 CREATE TABLE pet_items (
-  id SERIAL PRIMARY KEY,
   pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
   item_id INT NOT NULL REFERENCES items(id) ON DELETE CASCADE,
   quantity INT DEFAULT 0,
