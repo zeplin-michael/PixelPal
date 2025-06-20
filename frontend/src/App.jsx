@@ -6,6 +6,7 @@ import Register from "./auth/Register";
 import Homepage from "./pages/Homepage";
 import LearnMore from "./pages/LearnMore";
 import Gallery from "./pages/Gallery";
+import PalLayout from "./pages/PalLayout";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/learn-more" element={<LearnMore />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/pal" element={<PalLayout />} />
       </Route>
     </Routes>
   );
