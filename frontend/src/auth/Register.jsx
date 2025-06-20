@@ -28,6 +28,7 @@ export default function Register() {
         <form action={onRegister}>
           <label>
             <input
+              style={{ "--input-index": 0 }}
               type="text"
               name="username"
               required
@@ -36,6 +37,7 @@ export default function Register() {
           </label>
           <label>
             <input
+              style={{ "--input-index": 1 }}
               type="password"
               name="password"
               required
