@@ -1,0 +1,219 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5em;
+  gap: 1rem;
+  flex-basis: 70%;
+  border-radius: 1rem;
+  max-width: 90%;
+  background-color: #ffc59c;
+  animation: formAppear 0.5s ease-out;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  background-color: #ffd6b9;
+  padding-top: 5rem;
+  justify-content: center;
+  align-items: center;
+  animation: containerFadeIn 0.8s ease-out;
+}
+
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  animation: slideUp 0.5s ease-out;
+}
+
+.auth-form form input {
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid #ffc59c;
+  font-size: 1.5rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  animation: inputAppear 0.5s ease-out backwards;
+  animation-delay: calc(var(--input-index, 0) * 0.1s + 0.3s);
+}
+
+.auth-form form input:focus {
+  outline: none;
+  border-color: #ff9950;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.auth-form a {
+  color: #444444;
+  font-family: "Lexend Deca", sans-serif;
+  transition: color 0.2s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.auth-form a:hover {
+  color: #ff7716;
+  transform: translateY(-1px);
+}
+
+.auth-form a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #ff7716;
+  transition: width 0.3s ease;
+}
+
+.auth-form a:hover::after {
+  width: 100%;
+}
+
+.auth-form form input::placeholder {
+  color: #ff9950;
+  transition: color 0.3s ease;
+}
+
+.auth-form form input:focus::placeholder {
+  color: #ff9950;
+  transform: translateX(5px);
+}
+
+.auth-form form button {
+  background-color: #ff9950;
+  color: white;
+  border: 0.0625rem solid #ff9950;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+  position: relative;
+  box-shadow: 0 0.25rem 0 #ff7716;
+  animation: buttonAppear 0.5s ease-out backwards;
+  animation-delay: 0.8s;
+}
+
+.auth-form form button:hover {
+  background-color: #ff8935;
+  color: white;
+  border: 1px solid #ff7716;
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+.auth-form form button:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #ff7716;
+}
+
+.auth-form form output {
+  color: #d00;
+  font-weight: bold;
+  align-self: center;
+  animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes containerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes inputAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes buttonAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes errorShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.pixel-transition {
+  image-rendering: pixelated;
+  transition: all 0.2s steps(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .auth-form {
+    flex-basis: 100%;
+    max-width: 95%;
+    padding: 0.75em;
+  }
+
+  .auth-form form input,
+  .auth-form form button {
+    font-size: 1.25rem;
+  }
+}
+
+.auth-form form input:focus-visible {
+  outline: 0.125rem solid #ff7716;
+  outline-offset: 0.25rem;
+}
