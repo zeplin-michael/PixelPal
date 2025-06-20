@@ -1,11 +1,12 @@
 import db from "#db/client";
 
 export async function getShopInventory() {
-  const sql = `SELECT si.item_id, i.name, i.description, i.image_url, si.price, si.quantity
-    FROM shop_inventory si
-    JOIN items i ON i.id = si.item_id
-    WHERE si.shop_id = $1
-  `;
+  const sql = `
+  SELECT si.item_id, i.name, i.description, i.image_url, si.price, si.quantity
+  FROM shop_inventory si
+  JOIN items i ON i.id = si.item_id
+`;
+
   const {
     rows: [shop],
   } = await db.query(sql);

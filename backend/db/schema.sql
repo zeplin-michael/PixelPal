@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(15) NOT NULL UNIQUE,
-  password_hash TEXT NOT NULL, -- allows longer hashes like bcrypt
+  password_hash TEXT NOT NULL, 
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   coins_balance INT DEFAULT 10
 );
@@ -96,14 +96,12 @@ CREATE TABLE equipped_items (
 
 -- stats recorded after death
 CREATE TABLE pet_overall_stats (
-  id SERIAL PRIMARY KEY,
-  pet_id INT NOT NULL UNIQUE REFERENCES pets(id) ON DELETE CASCADE,
-  total_feedings INT DEFAULT 0,
-  total_cleanings INT DEFAULT 0,
+  pet_id INT PRIMARY KEY REFERENCES pets(id) ON DELETE CASCADE,
+  total_meals INT DEFAULT 0,
+  total_baths INT DEFAULT 0,
   total_play_sessions INT DEFAULT 0,
   total_sleep_sessions INT DEFAULT 0,
-  total_coin_earnings INT DEFAULT 0,
-  lifespan_minutes INT,
-  average_happiness DECIMAL(5,2),
-  average_health DECIMAL(5,2)
+  days_alive INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+

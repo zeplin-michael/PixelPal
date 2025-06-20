@@ -1,6 +1,6 @@
 import db from "#db/client";
 
-//question on [status]. Pulls the status of pet in single row but pulls everything? =================
+// pulls pet status
 export async function getPetStatusById(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
   const {
@@ -9,7 +9,8 @@ export async function getPetStatusById(petId) {
   return status;
 }
 
-//updates every status, should it do partial updates? Sending back singlke status updates ======================
+// updates every status
+// check if throws error=====================
 export async function updatePetStatus({
   hunger,
   cleanliness,
@@ -46,16 +47,16 @@ export async function decayPetStatusIfNeeded(petId) {
   const { rows } = await db.query(sql, [petId]);
   if (!rows[0]) return null;
 
-  //current timestamp & current status
+  // current timestamp & current status
   const now = new Date();
   const current = rows[0];
 
-  //calculates minutes since last given timestamp
+  // calculates minutes since last given timestamp
   function minutesSince(timestamp) {
     return timestamp ? Math.floor((now - new Date(timestamp)) / 60000) : 0;
   }
 
-  //each stat decay calculation, down 1 every 10, 15, 20, 30 minutes (adjustable)
+  // each stat decay calculation, down 1 every 10, 15, 20, 30 minutes (adjustable)
   const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 10);
   const cleanlinessLoss = Math.floor(
     minutesSince(current.last_cleaned_at) / 15
@@ -63,7 +64,7 @@ export async function decayPetStatusIfNeeded(petId) {
   const happinessLoss = Math.floor(minutesSince(current.last_played_at) / 20);
   const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 30);
 
-  //subtracts decay loss from current status to get sum of new status
+  // subtracts decay loss from current status to get sum of new status
   const updated = {
     hunger: Math.max(current.hunger - hungerLoss, 0),
     cleanliness: Math.max(current.cleanliness - cleanlinessLoss, 0),
@@ -72,7 +73,7 @@ export async function decayPetStatusIfNeeded(petId) {
     health: current.health, // optionally update this based on other conditions
   };
 
-  //updates data with new pet status
+  // updates data with new pet status
   await db.query(
     `UPDATE pet_status
      SET hunger = $1,

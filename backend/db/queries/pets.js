@@ -1,6 +1,6 @@
 import db from "#db/client";
 
-//check this function ================
+// creates new pet
 export async function createPet(userId, name) {
   const createPetSql = `
     INSERT INTO pets (user_id, name, birthday)
@@ -20,7 +20,8 @@ export async function createPet(userId, name) {
   return pet;
 }
 
-//gets singular pet
+// gets singular pet
+// doesn't support mulitple pets of user
 export async function getPetByUserId(userId) {
   const sql = `
     SELECT pets.*, pet_status.*
@@ -34,7 +35,7 @@ export async function getPetByUserId(userId) {
   return pet;
 }
 
-//gets full status of pet
+// gets full status of pet
 export async function getPetStatusById(petId) {
   const sql = `
     SELECT pets.user_id, pet_status.*
@@ -48,7 +49,7 @@ export async function getPetStatusById(petId) {
   return status;
 }
 
-//increases hunger by 10 every feed, caps at 50
+// increases hunger by 10 every feed, caps at 50
 export async function feedPet(petId) {
   const sql = `
     UPDATE pet_status
@@ -58,7 +59,7 @@ export async function feedPet(petId) {
   await db.query(sql, [petId]);
 }
 
-//increases cleanliness by 10 every clean, caps at 50
+// ncreases cleanliness by 10 every clean, caps at 50
 export async function cleanPet(petId) {
   const sql = `
     UPDATE pet_status
@@ -68,7 +69,7 @@ export async function cleanPet(petId) {
   await db.query(sql, [petId]);
 }
 
-//increases happiness by 10 every play, caps at 50
+// increases happiness by 10 every play, caps at 50
 export async function playWithPet(petId) {
   const sql = `
     UPDATE pet_status
@@ -78,7 +79,7 @@ export async function playWithPet(petId) {
   await db.query(sql, [petId]);
 }
 
-//increases energy by 10 every rest, caps at 50
+// increases energy by 10 every rest, caps at 50
 export async function restPet(petId) {
   const sql = `
     UPDATE pet_status
