@@ -126,11 +126,11 @@ button {
   border: white 2px solid;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #524444;
+  background-color: #ffb27b;
   color: white;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #b42525;
+  background-color: whitesmoke;
 }
