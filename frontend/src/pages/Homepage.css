@@ -8,7 +8,8 @@
   position: relative;
   flex-grow: 1;
   background-color: #d7fdd6;
-  padding: 2rem;
+  padding: 6rem 2rem;
+
   text-align: center;
 
   display: flex;
@@ -63,14 +64,14 @@
   transition: transform 0.3s ease;
 }
 
-.pet-placeholder:hover {
-  transform: scale(1.05);
-}
-
 .homepage-image {
   width: 100%;
   height: auto;
-  opacity: 0.5;
+}
+
+.homepage-image:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .homepage-footer {
@@ -161,4 +162,22 @@
   pointer-events: none;
   z-index: 3;
   opacity: 0.3;
+}
+
+.learn-more-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 10;
+  background: transparent; /* or transparent if LearnMore has its own background */
+}
+
+.learn-more-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
 }

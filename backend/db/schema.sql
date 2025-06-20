@@ -23,8 +23,10 @@ CREATE TABLE users (
 CREATE TABLE pets (
   id SERIAL PRIMARY KEY,
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+
   name VARCHAR(15),
   is_alive BOOLEAN DEFAULT TRUE,
+
   birthday DATE
 );
 
@@ -47,6 +49,7 @@ CREATE TABLE coin_transactions (
 
 
 CREATE TABLE pet_status (
+
   pet_id INT PRIMARY KEY REFERENCES pets(id) ON DELETE CASCADE,
   hunger INT DEFAULT 50 CHECK (hunger BETWEEN 0 AND 50),
   last_fed_at TIMESTAMP,
@@ -58,6 +61,7 @@ CREATE TABLE pet_status (
   last_slept_at TIMESTAMP,
   health INT DEFAULT 50 CHECK (health BETWEEN 0 AND 50),
   dead BOOLEAN DEFAULT FALSE
+
 );
 
 -- items for shop
@@ -80,6 +84,7 @@ CREATE TABLE shop_inventory (
 
 -- pet items 
 CREATE TABLE pet_items (
+  id SERIAL PRIMARY KEY,
   pet_id INT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
   item_id INT NOT NULL REFERENCES items(id) ON DELETE CASCADE,
   quantity INT DEFAULT 0,

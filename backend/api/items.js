@@ -24,7 +24,9 @@ router.get("/", async (req, res) => {
 // POST /items - create new item (admin/dev)
 router.post(
   "/",
-  requireBody(["name", "description", "image_url", "price"]),
+
+  requireBody(["name", "description", "image_url", "price", "type"]),
+
   async (req, res) => {
     const item = await createItem(req.body);
     res.status(201).send(item);
@@ -47,9 +49,14 @@ router.get("/:id", (req, res) => {
 // PUT /items/:id - update item
 router.put(
   "/:id",
-  requireBody(["name", "description", "image_url", "price"]),
+
+  requireBody(["name", "description", "image_url", "price", "type"]),
   async (req, res) => {
-    const updated = await updateItemById(req.item.id, req.body);
+    const updated = await updateItemById({
+      id: req.item.id,
+      ...req.body,
+    });
+
     res.send(updated);
   }
 );

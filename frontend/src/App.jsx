@@ -2,11 +2,13 @@ import { Route, Routes } from "react-router";
 import Layout from "./layout/Layout";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import EndScreen from "./pages/EndScreen";
+import EndScreen from "./pages/deathscreen/EndScreen";
 
 import Homepage from "./pages/Homepage";
-import LearnMore from "./pages/LearnMore";
+
 import Gallery from "./pages/Gallery";
+import PalLayout from "./pages/PalLayout";
+import ProfilePage from "./pages/ProfilePage";
 
 import GamePage from "./pages/game-page/game-page";
 import Bath from "./pages/game-page/components/bath";
@@ -21,8 +23,10 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/deathscreen" element={<EndScreen />} />
-        <Route path="/learn-more" element={<LearnMore />} />
+
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/pal" element={<PalLayout />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
       <Route path="/game-page" element={<GamePage />}>
         <Route path="/game-page/bath" element={<Bath />} />
