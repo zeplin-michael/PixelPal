@@ -19,7 +19,7 @@ export async function addItemToPet(petId, itemId, quantity) {
     INSERT INTO pet_items (pet_id, item_id, quantity)
     VALUES ($1, $2, $3)
     ON CONFLICT (pet_id, item_id)
-    DO UPDATE SET quanitity = pet_items.quantity + $3
+    DO UPDATE SET quantity = pet_items.quantity + $3
     RETURNING *
   `;
   const {
@@ -47,7 +47,10 @@ export async function removeItemFromPet(petId, itemId) {
     DELETE FROM pet_items
     WHERE pet_id = $1 AND item_id = $2
   `;
-  await db.query(sql, [petId, itemId]);
+  const {
+    rows: [removed],
+  } = await db.query(sql, [petId, itemId]);
+  return removed;
 }
 
 export async function usePetItem(petId, itemId) {
