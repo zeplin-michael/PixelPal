@@ -46,39 +46,6 @@
 
 .feature-image {
   width: 100%;
-  max-width: 150px;
-  height: auto;
-  margin-bottom: 0.5rem;
-  border: none !important;
-  outline: none !important;
-}
-
-.feature-text {
-  font-size: 2rem;
-  color: #444;
-  margin-top: 0.5rem;
-}
-
-.learnmore-footer {
-  background-color: #ffdac1;
-  padding: 1rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  border-top: 1px solid #ffb27b;
-}
-
-.button-link {
-  background-color: #ffc9a2;
-  padding: 0.5rem 1rem;
-  border: 1px solid #ffb27b;
-  border-radius: 5px;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
-
-.button-link:hover {
-  background-color: #ffb27b;
+  height: 100%;
+  object-fit: cover;
 }

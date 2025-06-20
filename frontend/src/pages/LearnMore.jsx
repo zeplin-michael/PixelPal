@@ -1,4 +1,3 @@
-import { NavLink } from "react-router";
 import "./LearnMore.css";
 
 export default function LearnMore() {
@@ -35,17 +34,16 @@ export default function LearnMore() {
             />
             <p className="feature-text">Play</p>
           </div>
+          <div className="feature-item">
+            <img
+              src="/img/game-play/BathTime.png"
+              alt="Bathe PixelPal"
+              className="feature-image"
+            />
+            <p className="feature-text">Bathe</p>
+          </div>
         </div>
       </main>
-
-      <footer className="learnmore-footer">
-        <NavLink to="/" className="button-link">
-          Home
-        </NavLink>
-        <NavLink to="/gallery" className="button-link">
-          Gallery
-        </NavLink>
-      </footer>
     </div>
   );
 }
