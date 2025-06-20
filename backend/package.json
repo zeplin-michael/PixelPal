@@ -1,11 +1,15 @@
 {
-  "name": "pixelpal",
+  "name": "PixelPal",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+
+    "start": "node --env-file=.env server.js",
+    "dev": "node --watch --env-file=.env server.js",
+    "test": "vitest",
+    "db:schema": "psql -d PixelPal -f db/schema.sql",
+    "db:seed": "node --env-file=.env db/seed.js",
+    "db:reset": "npm run db:schema && npm run db:seed"
+
   },
   "dependencies": {
     "framer-motion": "^12.18.1",

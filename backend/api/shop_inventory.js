@@ -6,12 +6,15 @@ import requireUser from "#middleware/requireUser";
 import requireBody from "#middleware/requireBody";
 
 import {
+
   getInventory,
+
   getShopInventoryItem,
   addItemToShop,
   updateShopInventoryItem,
   removeItemFromShop,
 } from "#db/queries/shop_inventory";
+
 
 router.use(requireUser);
 
@@ -35,9 +38,11 @@ router.post(
   async (req, res) => {
     const { item_id, quantity, price } = req.body;
     const newEntry = await addItemToShop(item_id, quantity, price);
+
     res.status(201).send(newEntry);
   }
 );
+
 
 // PUT /shop_inventory/:itemId - update item
 router.put("/:itemId", requireBody(["quantity", "price"]), async (req, res) => {
@@ -56,4 +61,5 @@ router.delete("/:itemId", async (req, res) => {
   const deleted = await removeItemFromShop(req.params.itemId);
   if (!deleted) return res.status(404).send("Item not found.");
   res.status(204).end();
+
 });

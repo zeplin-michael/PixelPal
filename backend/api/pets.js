@@ -64,8 +64,10 @@ router.put("/:id/sleep", async (req, res) => {
   res.send({ message: "Pet rested." });
 });
 
+
 // DELETE /pets/:id
 router.delete("/:id", async (req, res) => {
   await deletePet(req.pet.id);
   res.send({ message: "Pet deleted." });
 });
+
