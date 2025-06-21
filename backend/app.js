@@ -5,6 +5,7 @@ export default app;
 import usersRouter from "#api/users";
 import getUserFromToken from "#middleware/getUserFromToken";
 import handlePostgresErrors from "#middleware/handlePostgresErrors";
+import petsRouter from "#api/pets";
 import cors from "cors";
 import morgan from "morgan";
 
@@ -19,6 +20,7 @@ app.use(getUserFromToken);
 
 app.get("/", (req, res) => res.send("Hello, World!"));
 
+app.use("/pets", petsRouter);
 app.use("/users", usersRouter);
 
 app.use(handlePostgresErrors);

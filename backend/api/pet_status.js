@@ -6,7 +6,7 @@ import requireUser from "#middleware/requireUser";
 import requireBody from "#middleware/requireBody";
 
 import {
-  getPetStatusById,
+  getPetStatusByIdWithUserId,
   updatePetStatus,
   decayPetStatusIfNeeded,
 } from "#db/queries/pet_status";

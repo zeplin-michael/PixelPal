@@ -1,7 +1,7 @@
 import db from "#db/client";
 
 // pulls pet status
-export async function getPetStatusById(petId) {
+export async function getPetStatusByPetId(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
   const {
     rows: [status],

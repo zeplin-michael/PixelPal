@@ -8,12 +8,13 @@ import requireUser from "#middleware/requireUser";
 import {
   createPet,
   getPetByUserId,
-  getPetStatusById,
   feedPet,
   cleanPet,
   playWithPet,
   restPet,
 } from "#db/queries/pets";
+
+import { getPetStatusByPetId } from "#db/queries/pet_status";
 
 router.use(requireUser);
 
@@ -24,17 +25,22 @@ router.get("/", async (req, res) => {
   res.send(pet);
 });
 
-// POST /pets - create new pet
+// POST /pets - create new pet and return pet with it's current status
 router.post("/", requireBody(["name"]), async (req, res) => {
   const { name } = req.body;
   const pet = await createPet(req.user.id, name);
-  res.status(201).send(pet);
+  const petStatus = await getPetStatusByPetId(pet.id);
+  pet.status = petStatus;
+  res.status(201).json(pet);
 });
 
 // Route param middleware: load pet status
 router.param("id", async (req, res, next, id) => {
-  const pet = await getPetStatusById(id);
+  const pet = await getPetByUserId(id);
   if (!pet) return res.status(404).send("Pet not found.");
+  if (pet.dead) {
+    return res.status(400).send({ message: "Cannot interact with dead pet." });
+  }
   if (pet.user_id !== req.user.id) return res.status(403).send("Forbidden.");
   req.pet = pet;
   next();
@@ -42,32 +48,62 @@ router.param("id", async (req, res, next, id) => {
 
 // PUT /pets/:id/feed
 router.put("/:id/feed", async (req, res) => {
-  await feedPet(req.pet.id);
-  res.send({ message: "Pet fed." });
+  try {
+    if (!req.pet.id) {
+      return res.status(400).send({ message: "No pet found." });
+    }
+    await feedPet(req.pet.id);
+    const petStatus = await getPetStatusByPetId(req.pet.id);
+    res.json({ message: "Pet fed.", petStatus });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // PUT /pets/:id/clean
 router.put("/:id/clean", async (req, res) => {
-  await cleanPet(req.pet.id);
-  res.send({ message: "Pet cleaned." });
+  try {
+    if (!req.pet.id) {
+      return res.status(400).send({ message: "No pet found." });
+    }
+    await cleanPet(req.pet.id);
+    const petStatus = await getPetStatusByPetId(req.pet.id);
+    res.json({ message: "Pet cleaned.", petStatus });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // PUT /pets/:id/play
 router.put("/:id/play", async (req, res) => {
-  await playWithPet(req.pet.id);
-  res.send({ message: "Played with pet." });
+  try {
+    if (!req.pet.id) {
+      return res.status(400).send({ message: "No pet found." });
+    }
+    await playWithPet(req.pet.id);
+    const petStatus = await getPetStatusByPetId(req.pet.id);
+    res.json({ message: "Pet played with.", petStatus });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // PUT /pets/:id/sleep
 router.put("/:id/sleep", async (req, res) => {
-  await restPet(req.pet.id);
-  res.send({ message: "Pet rested." });
+  try {
+    if (!req.pet.id) {
+      return res.status(400).send({ message: "No pet found." });
+    }
+    await restPet(req.pet.id);
+    const petStatus = await getPetStatusByPetId(req.pet.id);
+    res.json({ message: "Pet rested.", petStatus });
+  } catch (err) {
+    console.log(err);
+  }
 });
-
 
 // DELETE /pets/:id
 router.delete("/:id", async (req, res) => {
   await deletePet(req.pet.id);
   res.send({ message: "Pet deleted." });
 });
-
