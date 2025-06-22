@@ -13,10 +13,18 @@ export async function createPet(userId, name) {
 
   const createStatusSql = `
     INSERT INTO pet_status (pet_id, hunger, cleanliness, happiness, energy, health)
-    VALUES ($1, 25, 25, 25, 25, 25)
+    VALUES ($1, 25, 25, 25, 25, 100)
   `;
   await db.query(createStatusSql, [pet.id]);
 
+  return pet;
+}
+
+export async function getPetById(id) {
+  const sql = `SELECT * FROM pets WHERE id = $1`;
+  const {
+    rows: [pet],
+  } = await db.query(sql, [id]);
   return pet;
 }
 
