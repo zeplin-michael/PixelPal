@@ -10,10 +10,18 @@ router
   .route("/register")
   .post(requireBody(["username", "password"]), async (req, res) => {
     const { username, password } = req.body;
-    const user = await createUser(username, password);
-
-    const token = await createToken({ id: user.id });
-    res.status(201).send(token);
+    try {
+      const user = await createUser(username, password);
+      const token = await createToken({ id: user.id });
+      res.status(201).send(token);
+    } catch (err) {
+      if (err.code === "23505") {
+        // PostgreSQL unique violation
+        return res.status(409).send("Username already taken.");
+      }
+      console.error(err);
+      res.status(500).send("Internal server error.");
+    }
   });
 
 router

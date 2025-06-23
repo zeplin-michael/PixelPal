@@ -42,6 +42,23 @@ header .navbar-container.scrolled {
   transform: translateY(2px);
 }
 
+.navbar-home-icon {
+  width: 20%;
+  height: 20%;
+  background-color: #ffc79f;
+  border-radius: 5px;
+  padding: 0.5em;
+  border: 1px solid #ffaf77;
+}
+
+.navbar-home-icon:hover {
+  background-color: #ffaf77;
+  border: 1px solid #ffc79f;
+
+  cursor: pointer;
+  transform: translateY(2px);
+}
+
 a {
   text-decoration: none;
 }

@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 export async function createUser(username, password) {
   const sql = `
   INSERT INTO users
-    (username, password)
+    (username, password_hash)
   VALUES
     ($1, $2)
   RETURNING *
@@ -27,7 +27,7 @@ export async function getUserByUsernameAndPassword(username, password) {
   } = await db.query(sql, [username]);
   if (!user) return null;
 
-  const isValid = await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(password, user.password_hash);
   if (!isValid) return null;
 
   return user;
@@ -44,3 +44,5 @@ export async function getUserById(id) {
   } = await db.query(sql, [id]);
   return user;
 }
+
+// DONE

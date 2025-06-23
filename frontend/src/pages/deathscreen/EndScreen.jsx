@@ -39,19 +39,21 @@ const Options = ({ onSelect }) => {
           <h5 style={{ color: "red" }}>R.I.P.</h5>
           <h7 style={{ color: "red" }}>Try Again?</h7>
           <button
+            className="buttons"
             onClick={() => {
               window.location.href = "/";
             }}
           >
-            <h9>Yes</h9>
+            <p>Yes</p>
           </button>
           <button
+            className="buttons"
             onClick={() => {
               playSound();
               onSelect(false);
             }}
           >
-            <h9>No</h9>
+            <p>No</p>
           </button>
         </div>
       </motion.div>
