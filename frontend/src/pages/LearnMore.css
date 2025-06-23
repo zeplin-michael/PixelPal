@@ -38,9 +38,18 @@
 
 .feature-gallery {
   display: flex;
-  gap: 2.2rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .feature-gallery {
+    flex-direction: row;
+    gap: 2.2rem;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }
 
 .feature-item {
@@ -105,5 +114,132 @@
 
   .learnmore-more-overlay {
     position: relative;
+  }
+}
+
+.learnmore-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(34, 34, 59, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s;
+}
+
+.learnmore-modal {
+  background: #fff8f3;
+  border: 2.5px solid #ffb27b;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(255, 119, 22, 0.18);
+  padding: 2rem 1.2rem 1.5rem 1.2rem;
+  width: 96vw;
+  max-width: 96vw;
+  position: relative;
+  text-align: center;
+  animation: popIn 0.2s;
+}
+
+@media (min-width: 900px) {
+  .learnmore-modal {
+    width: 50vw;
+    max-width: 50vw;
+    min-width: 400px;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+  }
+}
+
+.learnmore-modal-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.learnmore-modal-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 0 0 120px;
+  min-width: 0;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.learnmore-modal-title {
+  font-size: 1.3rem;
+  margin-bottom: 0;
+  color: #ff8b5c;
+}
+
+.learnmore-modal-right {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.learnmore-modal-desc {
+  color: #ff7716;
+  font-size: 1.1rem;
+  margin-top: 0;
+  font-family: "Lexend Deca", monospace, sans-serif;
+  text-align: left;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 400px) {
+  .learnmore-modal-content {
+    display: block;
+    align-items: center;
+  }
+  .learnmore-modal-right {
+    text-align: center;
+  }
+  .learnmore-modal-desc {
+    text-align: center;
+  }
+}
+
+.learnmore-modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ff7716;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+.learnmore-modal-close:hover {
+  color: #ff8b5c;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

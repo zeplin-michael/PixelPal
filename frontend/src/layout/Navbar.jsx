@@ -33,12 +33,12 @@ export default function Navbar() {
           </div>
           <div className="navbar-links">
             <NavLink to="/gallery">Gallery</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
             {token ? (
               <>
                 <button onClick={logout} className="logout">
                   Log out
                 </button>
-                <NavLink to="/profile">Profile</NavLink>
               </>
             ) : (
               <NavLink to="/login">Log in</NavLink>
