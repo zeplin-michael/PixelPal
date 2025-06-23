@@ -63,6 +63,9 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+
+import "./PalLayout.css";
+
 import Bath from "./game-page/components/bath";
 import Bed from "./game-page/components/bed";
 import Meal from "./game-page/components/meal";
@@ -71,6 +74,7 @@ import Default from "./game-page/components/default";
 // import FeedComponent from "./game-page/components/feed";
 // import PlayComponent from "./game-page/components/play";
 // import SleepComponent from "./game-page/components/sleep";
+
 
 export default function PalLayout() {
   const navigate = useNavigate();
@@ -154,7 +158,7 @@ export default function PalLayout() {
   }
 
   return (
-    <div>
+    <div className="layout">
       <h2>{isAlive ? "My PixelPal" : "Your PixelPal has died."}</h2>
       {/* Render the current scene component */}
 
