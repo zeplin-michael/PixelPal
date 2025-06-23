@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import "./PalLayout.css";
 
 export default function PalLayout() {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export default function PalLayout() {
   }
 
   return (
-    <div>
+    <div className="layout">
       <h2>{isAlive ? "My PixelPal" : "Your PixelPal has died."}</h2>
 
       <div>
