@@ -1,5 +1,3 @@
-import "/src/pages/game-page/game-page.css";
-
 function Bath() {
   return (
     <div>

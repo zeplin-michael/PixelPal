@@ -39,7 +39,7 @@ const Options = ({ onSelect }) => {
           <h5 style={{ color: "red" }}>R.I.P.</h5>
           <h7 style={{ color: "red" }}>Try Again?</h7>
           <button
-            className="buttons"
+            className="endscreen-button"
             onClick={() => {
               window.location.href = "/";
             }}
@@ -47,7 +47,7 @@ const Options = ({ onSelect }) => {
             <p>Yes</p>
           </button>
           <button
-            className="buttons"
+            className="endscreen-button"
             onClick={() => {
               playSound();
               onSelect(false);
