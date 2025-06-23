@@ -58,9 +58,9 @@ export async function decayPetStatusIfNeeded(petId) {
     return Math.floor((now - new Date(timestamp)) / 60000);
   }
 
-  const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 4); // slower
-  const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 5); // slower
-  const cleanlinessLoss = Math.floor(minutesSince(current.last_cleaned_at) / 2); // faster
+  const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 5); // slower
+  const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 4); // slower
+  const cleanlinessLoss = Math.floor(minutesSince(current.last_cleaned_at) / 3); // faster
   const happinessLoss = Math.floor(minutesSince(current.last_played_at) / 1); // faster
 
   const updated = {
@@ -71,27 +71,13 @@ export async function decayPetStatusIfNeeded(petId) {
     health: current.health,
     dead: current.dead,
   };
-  // Pure average of the 4 core stats
-  const averageStat =
-    (updated.hunger +
-      updated.cleanliness +
-      updated.happiness +
-      updated.energy) /
-    4;
-
-  // Only update health if at least one stat is below 100
-  let newHealth = current.health;
-  const allStatsAtMax =
-    updated.hunger === 100 &&
-    updated.cleanliness === 100 &&
-    updated.happiness === 100 &&
-    updated.energy === 100;
-
-  if (!allStatsAtMax) {
-    newHealth = Math.round(averageStat);
-  }
-
-  updated.health = newHealth;
+const averageStat = (
+  updated.hunger +
+  updated.cleanliness +
+  updated.happiness +
+  updated.energy
+) / 4;
+updated.health = Math.round(averageStat);
 
   // if (updated.health === 0) {
   //   updated.dead = true;
