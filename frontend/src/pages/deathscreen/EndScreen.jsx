@@ -35,9 +35,8 @@ const Options = ({ onSelect }) => {
         <img src={gravestone} alt="Gravestone" className="png" />
         <div id="gravestone-emoji">
           <h1 style={{ fontSize: "10rem" }}>🪦</h1>
-          <br />
-          <h5 style={{ color: "red" }}>R.I.P.</h5>
-          <h7 style={{ color: "red" }}>Try Again?</h7>
+          <h5 style={{ color: "white" }}>R.I.P.</h5>
+          <h7 style={{ color: "white" }}>Try Again?</h7>
           <button
             className="buttons"
             onClick={() => {

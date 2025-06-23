@@ -10,8 +10,8 @@
 
 .gravestone-background {
   position: relative;
-  width: 220px;
-  height: 320px;
+  width: 420px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +111,7 @@
 .buttons {
   padding: 10px 20px;
   font-size: 18px;
-  border: white 2px solid;
+  border: white 1px solid;
   border-radius: 6px;
   cursor: pointer;
   background-color: #ffb27b;
@@ -120,5 +120,5 @@
 }
 
 .buttons:hover {
-  background-color: whitesmoke;
+  background-color: rgba(244, 152, 87, 1);
 }
