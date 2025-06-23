@@ -6,7 +6,7 @@ Welcome to PixelPal! In this game, you take care of your very own cute little Pi
 
 ## Schema Table
 
-[pixel_pal_schema_table.pdf](https://github.com/user-attachments/files/20872198/pixel_pal_schema_table.pdf)
+![Image](https://github.com/user-attachments/files/20872198/pixel_pal_schema_table.pdf)
 
 The schema table above illustrates the backend functionality of the site. A user is created and from there a pet is chosen, that must be taken care of at specific times throughout the day. Each pet will have their own table that tracks their status throughout their lifespan. These activities will yield rewards that provide in-game currency for the user to then use within the shops to get inventory for their pets. This game is set up in an endless loop where actions will be rewarded to continue increasing the players coin storage and purchases from the shop will be managed by the bank.
 
