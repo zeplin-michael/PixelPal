@@ -1,7 +1,7 @@
 import db from "#db/client";
 
 // pulls pet status
-export async function getPetStatusById(petId) {
+export async function getPetStatusByPetId(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
   const {
     rows: [status],
@@ -17,6 +17,7 @@ export async function updatePetStatus({
   happiness,
   energy,
   health,
+  dead,
   petId,
 }) {
   const sql = `UPDATE pet_status
@@ -24,8 +25,9 @@ export async function updatePetStatus({
          cleanliness = $2,
          happiness = $3,
          energy = $4,
-         health = $5
-     WHERE pet_id = $6
+         health = $5,
+         dead = $6
+     WHERE pet_id = $7
      RETURNING *`;
   const {
     rows: [status],
@@ -35,6 +37,7 @@ export async function updatePetStatus({
     happiness,
     energy,
     health,
+    dead,
     petId,
   ]);
   return status;
@@ -47,45 +50,57 @@ export async function decayPetStatusIfNeeded(petId) {
   const { rows } = await db.query(sql, [petId]);
   if (!rows[0]) return null;
 
-  // current timestamp & current status
   const now = new Date();
   const current = rows[0];
 
-  // calculates minutes since last given timestamp
   function minutesSince(timestamp) {
-    return timestamp ? Math.floor((now - new Date(timestamp)) / 60000) : 0;
+    if (!timestamp) return Number.MAX_SAFE_INTEGER;
+    return Math.floor((now - new Date(timestamp)) / 60000);
   }
 
-  // each stat decay calculation, down 1 every 10, 15, 20, 30 minutes (adjustable)
-  const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 10);
-  const cleanlinessLoss = Math.floor(
-    minutesSince(current.last_cleaned_at) / 15
-  );
-  const happinessLoss = Math.floor(minutesSince(current.last_played_at) / 20);
-  const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 30);
+  const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 5); // slower
+  const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 4); // slower
+  const cleanlinessLoss = Math.floor(minutesSince(current.last_cleaned_at) / 3); // faster
+  const happinessLoss = Math.floor(minutesSince(current.last_played_at) / 1); // faster
 
-  // subtracts decay loss from current status to get sum of new status
   const updated = {
     hunger: Math.max(current.hunger - hungerLoss, 0),
     cleanliness: Math.max(current.cleanliness - cleanlinessLoss, 0),
     happiness: Math.max(current.happiness - happinessLoss, 0),
     energy: Math.max(current.energy - energyLoss, 0),
-    health: current.health, // optionally update this based on other conditions
+    health: current.health,
+    dead: current.dead,
   };
+const averageStat = (
+  updated.hunger +
+  updated.cleanliness +
+  updated.happiness +
+  updated.energy
+) / 4;
+updated.health = Math.round(averageStat);
 
-  // updates data with new pet status
+  // if (updated.health === 0) {
+  //   updated.dead = true;
+  // } else {
+  //   updated.dead = false;
+  // }
+
   await db.query(
     `UPDATE pet_status
      SET hunger = $1,
          cleanliness = $2,
          happiness = $3,
-         energy = $4
-     WHERE pet_id = $5`,
+         energy = $4,
+         health = $5,
+         dead = $6
+     WHERE pet_id = $7`,
     [
       updated.hunger,
       updated.cleanliness,
       updated.happiness,
       updated.energy,
+      updated.health,
+      updated.dead,
       petId,
     ]
   );

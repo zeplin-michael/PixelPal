@@ -1,4 +1,5 @@
 import db from "#db/client";
+import { getPetStatusByPetId } from "#db/queries/pet_status";
 
 // creates new pet
 export async function createPet(userId, name) {
@@ -13,10 +14,18 @@ export async function createPet(userId, name) {
 
   const createStatusSql = `
     INSERT INTO pet_status (pet_id, hunger, cleanliness, happiness, energy, health)
-    VALUES ($1, 25, 25, 25, 25, 25)
+    VALUES ($1, 100, 100, 100, 100, 100)
   `;
   await db.query(createStatusSql, [pet.id]);
 
+  return pet;
+}
+
+export async function getPetById(id) {
+  const sql = `SELECT * FROM pets WHERE id = $1`;
+  const {
+    rows: [pet],
+  } = await db.query(sql, [id]);
   return pet;
 }
 
@@ -36,7 +45,7 @@ export async function getPetByUserId(userId) {
 }
 
 // gets full status of pet
-export async function getPetStatusById(petId) {
+export async function getPetStatusByIdWithUserId(petId) {
   const sql = `
     SELECT pets.user_id, pet_status.*
     FROM pet_status
@@ -51,9 +60,14 @@ export async function getPetStatusById(petId) {
 
 // increases hunger by 10 every feed, caps at 50
 export async function feedPet(petId) {
+  const status = await getPetStatusByPetId(petId);
+
+  const averageStat =
+    (status.hunger + status.cleanliness + status.happiness + status.energy) / 4;
+
   const sql = `
     UPDATE pet_status
-    SET hunger = LEAST(hunger + 10, 50), last_fed_at = NOW()
+    SET hunger = LEAST(hunger + 10, 100), last_fed_at = NOW()
     WHERE pet_id = $1
   `;
   await db.query(sql, [petId]);
@@ -63,7 +77,7 @@ export async function feedPet(petId) {
 export async function cleanPet(petId) {
   const sql = `
     UPDATE pet_status
-    SET cleanliness = LEAST(cleanliness + 10, 50), last_cleaned_at = NOW()
+    SET cleanliness = LEAST(cleanliness + 10, 100), last_cleaned_at = NOW()
     WHERE pet_id = $1
   `;
   await db.query(sql, [petId]);
@@ -73,7 +87,7 @@ export async function cleanPet(petId) {
 export async function playWithPet(petId) {
   const sql = `
     UPDATE pet_status
-    SET happiness = LEAST(happiness + 10, 50), last_played_at = NOW()
+    SET happiness = LEAST(happiness + 10, 100), last_played_at = NOW()
     WHERE pet_id = $1
   `;
   await db.query(sql, [petId]);
@@ -83,7 +97,7 @@ export async function playWithPet(petId) {
 export async function restPet(petId) {
   const sql = `
     UPDATE pet_status
-    SET energy = LEAST(energy + 10, 50), last_slept_at = NOW()
+    SET energy = LEAST(energy + 10, 100), last_slept_at = NOW()
     WHERE pet_id = $1
   `;
   await db.query(sql, [petId]);
