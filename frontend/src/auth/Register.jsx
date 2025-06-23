@@ -25,7 +25,13 @@ export default function Register() {
     <div className="auth-container">
       <div className="auth-form">
         <h1>Create an account</h1>
-        <form action={onRegister}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            onRegister(formData);
+          }}
+        >
           <label>
             <input
               style={{ "--input-index": 0 }}
@@ -44,7 +50,7 @@ export default function Register() {
               placeholder="Password"
             />
           </label>
-          <button>Create</button>
+          <button type="submit">Create</button>
           {error && <output>{error}</output>}
         </form>
         <Link to="/login">Already have an account? Log in here.</Link>

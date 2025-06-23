@@ -17,6 +17,7 @@ export async function updatePetStatus({
   happiness,
   energy,
   health,
+  dead,
   petId,
 }) {
   const sql = `UPDATE pet_status
@@ -24,8 +25,9 @@ export async function updatePetStatus({
          cleanliness = $2,
          happiness = $3,
          energy = $4,
-         health = $5
-     WHERE pet_id = $6
+         health = $5,
+         dead = $6
+     WHERE pet_id = $7
      RETURNING *`;
   const {
     rows: [status],
@@ -35,6 +37,7 @@ export async function updatePetStatus({
     happiness,
     energy,
     health,
+    dead,
     petId,
   ]);
   return status;
@@ -55,12 +58,10 @@ export async function decayPetStatusIfNeeded(petId) {
     return Math.floor((now - new Date(timestamp)) / 60000);
   }
 
-  const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 1); // slower
-  const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 2); // slower
-  const cleanlinessLoss = Math.floor(
-    minutesSince(current.last_cleaned_at) / 10
-  ); // faster
-  const happinessLoss = Math.floor(minutesSince(current.last_played_at) / 15); // faster
+  const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 4); // slower
+  const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 5); // slower
+  const cleanlinessLoss = Math.floor(minutesSince(current.last_cleaned_at) / 2); // faster
+  const happinessLoss = Math.floor(minutesSince(current.last_played_at) / 1); // faster
 
   const updated = {
     hunger: Math.max(current.hunger - hungerLoss, 0),
@@ -68,6 +69,7 @@ export async function decayPetStatusIfNeeded(petId) {
     happiness: Math.max(current.happiness - happinessLoss, 0),
     energy: Math.max(current.energy - energyLoss, 0),
     health: current.health,
+    dead: current.dead,
   };
   // Pure average of the 4 core stats
   const averageStat =
@@ -91,20 +93,28 @@ export async function decayPetStatusIfNeeded(petId) {
 
   updated.health = newHealth;
 
+  // if (updated.health === 0) {
+  //   updated.dead = true;
+  // } else {
+  //   updated.dead = false;
+  // }
+
   await db.query(
     `UPDATE pet_status
      SET hunger = $1,
          cleanliness = $2,
          happiness = $3,
          energy = $4,
-         health = $5
-     WHERE pet_id = $6`,
+         health = $5,
+         dead = $6
+     WHERE pet_id = $7`,
     [
       updated.hunger,
       updated.cleanliness,
       updated.happiness,
       updated.energy,
       updated.health,
+      updated.dead,
       petId,
     ]
   );

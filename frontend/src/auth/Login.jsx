@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { Link, useNavigate } from "react-router";
 import "./Auth.css";
 import { useAuth } from "./AuthContext";
@@ -9,7 +10,6 @@ export default function Login() {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
 
   const onLogin = async (formData) => {
     const username = formData.get("username");
@@ -26,11 +26,17 @@ export default function Login() {
     <div className="auth-container">
       <div className="auth-form">
         <h1>Log in to your account</h1>
-        <form action={onLogin}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            onLogin(formData);
+          }}
+        >
           <label>
             <input
               style={{ "--input-index": 0 }}
-              type="username"
+              type="text"
               name="username"
               required
               placeholder="Username"
@@ -46,7 +52,7 @@ export default function Login() {
             />
           </label>
 
-          <button>Login</button>
+          <button type="submit">Login</button>
           {error && <output>{error}</output>}
         </form>
         <Link to="/register">Need an account? Create one here.</Link>

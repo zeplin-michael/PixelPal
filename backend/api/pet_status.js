@@ -29,21 +29,17 @@ router.get("/:id", async (req, res) => {
 });
 
 // PUT /pet_status/:id – update specific fields manually (admin/dev use)
-router.put(
-  "/:id",
+router.put("/:id", async (req, res) => {
+  const { hunger, cleanliness, happiness, energy, health, dead } = req.body;
+  const updated = await updatePetStatus({
+    hunger,
+    cleanliness,
+    happiness,
+    energy,
+    health,
+    dead,
+    petId: req.pet.id,
+  });
 
-  requireBody(["hunger", "cleanliness", "happiness", "energy", "health"]),
-  async (req, res) => {
-    const { hunger, cleanliness, happiness, energy, health } = req.body;
-    const updated = await updatePetStatus({
-      hunger,
-      cleanliness,
-      happiness,
-      energy,
-      health,
-      petId: req.pet.id,
-    });
-
-    res.send(updated);
-  }
-);
+  res.send(updated);
+});

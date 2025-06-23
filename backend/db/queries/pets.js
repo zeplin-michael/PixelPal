@@ -1,4 +1,5 @@
 import db from "#db/client";
+import { getPetStatusByPetId } from "#db/queries/pet_status";
 
 // creates new pet
 export async function createPet(userId, name) {
@@ -59,12 +60,10 @@ export async function getPetStatusByIdWithUserId(petId) {
 
 // increases hunger by 10 every feed, caps at 50
 export async function feedPet(petId) {
-  // const averageStat =
-  //   (updated.hunger +
-  //     updated.cleanliness +
-  //     updated.happiness +
-  //     updated.energy) /
-  //   4;
+  const status = await getPetStatusByPetId(petId);
+
+  const averageStat =
+    (status.hunger + status.cleanliness + status.happiness + status.energy) / 4;
 
   const sql = `
     UPDATE pet_status
