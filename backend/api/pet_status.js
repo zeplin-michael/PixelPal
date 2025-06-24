@@ -15,31 +15,52 @@ router.use(requireUser);
 
 // Param loader for :id (petId)
 router.param("id", async (req, res, next, id) => {
-  const pet = await getPetById(id);
-  if (!pet) return res.status(404).send("Pet not found.");
-  if (pet.user_id !== req.user.id) return res.status(403).send("Forbidden.");
-  req.pet = pet;
-  next();
+  try {
+    const pet = await getPetById(id);
+    if (!pet) return res.status(404).send({ error: "Pet not found." });
+    if (pet.user_id !== req.user.id)
+      return res.status(403).send({ error: "Forbidden." });
+
+    req.pet = pet;
+    next();
+  } catch (err) {
+    console.error("Error loading pet:", err);
+    res.status(500).send({ error: "Failed to load pet." });
+  }
 });
 
-// GET /pet_status/:id – get current status with optional decay applied
+// GET /pet_status/:id – get current status with decay and health penalties
 router.get("/:id", async (req, res) => {
-  const status = await decayPetStatusIfNeeded(req.pet.id);
-  res.send(status);
+  try {
+    const status = await decayPetStatusIfNeeded(req.pet.id);
+    if (!status) {
+      return res.status(404).send({ error: "Pet status not found." });
+    }
+    res.send(status);
+  } catch (err) {
+    console.error("Error getting pet status:", err);
+    res.status(500).send({ error: "Failed to get pet status." });
+  }
 });
 
-// PUT /pet_status/:id – update specific fields manually (admin/dev use)
+// PUT /pet_status/:id – admin/dev manual update of pet status
 router.put("/:id", async (req, res) => {
-  const { hunger, cleanliness, happiness, energy, health, dead } = req.body;
-  const updated = await updatePetStatus({
-    hunger,
-    cleanliness,
-    happiness,
-    energy,
-    health,
-    dead,
-    petId: req.pet.id,
-  });
+  try {
+    const { hunger, cleanliness, happiness, energy, health, dead } = req.body;
 
-  res.send(updated);
+    const updated = await updatePetStatus({
+      hunger,
+      cleanliness,
+      happiness,
+      energy,
+      health,
+      dead,
+      petId: req.pet.id,
+    });
+
+    res.send(updated);
+  } catch (err) {
+    console.error("Error updating pet status:", err);
+    res.status(500).send({ error: "Failed to update pet status." });
+  }
 });
