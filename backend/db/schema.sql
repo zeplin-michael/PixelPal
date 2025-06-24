@@ -23,7 +23,6 @@ CREATE TABLE users (
 CREATE TABLE pets (
   id SERIAL PRIMARY KEY,
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-
   name VARCHAR(15),
   is_alive BOOLEAN DEFAULT TRUE,
 
@@ -51,15 +50,15 @@ CREATE TABLE coin_transactions (
 CREATE TABLE pet_status (
 
   pet_id INT PRIMARY KEY REFERENCES pets(id) ON DELETE CASCADE,
-  hunger INT DEFAULT 100 CHECK (hunger BETWEEN 0 AND 100),
+  hunger DECIMAL DEFAULT 100 CHECK (hunger BETWEEN 0 AND 100),
   last_fed_at TIMESTAMP,
-  cleanliness INT DEFAULT 100 CHECK (cleanliness BETWEEN 0 AND 100),
+  cleanliness DECIMAL DEFAULT 100 CHECK (cleanliness BETWEEN 0 AND 100),
   last_cleaned_at TIMESTAMP,
-  happiness INT DEFAULT 100 CHECK (happiness BETWEEN 0 AND 100),
+  happiness DECIMAL DEFAULT 100 CHECK (happiness BETWEEN 0 AND 100),
   last_played_at TIMESTAMP,
-  energy INT DEFAULT 100 CHECK (energy BETWEEN 0 AND 100),
+  energy DECIMAL DEFAULT 100 CHECK (energy BETWEEN 0 AND 100),
   last_slept_at TIMESTAMP,
-  health INT DEFAULT 100 CHECK (health BETWEEN 0 AND 100),
+  health DECIMAL DEFAULT 100 CHECK (health BETWEEN 0 AND 100),
   dead BOOLEAN DEFAULT FALSE
 
 );

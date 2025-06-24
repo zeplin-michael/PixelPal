@@ -2,7 +2,7 @@ import cron from "node-cron";
 import { getAllPets } from "#db/queries/pets";
 import { decayPetStatusIfNeeded } from "#db/queries/pet_status";
 
-cron.schedule("*/10 * * * *", async () => {
+cron.schedule("*/30 * * * * *", async () => {
   try {
     const pets = await getAllPets();
     for (const pet of pets) {
