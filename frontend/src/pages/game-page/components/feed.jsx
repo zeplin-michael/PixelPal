@@ -1,13 +1,13 @@
-function Bath() {
+function Feed() {
   return (
     <div>
-      <h1>bath time</h1>
+      <h1>feed</h1>
       <div className="scene-img-container">
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/img/game-play/BathTime.png"
-            alt="bath time img"
+            src="/img/alien_eating.gif"
+            alt="feed image"
           />
         </div>
       </div>
@@ -15,4 +15,4 @@ function Bath() {
   );
 }
 
-export default Bath;
+export default Feed;
