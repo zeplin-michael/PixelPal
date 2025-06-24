@@ -1,6 +1,6 @@
 header .navbar-container {
-  padding: 1em;
-  font-size: 1rem;
+  padding: 0.5em 1em;
+  font-size: 0.95rem;
   border-bottom: 1px solid #ffc59c;
   animation: navSlideDown 0.5s ease-out;
   position: fixed;
@@ -23,14 +23,17 @@ header .navbar-container.scrolled {
 .navbar-brand {
   display: flex;
   align-items: center;
+  padding: 0.1em 0.3em;
+  font-size: 1rem;
+  max-width: 120px;
 }
 
 .navbar-home-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: #ffc79f;
   border-radius: 5px;
-  padding: 0.5em;
+  padding: 0.2em;
   border: 1px solid #ffaf77;
   image-rendering: pixelated;
 }
@@ -42,23 +45,6 @@ header .navbar-container.scrolled {
   transform: translateY(2px);
 }
 
-.navbar-home-icon {
-  width: 20%;
-  height: 20%;
-  background-color: #ffc79f;
-  border-radius: 5px;
-  padding: 0.5em;
-  border: 1px solid #ffaf77;
-}
-
-.navbar-home-icon:hover {
-  background-color: #ffaf77;
-  border: 1px solid #ffc79f;
-
-  cursor: pointer;
-  transform: translateY(2px);
-}
-
 a {
   text-decoration: none;
 }
@@ -66,7 +52,7 @@ a {
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .navbar-container nav {
@@ -77,10 +63,10 @@ a {
 
 .navbar-container nav a {
   background-color: rgba(255, 197, 156, 0.4);
-  padding: 0.5em 1em;
-  border-radius: 0.5rem;
+  padding: 0.35em 0.7em;
+  border-radius: 0.35rem;
   color: #444444;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   border: 2px solid rgba(255, 197, 156, 0.7);
   transition: all 0.2s steps(4);
@@ -169,10 +155,10 @@ a {
 /* Logout button styled like a link */
 .navbar-container nav .logout {
   background-color: rgba(255, 197, 156, 0.4);
-  padding: 0.5em 1em;
-  border-radius: 0.5rem;
+  padding: 0.35em 0.7em;
+  border-radius: 0.35rem;
   color: #444444;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   border: 2px solid rgba(255, 197, 156, 0.7);
   transition: all 0.2s steps(4);

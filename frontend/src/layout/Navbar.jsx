@@ -1,11 +1,12 @@
 import "./Navbar.css";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { useEffect, useRef } from "react";
 
 import { useAuth } from "../auth/AuthContext";
 
 export default function Navbar() {
   const navbarRef = useRef();
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -33,12 +34,19 @@ export default function Navbar() {
           </div>
           <div className="navbar-links">
             <NavLink to="/gallery">Gallery</NavLink>
+
             {token ? (
               <>
-                <button onClick={logout} className="logout">
+                <NavLink to="/profile">Profile</NavLink>
+                <button
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                  className="logout"
+                >
                   Log out
                 </button>
-                <NavLink to="/profile">Profile</NavLink>
               </>
             ) : (
               <NavLink to="/login">Log in</NavLink>
