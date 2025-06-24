@@ -103,4 +103,12 @@ export async function restPet(petId) {
   await db.query(sql, [petId]);
 }
 
+export async function deletePet(petId) {
+  const sql = `
+    DELETE FROM pets
+    WHERE id = $1
+  `;
+  await db.query(sql, [petId]);
+}
+
 // DONE
