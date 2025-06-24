@@ -53,6 +53,7 @@ export async function removeItemFromPet(petId, itemId) {
   return removed;
 }
 
+// might want to put a usage max per item so you can't use the same item too many times (i.e food)
 export async function usePetItem(petId, itemId) {
   // Get the item effect
   const {
