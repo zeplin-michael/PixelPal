@@ -1,5 +1,7 @@
 # Pixel Pal
 
+https://thepixelpal.netlify.app
+
 ## Description
 
 Welcome to PixelPal! In this game, you take care of your very own cute little PixelPal! It needs your help to stay happy and healthy, by feeding, cleaning, playing and putting to sleep. If you forget to give food to, bath, play with or rest your PixelPal in time, they will get sick and die. This game is inspired by the 90s toy Tamagotchi and is the basis for the site's overall aesthetic.
