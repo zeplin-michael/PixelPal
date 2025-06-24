@@ -1,66 +1,3 @@
-// import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router";
-// import Bath from "./game-page/components/bath";
-
-// export default function PalLayout() {
-//   const navigate = useNavigate();
-
-//   const [feed, setFeed] = useState(100);
-//   const [play, setPlay] = useState(100);
-//   const [sleep, setSleep] = useState(100);
-//   const [isAlive, setIsAlive] = useState(true);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setFeed((f) => Math.max(f - 5, 0));
-//       setPlay((p) => Math.max(p - 5, 0));
-//       setSleep((s) => Math.max(s - 5, 0));
-//     }, 3000);
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   useEffect(() => {
-//     if (feed <= 0 || play <= 0 || sleep <= 0) {
-//       setIsAlive(false);
-//       navigate("/deathscreen");
-//     }
-//   }, [feed, play, sleep, navigate]);
-
-//   function feedPet() {
-//     setFeed((f) => Math.min(f + 10, 100));
-//     <Bath />;
-//   }
-
-//   function playPet() {
-//     setPlay((p) => Math.min(p + 10, 100));
-//     setSleep((s) => Math.max(s - 5, 0));
-//     setFeed((f) => Math.max(f - 5, 0));
-//   }
-
-//   function sleepPet() {
-//     setSleep((s) => Math.min(s + 15, 100));
-//   }
-
-//   return (
-//     <div>
-//       <h2>{isAlive ? "My PixelPal" : "Your PixelPal has died."}</h2>
-//       <div>
-//         <p>Food: {feed}</p>
-//         <p>Play: {play}</p>
-//         <p>Sleep: {sleep}</p>
-//       </div>
-
-//       {isAlive && (
-//         <div>
-//           <button onClick={feedPet}>Feed</button>
-//           <button onClick={playPet}>Play</button>
-//           <button onClick={sleepPet}>Sleep</button>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
@@ -75,7 +12,6 @@ import Default from "./game-page/components/default";
 // import PlayComponent from "./game-page/components/play";
 // import SleepComponent from "./game-page/components/sleep";
 
-
 export default function PalLayout() {
   const navigate = useNavigate();
 
@@ -85,16 +21,6 @@ export default function PalLayout() {
   const [clean, setClean] = useState(100);
   const [isAlive, setIsAlive] = useState(true);
   const [currentScene, setCurrentScene] = useState(null); // Track which scene to show
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFeed((f) => Math.max(f - 5, 0));
-      setPlay((p) => Math.max(p - 5, 0));
-      setSleep((s) => Math.max(s - 5, 0));
-      setClean((c) => Math.max(c - 5, 0));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     if (feed <= 0 || play <= 0 || sleep <= 0 || clean <= 0) {
@@ -141,11 +67,11 @@ export default function PalLayout() {
   function renderScene() {
     switch (currentScene) {
       case "feed":
-        return <Meal />; // Replace with your FeedComponent
-      case "play":
-        return <Bath />; // Replace with your PlayComponent
+        return <Meal />;
+      case "clean":
+        return <Bath />;
       case "sleep":
-        return <Bed />; // Replace with your SleepComponent
+        return <Bed />;
       default:
         return <Default />;
     }
@@ -159,20 +85,18 @@ export default function PalLayout() {
 
   return (
     <div className="layout">
-      <h2>{isAlive ? "My PixelPal" : "Your PixelPal has died."}</h2>
-      {/* Render the current scene component */}
+      <div className="scene-container">
+        {renderScene()}
 
-      {renderScene()}
-
-      <div>
-        <p>Food: {feed}</p>
-        <p>Play: {play}</p>
-        <p>Sleep: {sleep}</p>
-        <p>Bath: {clean}</p>
+        <div className="stats-bar">
+          <p>🍔 Food: {feed}</p>
+          <p>🎲 Play: {play}</p>
+          <p>🛏️ Sleep: {sleep}</p>
+          <p>🛁 Bath: {clean}</p>
+        </div>
       </div>
-
       {isAlive && (
-        <div>
+        <div className="button-row">
           <button onClick={feedPet}>Feed</button>
           <button onClick={playPet}>Play</button>
           <button onClick={sleepPet}>Sleep</button>
