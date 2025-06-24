@@ -58,6 +58,17 @@ export async function getPetStatusByIdWithUserId(petId) {
   return status;
 }
 
+// Get all pets built for cron function
+export async function getAllPets() {
+  const sql = `
+    SELECT id
+    FROM pets
+    WHERE status = TRUE
+  `;
+  const { rows } = await db.query(sql);
+  return rows;
+}
+
 // increases hunger by 10 every feed, caps at 50
 export async function feedPet(petId) {
   const status = await getPetStatusByPetId(petId);

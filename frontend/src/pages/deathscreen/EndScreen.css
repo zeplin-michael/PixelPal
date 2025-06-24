@@ -11,6 +11,9 @@
 .gravestone-background {
   position: relative;
 
+  width: 420px;
+  height: 220px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,3 +72,57 @@
   display: flex;
   flex-direction: column;
 }
+
+
+.buttons {
+  top: 50%;
+  left: 40%;
+  /* transform: translateX(-50%); */
+  display: flex;
+  gap: 160px;
+  font-size: 1.7rem; /* Increased font size */
+  padding: 24px 64px; /* Increased padding for larger buttons */
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.buttons {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #444;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.buttons:hover {
+  background-color: #666;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.buttons {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: white 1px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ffb27b;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.buttons:hover {
+  background-color: rgba(244, 152, 87, 1);
+}
+

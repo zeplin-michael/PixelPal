@@ -9,6 +9,11 @@ router.use(requireUser);
 
 // GET /coin_transactions - list all transactions for the current user
 router.get("/", async (req, res) => {
-  const transactions = await getTransactionsByUserId(req.user.id);
-  res.send(transactions);
+  try {
+    const transactions = await getTransactionsByUserId(req.user.id);
+    res.send(transactions);
+  } catch (err) {
+    console.error("Error fetching transactions:", err);
+    res.status(500).send("Failed to retrieve coin transactions.");
+  }
 });

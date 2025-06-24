@@ -10,6 +10,11 @@ import Gallery from "./pages/Gallery";
 import PalLayout from "./pages/PalLayout";
 import ProfilePage from "./pages/ProfilePage";
 
+
+
+import Credits from "./pages/Credits";
+
+
 export default function App() {
   return (
     <Routes>
@@ -22,6 +27,7 @@ export default function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/pal" element={<PalLayout />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="credits" element={<Credits />} />
       </Route>
     </Routes>
   );
