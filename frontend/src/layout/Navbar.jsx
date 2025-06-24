@@ -40,8 +40,8 @@ export default function Navbar() {
                 <NavLink to="/profile">Profile</NavLink>
                 <button
                   onClick={() => {
-                    logout();
                     navigate("/");
+                    logout();
                   }}
                   className="logout"
                 >

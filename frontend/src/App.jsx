@@ -8,7 +8,7 @@ import Homepage from "./pages/Homepage";
 
 import Gallery from "./pages/Gallery";
 import PalLayout from "./pages/PalLayout";
-import ProfilePage from "./pages/ProfilePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 
 

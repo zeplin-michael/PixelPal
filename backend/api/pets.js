@@ -12,6 +12,7 @@ import {
   cleanPet,
   playWithPet,
   restPet,
+  deletePet,
 } from "#db/queries/pets";
 
 import { getPetStatusByPetId } from "#db/queries/pet_status";

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-
+import useQuery from "../api/useQuery";
 import { useAuth } from "./AuthContext";
 
 /** A form that allows users to register for a new account */
 export default function Register() {
-  const { register } = useAuth();
+  const { register, token } = useAuth();
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
