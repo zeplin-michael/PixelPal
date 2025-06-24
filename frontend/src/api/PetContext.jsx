@@ -28,7 +28,7 @@ export function PetProvider({ children }) {
       if (res.ok) {
         const data = await res.json();
         setPet(data);
-        console.log("pet fetched", data);
+        // console.log("pet fetched", data);
       } else {
         setPet(null);
       }
