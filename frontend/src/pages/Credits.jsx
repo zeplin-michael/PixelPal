@@ -9,9 +9,10 @@ export default function Credits() {
         "Worked on front end pages and User story. Layout, Profile, Learn More, Gallery, Credits",
     },
     {
-      name: "Stacey Lee",
-      role: "example",
-      description: "example",
+      name: "Stacy Lee",
+      role: "Frontend",
+      description:
+        "Worked on front end pages and wireframe. Activity pages for game including bathing, feeding, sleeping, and playing functions for the pet",
     },
     {
       name: "MarzeeQ Williams",
