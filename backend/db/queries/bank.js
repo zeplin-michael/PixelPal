@@ -7,9 +7,7 @@ export async function getShopInventory() {
   JOIN items i ON i.id = si.item_id
 `;
 
-  const {
-    rows: [shop],
-  } = await db.query(sql);
+  const { rows: shop } = await db.query(sql);
   return shop;
 }
 
