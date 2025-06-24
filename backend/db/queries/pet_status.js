@@ -53,37 +53,59 @@ export async function decayPetStatusIfNeeded(petId) {
   const now = new Date();
   const current = rows[0];
 
+  const decayRates = {
+    hunger: 0.2,
+    cleanliness: 0.4,
+    happiness: 1.0,
+    energy: 0.3,
+  };
+
   function minutesSince(timestamp) {
     if (!timestamp) return Number.MAX_SAFE_INTEGER;
     return Math.floor((now - new Date(timestamp)) / 60000);
   }
 
-  const hungerLoss = Math.floor(minutesSince(current.last_fed_at) / 5); // slower
-  const energyLoss = Math.floor(minutesSince(current.last_slept_at) / 4); // slower
-  const cleanlinessLoss = Math.floor(minutesSince(current.last_cleaned_at) / 3); // faster
-  const happinessLoss = Math.floor(minutesSince(current.last_played_at) / 1); // faster
-
   const updated = {
-    hunger: Math.max(current.hunger - hungerLoss, 0),
-    cleanliness: Math.max(current.cleanliness - cleanlinessLoss, 0),
-    happiness: Math.max(current.happiness - happinessLoss, 0),
-    energy: Math.max(current.energy - energyLoss, 0),
+    hunger: Math.max(
+      current.hunger - minutesSince(current.last_fed_at) * decayRates.hunger,
+      0
+    ),
+    cleanliness: Math.max(
+      current.cleanliness -
+        minutesSince(current.last_cleaned_at) * decayRates.cleanliness,
+      0
+    ),
+    happiness: Math.max(
+      current.happiness -
+        minutesSince(current.last_played_at) * decayRates.happiness,
+      0
+    ),
+    energy: Math.max(
+      current.energy - minutesSince(current.last_slept_at) * decayRates.energy,
+      0
+    ),
     health: current.health,
     dead: current.dead,
   };
-const averageStat = (
-  updated.hunger +
-  updated.cleanliness +
-  updated.happiness +
-  updated.energy
-) / 4;
-updated.health = Math.round(averageStat);
 
-  // if (updated.health === 0) {
-  //   updated.dead = true;
-  // } else {
-  //   updated.dead = false;
-  // }
+  // Base health as average of core stats
+  let health =
+    (updated.hunger +
+      updated.cleanliness +
+      updated.happiness +
+      updated.energy) /
+    4;
+
+  // 💀 Apply penalties for any stat that hit 0
+  const penaltyPerZeroStat = 5;
+  const zeroStats = ["hunger", "cleanliness", "happiness", "energy"].filter(
+    (stat) => updated[stat] === 0
+  ).length;
+
+  health -= penaltyPerZeroStat * zeroStats;
+
+  updated.health = Math.round(Math.min(Math.max(health, 0), 100));
+  updated.dead = updated.health <= 0;
 
   await db.query(
     `UPDATE pet_status
