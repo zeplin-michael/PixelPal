@@ -1,6 +1,6 @@
 import app from "#app";
 import db from "#db/client";
-import "./cron/decayPets.js";
+import "#cron/decay";
 
 const PORT = process.env.PORT ?? 3000;
 
