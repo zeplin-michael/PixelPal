@@ -88,6 +88,13 @@ export async function decayPetStatusIfNeeded(petId) {
     dead: current.dead,
   };
 
+  //     const averageStat = (
+  //   updated.hunger +
+  //   updated.cleanliness +
+  //   updated.happiness +
+  //   updated.energy
+  // ) / 4;
+  // updated.health = Math.round(averageStat);
 
   // Base health as average of core stats
   let health =
@@ -107,7 +114,6 @@ export async function decayPetStatusIfNeeded(petId) {
 
   updated.health = Math.round(Math.min(Math.max(health, 0), 100));
   updated.dead = updated.health <= 0;
-
 
   await db.query(
     `UPDATE pet_status

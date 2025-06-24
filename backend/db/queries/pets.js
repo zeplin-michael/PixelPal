@@ -63,7 +63,7 @@ export async function getAllPets() {
   const sql = `
     SELECT id
     FROM pets
-    WHERE status = TRUE
+    WHERE is_alive = TRUE
   `;
   const { rows } = await db.query(sql);
   return rows;
