@@ -125,11 +125,11 @@ export async function decayPetStatusIfNeeded(petId) {
          dead = $6
      WHERE pet_id = $7`,
     [
-      updated.hunger,
-      updated.cleanliness,
-      updated.happiness,
-      updated.energy,
-      updated.health,
+      Math.ceil(updated.hunger),
+      Math.ceil(updated.cleanliness),
+      Math.ceil(updated.happiness),
+      Math.ceil(updated.energy),
+      Math.ceil(updated.health),
       updated.dead,
       petId,
     ]
