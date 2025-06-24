@@ -15,6 +15,8 @@ import Bath from "./pages/game-page/components/bath";
 import Bed from "./pages/game-page/components/bed";
 import Meal from "./pages/game-page/components/meal";
 
+import Credits from "./pages/Credits";
+
 export default function App() {
   return (
     <Routes>
@@ -27,6 +29,7 @@ export default function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/pal" element={<PalLayout />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="credits" element={<Credits />} />
       </Route>
       <Route path="/game-page" element={<GamePage />}>
         <Route path="/game-page/bath" element={<Bath />} />
