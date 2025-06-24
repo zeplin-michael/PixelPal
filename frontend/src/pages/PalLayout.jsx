@@ -1,69 +1,73 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-
 import "./PalLayout.css";
+import { usePet } from "../api/PetContext";
+import useMutation from "../api/useMutation";
 
 import Bath from "./game-page/components/bath";
 import Bed from "./game-page/components/bed";
 import Meal from "./game-page/components/meal";
 import Default from "./game-page/components/default";
-// Import your other components here
-// import FeedComponent from "./game-page/components/feed";
-// import PlayComponent from "./game-page/components/play";
-// import SleepComponent from "./game-page/components/sleep";
+import CreatePetForm from "./ProfilePage/CreatePetForm";
 
 export default function PalLayout() {
   const navigate = useNavigate();
+  const { pet, loading, error, refreshPet } = usePet();
 
-  const [feed, setFeed] = useState(100);
-  const [play, setPlay] = useState(100);
-  const [sleep, setSleep] = useState(100);
-  const [clean, setClean] = useState(100);
-  const [isAlive, setIsAlive] = useState(true);
-  const [currentScene, setCurrentScene] = useState(null); // Track which scene to show
+  // Mutations for each action
+  const { mutate: feedPet, loading: feeding } = useMutation(
+    "PUT",
+    pet ? `/pets/${pet.id}/feed` : null,
+    []
+  );
+  const { mutate: playPet, loading: playing } = useMutation(
+    "PUT",
+    pet ? `/pets/${pet.id}/play` : null,
+    []
+  );
+  const { mutate: sleepPet, loading: sleeping } = useMutation(
+    "PUT",
+    pet ? `/pets/${pet.id}/sleep` : null,
+    []
+  );
+  const { mutate: cleanPet, loading: cleaning } = useMutation(
+    "PUT",
+    pet ? `/pets/${pet.id}/clean` : null,
+    []
+  );
 
+  // Track which scene to show (optional, you can keep this local)
+  const [currentScene, setCurrentScene] = useState(null);
+
+  // Redirect to deathscreen if pet is dead
   useEffect(() => {
-    if (feed <= 0 || play <= 0 || sleep <= 0 || clean <= 0) {
-      setIsAlive(false);
+    if (pet && pet.dead) {
       navigate("/deathscreen");
     }
-  }, [feed, play, sleep, clean, navigate]);
+  }, [pet, navigate]);
 
-  // Main functions
-  function feedPet() {
-    setFeed((f) => Math.min(f + 10, 100));
-    afterFeed();
-  }
-
-  function playPet() {
-    setPlay((p) => Math.min(p + 10, 100));
-    setSleep((s) => Math.max(s - 5, 0));
-    setFeed((f) => Math.max(f - 5, 0));
-    afterPlay();
-  }
-
-  function sleepPet() {
-    setSleep((s) => Math.min(s + 15, 100));
-    afterSleep();
-  }
-
-  // Secondary functions that switch scenes (no timeout)
-  function afterFeed() {
-    console.log("Feeding pet!");
+  // Action handlers
+  async function handleFeed() {
+    await feedPet();
     setCurrentScene("feed");
+    refreshPet();
   }
-
-  function afterPlay() {
-    console.log("Playing with pet!");
+  async function handlePlay() {
+    await playPet();
     setCurrentScene("play");
+    refreshPet();
   }
-
-  function afterSleep() {
-    console.log("Pet is sleeping!");
+  async function handleSleep() {
+    await sleepPet();
     setCurrentScene("sleep");
+    refreshPet();
+  }
+  async function handleClean() {
+    await cleanPet();
+    setCurrentScene("clean");
+    refreshPet();
   }
 
-  // Function to render the appropriate component
   function renderScene() {
     switch (currentScene) {
       case "feed":
@@ -77,30 +81,37 @@ export default function PalLayout() {
     }
   }
 
-  function cleanPet() {
-    setClean((c) => Math.min(c + 10, 100));
-    setSleep((s) => Math.max(s - 5, 0));
-    setFeed((f) => Math.max(f - 5, 0));
-  }
+  // Loading and error states
+  if (loading && !pet) return <div>Loading your pet...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!pet) return <CreatePetForm />;
 
   return (
     <div className="layout">
       <div className="scene-container">
         {renderScene()}
-
         <div className="stats-bar">
-          <p>🍔 Food: {feed}</p>
-          <p>🎲 Play: {play}</p>
-          <p>🛏️ Sleep: {sleep}</p>
-          <p>🛁 Bath: {clean}</p>
+          <p>💗 Health: {pet.health}</p>
+          <p>🍔 Food: {pet.hunger}</p>
+          <p>🎲 Play: {pet.happiness}</p>
+          <p>🛏️ Sleep: {pet.energy}</p>
+          <p>🛁 Bath: {pet.cleanliness}</p>
         </div>
       </div>
-      {isAlive && (
+      {!pet.dead && (
         <div className="button-row">
-          <button onClick={feedPet}>Feed</button>
-          <button onClick={playPet}>Play</button>
-          <button onClick={sleepPet}>Sleep</button>
-          <button onClick={cleanPet}>Clean</button>
+          <button onClick={handleFeed} disabled={feeding}>
+            Feed
+          </button>
+          <button onClick={handlePlay} disabled={playing}>
+            Play
+          </button>
+          <button onClick={handleSleep} disabled={sleeping}>
+            Sleep
+          </button>
+          <button onClick={handleClean} disabled={cleaning}>
+            Clean
+          </button>
         </div>
       )}
     </div>

@@ -20,3 +20,28 @@
   align-items: center;
   justify-content: center;
 }
+
+.pet-profile a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #ffc59c;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #ffb27b;
+  }
+}
+
+.dead-pet {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  background-color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #000;
+}
