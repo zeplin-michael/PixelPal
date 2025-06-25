@@ -20,8 +20,9 @@ export default function Credits() {
     },
     {
       name: "Rachel Davis",
-      role: "example",
-      description: "example",
+      role: "front-end",
+      description:
+        "Worked on pitch, presentation, project management and front end pages. Deathscreen.",
     },
     {
       name: "Tyler Llorens",

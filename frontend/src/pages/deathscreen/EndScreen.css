@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #d7fdd6;
+  background: #070707;
   padding: 2rem;
 }
 
@@ -73,7 +73,6 @@
   flex-direction: column;
 }
 
-
 .buttons {
   top: 50%;
   left: 40%;
@@ -114,7 +113,7 @@
 .buttons {
   padding: 10px 20px;
   font-size: 18px;
-  border: white 1px solid;
+  border: white 2px solid;
   border-radius: 6px;
   cursor: pointer;
   background-color: #ffb27b;
@@ -125,4 +124,3 @@
 .buttons:hover {
   background-color: rgba(244, 152, 87, 1);
 }
-
