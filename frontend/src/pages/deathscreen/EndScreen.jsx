@@ -7,14 +7,17 @@
 import { motion } from "framer-motion";
 import useQuery from "../../api/useQuery";
 import "./EndScreen.css";
-import gravestone from "../../../assets/gravestone.png";
 import { usePet } from "../../api/PetContext";
 
 const Tombstone = () => (
   //
   <>
     <div id="gravestone-emoji">🪦</div>
-    <img src={gravestone} alt="Gravestone" className="background" />
+    <img
+      src="/death_page/gravestone.png"
+      alt="Gravestone"
+      className="background"
+    />
     <br />
     <h2>R.I.P.</h2>
   </>
@@ -22,7 +25,7 @@ const Tombstone = () => (
 
 const Options = ({ onSelect }) => {
   const playSound = () => {
-    const audio = new Audio("../../assets/8-bit-game-over-sound-effect.mp3");
+    const audio = new Audio("/death_page/8-bit-game-over-sound-effect.mp3");
     audio.play();
   };
   const { pet } = usePet();

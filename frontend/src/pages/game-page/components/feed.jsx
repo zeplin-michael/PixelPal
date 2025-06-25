@@ -6,7 +6,7 @@ function Feed() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/img/alien_eating.gif"
+            src="/assets/pals/green_alien/gn_alien_eating.gif"
             alt="feed image"
           />
         </div>

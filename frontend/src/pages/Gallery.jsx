@@ -11,7 +11,7 @@ export default function Gallery() {
         <div className="feature-grid">
           <div className="gallery-item">
             <img
-              src="/img/game-play/merpet.png"
+              src="/gallery_page/mercat.png"
               alt="PixelPal"
               className="feature-image"
             />
@@ -20,7 +20,7 @@ export default function Gallery() {
 
           <div className="gallery-item">
             <img
-              src="/img/game-play/Bird.png"
+              src="/gallery_page/bird.png"
               alt="PixelPal 2"
               className="feature-image"
             />
@@ -29,7 +29,7 @@ export default function Gallery() {
 
           <div className="gallery-item">
             <img
-              src="/img/game-play/unicorn.png"
+              src="/gallery_page/unicorn.png"
               alt="PixelPal 3"
               className="feature-image"
             />
@@ -38,7 +38,7 @@ export default function Gallery() {
 
           <div className="gallery-item">
             <img
-              src="/img/game-play/alien_720.png"
+              src="/gallery_page/alien.png"
               alt="PixelPal 2"
               className="feature-image"
             />
@@ -47,11 +47,19 @@ export default function Gallery() {
 
           <div className="gallery-item">
             <img
-              src="/img/game-play/robot_720.png"
+              src="/gallery_page/robot.png"
               alt="PixelPal 3"
               className="feature-image"
             />
             <p className="feature-text">Beeple</p>
+          </div>
+          <div className="gallery-item">
+            <img
+              src="/gallery_page/dragon.png"
+              alt="PixelPal 3"
+              className="feature-image"
+            />
+            <p className="feature-text">Tatum</p>
           </div>
         </div>
       </main>

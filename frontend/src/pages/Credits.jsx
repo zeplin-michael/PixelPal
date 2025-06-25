@@ -19,7 +19,6 @@ export default function Credits() {
       role: "Project Manager",
       description:
         "Worked on the auth and styling of the pages. connected the frontend to the backend",
-
     },
     {
       name: "Rachel Davis",
@@ -41,7 +40,7 @@ export default function Credits() {
   ];
   return (
     <div className="credits-container">
-      <h1 className="credits-title">PixelPal credits</h1>
+      <h1 className="credits-title">PixelPal Developer Credits</h1>
       <div>
         {teammates.map((element, index) => (
           <div key={index} className="card">

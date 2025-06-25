@@ -6,7 +6,7 @@ function Sleep() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/img/alien_sleeping.gif"
+            src="/assets/pals/green_alien/gn_alien_sleeping.gif"
             alt="sleep image"
           />
         </div>
