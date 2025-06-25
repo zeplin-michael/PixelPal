@@ -5,14 +5,16 @@
 // License: CC0 1.0 Universal (CC0 1.0) Public
 
 import { motion } from "framer-motion";
+import useQuery from "../../api/useQuery";
 import "./EndScreen.css";
 import gravestone from "../../../assets/gravestone.png";
+import { usePet } from "../../api/PetContext";
 
 const Tombstone = () => (
   //
   <>
     <div id="gravestone-emoji">🪦</div>
-    <img src={gravestone} alt="Gravestone" className="png" />
+    <img src={gravestone} alt="Gravestone" className="background" />
     <br />
     <h2>R.I.P.</h2>
   </>
@@ -23,6 +25,15 @@ const Options = ({ onSelect }) => {
     const audio = new Audio("../../assets/8-bit-game-over-sound-effect.mp3");
     audio.play();
   };
+  const { pet } = usePet();
+  const {
+    data: stats,
+    loading,
+    error,
+  } = useQuery(
+    pet ? `/pet_overall_stats/${pet.id}` : null,
+    pet ? `overallStats-${pet.id}` : null
+  );
 
   return (
     <>
@@ -32,7 +43,7 @@ const Options = ({ onSelect }) => {
         transition={{ duration: 1 }}
         className="tombstone"
       >
-        <img src={gravestone} alt="Gravestone" className="png" />
+        <img src={gravestone} alt="Gravestone" className="background" />
         <div id="gravestone-emoji">
           <h1 style={{ fontSize: "10rem" }}>🪦</h1>
           <h5 style={{ color: "white" }}>R.I.P.</h5>
@@ -54,6 +65,47 @@ const Options = ({ onSelect }) => {
           >
             <p>No</p>
           </button>
+          <div className="endscreen-stats">
+            {loading && (
+              <div
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                }}
+              >
+                Loading stats...
+              </div>
+            )}
+            {error && (
+              <div
+                style={{
+                  color: "red",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                }}
+              >
+                Error loading stats
+              </div>
+            )}
+            {stats && (
+              <div
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                  marginTop: "4rem",
+                }}
+              >
+                <h3>Lifetime Stats</h3>
+                <p>Total Meals: {stats.total_meals}</p>
+                <p>Total Baths: {stats.total_baths}</p>
+                <p>Total Play Sessions: {stats.total_play_sessions}</p>
+                <p>Total Sleep Sessions: {stats.total_sleep_sessions}</p>
+                <p>Days Alive: {stats.days_alive}</p>
+              </div>
+            )}
+          </div>
         </div>
       </motion.div>
     </>

@@ -1,12 +1,24 @@
 import db from "#db/client";
 
+function parsePetStatus(status) {
+  if (!status) return status;
+  return {
+    ...status,
+    hunger: Number(status.hunger),
+    cleanliness: Number(status.cleanliness),
+    happiness: Number(status.happiness),
+    energy: Number(status.energy),
+    health: Number(status.health),
+  };
+}
+
 // pulls pet status
 export async function getPetStatusByPetId(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
   const {
     rows: [status],
   } = await db.query(sql, [petId]);
-  return status;
+  return parsePetStatus(status);
 }
 
 // updates every status
@@ -40,7 +52,7 @@ export async function updatePetStatus({
     dead,
     petId,
   ]);
-  return status;
+  return parsePetStatus(status);
 }
 
 // add a calculation to make decay affect health======================
@@ -61,8 +73,9 @@ export async function decayPetStatusIfNeeded(petId) {
   };
 
   function minutesSince(timestamp) {
-    if (!timestamp) return Number.MAX_SAFE_INTEGER;
-    return Math.floor((now - new Date(timestamp)) / 60000);
+    if (!timestamp) return 0;
+    const minutes = Math.floor((Date.now() - new Date(timestamp)) / 60000);
+    return minutes;
   }
 
   const updated = {
@@ -104,7 +117,7 @@ export async function decayPetStatusIfNeeded(petId) {
       updated.energy) /
     4;
 
-  // 💀 Apply penalties for any stat that hit 0
+  //  Apply penalties for any stat that hit 0
   const penaltyPerZeroStat = 5;
   const zeroStats = ["hunger", "cleanliness", "happiness", "energy"].filter(
     (stat) => updated[stat] === 0
@@ -135,5 +148,5 @@ export async function decayPetStatusIfNeeded(petId) {
     ]
   );
 
-  return { ...current, ...updated };
+  return parsePetStatus({ ...current, ...updated });
 }

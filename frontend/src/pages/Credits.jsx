@@ -16,8 +16,9 @@ export default function Credits() {
     },
     {
       name: "MarzeeQ Williams",
-      role: "example",
-      description: "example",
+      role: "Frontend/Backend",
+      description:
+        "Worked on the auth and styling of the pages. connected the frontend to the backend",
     },
     {
       name: "Rachel Davis",

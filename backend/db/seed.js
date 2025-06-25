@@ -25,15 +25,6 @@ async function seed() {
       const user = await createUser(`user${i}`, "password");
       const pet = await createPet(user.id, `pet${i}`);
 
-      // pet overall stats
-      await db.query(
-        `
-        INSERT INTO pet_overall_stats (pet_id)
-        VALUES ($1)
-      `,
-        [pet.id]
-      );
-
       // starting coin transaction
       await db.query(
         `
