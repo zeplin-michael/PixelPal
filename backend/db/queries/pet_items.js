@@ -95,7 +95,7 @@ export async function usePetItem(petId, itemId) {
       [petId, itemId]
     );
 
-    // Dynamically update the correct stat, capped at 50
+    // Dynamically update the correct stat
     const updateSql = `
       UPDATE pet_status
       SET ${item.effect_target} = LEAST(${item.effect_target} + $1, 100)

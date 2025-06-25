@@ -16,9 +16,10 @@ export default function Credits() {
     },
     {
       name: "MarzeeQ Williams",
-      role: "Frontend/Backend",
+      role: "Project Manager",
       description:
         "Worked on the auth and styling of the pages. connected the frontend to the backend",
+
     },
     {
       name: "Rachel Davis",
@@ -28,8 +29,8 @@ export default function Credits() {
     },
     {
       name: "Tyler Llorens",
-      role: "exapmle",
-      description: "example",
+      role: "Backend",
+      description: "Backend...",
     },
     {
       name: "Zeplin Rowe",

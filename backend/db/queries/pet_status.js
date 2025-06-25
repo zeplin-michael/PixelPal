@@ -101,6 +101,7 @@ export async function decayPetStatusIfNeeded(petId) {
     dead: current.dead,
   };
 
+
   //     const averageStat = (
   //   updated.hunger +
   //   updated.cleanliness +
@@ -108,6 +109,7 @@ export async function decayPetStatusIfNeeded(petId) {
   //   updated.energy
   // ) / 4;
   // updated.health = Math.round(averageStat);
+
 
   // Base health as average of core stats
   let health =

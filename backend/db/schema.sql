@@ -23,10 +23,8 @@ CREATE TABLE users (
 CREATE TABLE pets (
   id SERIAL PRIMARY KEY,
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-
   name VARCHAR(15),
   is_alive BOOLEAN DEFAULT TRUE,
-
   birthday DATE
 );
 
