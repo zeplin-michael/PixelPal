@@ -10,6 +10,7 @@ router
   .route("/register")
   // requireBody(["username", "password"]
   .post(async (req, res) => {
+    console.log("Function!");
     const { username, password } = req.body;
     try {
       const user = await createUser(username, password);
