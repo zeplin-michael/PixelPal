@@ -8,7 +8,8 @@ import { createToken } from "#utils/jwt";
 
 router
   .route("/register")
-  .post(requireBody(["username", "password"]), async (req, res) => {
+  // requireBody(["username", "password"]
+  .post(async (req, res) => {
     const { username, password } = req.body;
     try {
       const user = await createUser(username, password);
