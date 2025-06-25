@@ -257,4 +257,11 @@
     font-size: 2.2rem;
     margin: 0 0.3rem;
   }
+
+  .learn-more-overlay {
+    position: unset;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
 }
