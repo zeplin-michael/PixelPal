@@ -109,7 +109,8 @@
 /* Responsive: stack on small screens */
 @media (max-width: 700px) {
   .feature-gallery {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1.2rem;
     align-items: center;
     justify-content: center;
@@ -134,7 +135,6 @@
 
   .learnmore-modal-overlay,
   .learn-more-overlay {
-    position: unset !important;
     height: auto;
     min-height: 100vh;
     overflow: visible;
