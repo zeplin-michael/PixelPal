@@ -46,28 +46,28 @@ const playFeatures = [
 const createPetSteps = [
   {
     key: "signup",
-    img: "../assets/Pals/Gold Robot/gld_robot_idle.gif",
+    img: "/assets/pals/gold_robot/gld_robot_idle.gif",
     alt: "Sign Up",
     label: "Sign Up",
     description: "Create an account to get started with PixelPal.",
   },
   {
     key: "login",
-    img: "../assets/Pals/Gold Robot/gld_robot_eating.gif",
+    img: "/assets/pals/gold_robot/gld_robot_eating.gif",
     alt: "Log In",
     label: "Log In",
     description: "Log in to your account to access your profile.",
   },
   {
     key: "profile",
-    img: "../assets/Pals/Gold Robot/gld_robot_bath.gif",
+    img: "/assets/pals/gold_robot/gld_robot_bath.gif",
     alt: "Go to Profile",
     label: "Go to Profile",
     description: "Navigate to your profile page after logging in.",
   },
   {
     key: "create",
-    img: "../assets/Pals/Gold Robot/gld_robot_playing.gif",
+    img: "/assets/pals/gold_robot/gld_robot_playing.gif",
     alt: "Create Pet",
     label: "Create Your Pet",
     description: "Fill out the form to create your very own PixelPal!",

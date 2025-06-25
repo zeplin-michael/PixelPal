@@ -6,7 +6,7 @@ function Clean() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/img/Alien_bath.gif"
+            src="/assets/pals/green_alien/gn_alien_bath.gif"
             alt="clean img"
           />
         </div>

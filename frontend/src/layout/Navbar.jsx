@@ -26,7 +26,7 @@ export default function Navbar() {
           <div className="navbar-brand">
             <NavLink id="brand" to="/">
               <img
-                src="/home-icon.svg"
+                src="/home_page/home-icon.svg"
                 alt="Home"
                 className="navbar-home-icon"
               />
@@ -35,8 +35,7 @@ export default function Navbar() {
           <div className="navbar-links">
             <NavLink to="/gallery">Gallery</NavLink>
 
-            <NavLink to="/Credits">Credits</NavLink>
-
+            <NavLink to="/Credits">Dev Credits</NavLink>
 
             {token ? (
               <>

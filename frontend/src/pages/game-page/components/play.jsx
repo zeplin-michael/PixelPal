@@ -6,7 +6,7 @@ function Play() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/img/alien_playing.gif"
+            src="/assets/pals/green_alien/gn_alien_playing.gif"
             alt="playing img"
           />
         </div>

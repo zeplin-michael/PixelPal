@@ -40,7 +40,7 @@ export default function Homepage() {
             <span className="click-me-text">Click Me</span>
             <img
               className="homepage-image"
-              src="/img/game-play/alien_idle_360.gif"
+              src="/assets/pals/green_alien/gn_alien_idle.gif"
               alt="Animated pet"
               onClick={() =>
                 token ? navigate("/profile") : navigate("/login")

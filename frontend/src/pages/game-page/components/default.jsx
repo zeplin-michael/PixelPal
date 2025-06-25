@@ -6,7 +6,7 @@ function Default() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/img/game-play/alien_idle_360.gif"
+            src="/assets/pals/green_alien/gn_alien_idle.gif"
             alt="default idle img"
           />
         </div>
