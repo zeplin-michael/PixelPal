@@ -25,7 +25,6 @@ CREATE TABLE pets (
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(15),
   is_alive BOOLEAN DEFAULT TRUE,
-
   birthday DATE
 );
 

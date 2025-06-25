@@ -61,8 +61,9 @@ export async function decayPetStatusIfNeeded(petId) {
   };
 
   function minutesSince(timestamp) {
-    if (!timestamp) return Number.MAX_SAFE_INTEGER;
-    return Math.floor((now - new Date(timestamp)) / 60000);
+    if (!timestamp) return 0;
+    const minutes = Math.floor((Date.now() - new Date(timestamp)) / 60000);
+    return minutes;
   }
 
   const updated = {
@@ -88,7 +89,6 @@ export async function decayPetStatusIfNeeded(petId) {
     dead: current.dead,
   };
 
-
   // Base health as average of core stats
   let health =
     (updated.hunger +
@@ -107,7 +107,6 @@ export async function decayPetStatusIfNeeded(petId) {
 
   updated.health = Math.round(Math.min(Math.max(health, 0), 100));
   updated.dead = updated.health <= 0;
-
 
   await db.query(
     `UPDATE pet_status

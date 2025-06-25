@@ -58,7 +58,7 @@ export async function getPetStatusByIdWithUserId(petId) {
   return status;
 }
 
-// Get all pets built for cron function
+// Get all pets, built for cron function
 export async function getAllPets() {
   const sql = `
     SELECT id
