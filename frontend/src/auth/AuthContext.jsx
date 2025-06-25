@@ -13,11 +13,14 @@ export function AuthProvider({ children }) {
 
   const register = async (credentials) => {
     // API +
-    const response = await fetch("/users/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(credentials),
-    });
+    const response = await fetch(
+      "https://pixelpal-44w4.onrender.com/users/register",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      }
+    );
     const result = await response.text();
     if (!response.ok) throw Error(result);
     setToken(result);
@@ -25,11 +28,14 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     // API +
-    const response = await fetch("/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(credentials),
-    });
+    const response = await fetch(
+      "https://pixelpal-44w4.onrender.com/users/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      }
+    );
     const result = await response.text();
     if (!response.ok) throw Error(result);
     setToken(result);
