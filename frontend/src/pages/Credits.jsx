@@ -31,8 +31,9 @@ export default function Credits() {
     },
     {
       name: "Zeplin Rowe",
-      role: "exapmle",
-      description: "example",
+      role: "Animation",
+      description:
+        "Worked on animation and sprites of pals, did slight work within the backend and frontend styling.",
     },
   ];
   return (

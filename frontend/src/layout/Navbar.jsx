@@ -34,7 +34,6 @@ export default function Navbar() {
           </div>
           <div className="navbar-links">
             <NavLink to="/gallery">Gallery</NavLink>
-
             {token ? (
               <>
                 <NavLink to="/profile">Profile</NavLink>

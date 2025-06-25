@@ -5,6 +5,7 @@
   min-height: 100vh;
   background: #ffd6b9;
   padding: 2rem 0;
+  font-family: "Silkscreen", sans-serif;
 }
 
 .learnmore-main {
@@ -83,7 +84,7 @@
   object-fit: contain;
   margin-bottom: 0.7rem;
   border-radius: 0.4rem;
-  background: #fff;
+  background: #fff5ed;
   box-shadow: 0 1px 4px #ffb27b44;
   image-rendering: pixelated;
   border: 1.5px solid #ffb27b;

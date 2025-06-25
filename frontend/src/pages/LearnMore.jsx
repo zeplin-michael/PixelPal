@@ -4,7 +4,7 @@ import "./LearnMore.css";
 const features = [
   {
     key: "sleep",
-    img: "/img/game-play/alien_sleeping_360.gif",
+    img: "/assets/pals/green_alien/gn_alien_sleeping.gif",
     alt: "Sleeping PixelPal",
     label: "Sleep",
     description:
@@ -12,7 +12,7 @@ const features = [
   },
   {
     key: "feed",
-    img: "/img/game-play/MealTime.png",
+    img: "/assets/pals/grey_alien/gy_alien_eating.gif",
     alt: "Eating PixelPal",
     label: "Feed",
     description:
@@ -20,7 +20,7 @@ const features = [
   },
   {
     key: "play",
-    img: "/img/game-play/PlayTime.png",
+    img: "/assets/pals/pink_alien/pk_alien_playing.gif",
     alt: "Playing PixelPal",
     label: "Play",
     description:
@@ -28,7 +28,7 @@ const features = [
   },
   {
     key: "bathe",
-    img: "/img/game-play/BathTime.png",
+    img: "/assets/pals/green_alien/gn_alien_bath.gif",
     alt: "Bathe PixelPal",
     label: "Bathe",
     description:
