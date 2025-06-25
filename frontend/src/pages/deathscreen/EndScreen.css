@@ -8,6 +8,15 @@
   padding: 2rem;
 }
 
+.tombstone {
+  display: flex;
+}
+
+.background {
+  flex-grow: 1;
+  width: 100%;
+}
+
 .gravestone-background {
   position: relative;
 
@@ -64,15 +73,15 @@
 
 #gravestone-emoji {
   position: absolute;
-  top: 40%;
-  left: 45%;
+  top: 20%;
+  left: 35%;
+  gap: 1.5rem;
   transform: translateX(-30%);
   font-size: 4rem;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
-
 
 .buttons {
   top: 50%;
@@ -125,4 +134,3 @@
 .buttons:hover {
   background-color: rgba(244, 152, 87, 1);
 }
-

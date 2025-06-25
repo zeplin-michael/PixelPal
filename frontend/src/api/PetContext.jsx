@@ -42,6 +42,7 @@ export function PetProvider({ children }) {
   // Poll for pet updates every 5 seconds
   useEffect(() => {
     if (!token) return;
+
     fetchPet();
     const interval = setInterval(fetchPet, 5000);
 

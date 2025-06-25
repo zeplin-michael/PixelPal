@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useAuth } from "../auth/AuthContext";
 import "./LearnMore.css";
 
-const features = [
+const playFeatures = [
   {
     key: "sleep",
     img: "/img/game-play/alien_sleeping_360.gif",
@@ -12,7 +13,7 @@ const features = [
   },
   {
     key: "feed",
-    img: "/img/game-play/MealTime.png",
+    img: "../assets/Pals/Green Alien/gn_alien_eating.gif",
     alt: "Eating PixelPal",
     label: "Feed",
     description:
@@ -20,7 +21,7 @@ const features = [
   },
   {
     key: "play",
-    img: "/img/game-play/PlayTime.png",
+    img: "../assets/Pals/Green Alien/gn_alien_playing.gif",
     alt: "Playing PixelPal",
     label: "Play",
     description:
@@ -28,7 +29,7 @@ const features = [
   },
   {
     key: "bathe",
-    img: "/img/game-play/BathTime.png",
+    img: "../assets/Pals/Green Alien/gn_alien_bath.gif",
     alt: "Bathe PixelPal",
     label: "Bathe",
     description:
@@ -36,14 +37,53 @@ const features = [
   },
 ];
 
+const createPetSteps = [
+  {
+    key: "signup",
+    img: "../assets/Pals/Gold Robot/gld_robot_idle.gif",
+    alt: "Sign Up",
+    label: "Sign Up",
+    description: "Create an account to get started with PixelPal.",
+  },
+  {
+    key: "login",
+    img: "../assets/Pals/Gold Robot/gld_robot_eating.gif",
+    alt: "Log In",
+    label: "Log In",
+    description: "Log in to your account to access your profile.",
+  },
+  {
+    key: "profile",
+    img: "../assets/Pals/Gold Robot/gld_robot_bath.gif",
+    alt: "Go to Profile",
+    label: "Go to Profile",
+    description: "Navigate to your profile page after logging in.",
+  },
+  {
+    key: "create",
+    img: "../assets/Pals/Gold Robot/gld_robot_playing.gif",
+    alt: "Create Pet",
+    label: "Create Your Pet",
+    description: "Fill out the form to create your very own PixelPal!",
+  },
+];
+
 export default function LearnMore() {
   const [open, setOpen] = useState(null);
+  const { token } = useAuth();
+
+  // Choose which set of features/steps to show
+  const features = token ? playFeatures : createPetSteps;
+  const title = token ? "How to play PixelPal?" : "How to create your PixelPal";
+  const subtitle = token
+    ? "Let's see how it works!"
+    : "Follow these steps to get your own PixelPal!";
 
   return (
     <div className="learnmore">
       <main className="learnmore-main">
-        <h2 className="learnmore-title">How to play PixelPal?</h2>
-        <p className="learnmore-text">Lets see how it works!</p>
+        <h2 className="learnmore-title">{title}</h2>
+        <p className="learnmore-text">{subtitle}</p>
 
         <div className="feature-gallery">
           {features.map((feature) => (
