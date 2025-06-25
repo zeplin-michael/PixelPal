@@ -12,12 +12,18 @@
   margin-bottom: 20px;
 }
 
+.card-details {
+  justify-content: center;
+  display: grid;
+}
+
 .card {
   background-color: white;
-  border: 1px solid #ff8b5c;
+  border: 2px solid #ff8b5c;
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 8px;
+  display: flex;
 }
 
 .card h2 {
