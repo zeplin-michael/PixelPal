@@ -34,6 +34,10 @@ export default function Navbar() {
           </div>
           <div className="navbar-links">
             <NavLink to="/gallery">Gallery</NavLink>
+
+            <NavLink to="/Credits">Credits</NavLink>
+
+
             {token ? (
               <>
                 <NavLink to="/profile">Profile</NavLink>

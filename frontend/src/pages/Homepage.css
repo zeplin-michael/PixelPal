@@ -55,18 +55,18 @@
 }
 
 .pet-placeholder {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  gap: 2.5rem;
+  width: 100%;
 }
 
 .homepage-image {
-  width: 100%;
-  height: auto;
+  display: block;
+  width: 70%;
+
+  object-fit: contain;
 }
 
 .homepage-image:hover {
@@ -180,4 +180,88 @@
 .learn-more-overlay.visible {
   opacity: 1;
   pointer-events: auto;
+}
+
+.homepage-image-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.homepage-image-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-down-arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-left: 1.2rem;
+  animation: bounce 1.2s infinite;
+}
+
+.click-me-text {
+  margin-bottom: 0.7rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: #ff7716;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.2em 0.7em;
+  border-radius: 0.7em;
+  box-shadow: 0 2px 8px rgba(255, 119, 22, 0.08);
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.homepage-image-container:hover .click-me-text,
+.homepage-image:focus + .click-me-text {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arrow {
+  font-size: 3rem;
+  color: #ffb27b;
+
+  line-height: 1;
+  animation: bounce 1.2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.7rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .homepage-image-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .arrow {
+    font-size: 2.2rem;
+    margin: 0 0.3rem;
+  }
+
+  .learn-more-overlay {
+    position: unset;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
 }
