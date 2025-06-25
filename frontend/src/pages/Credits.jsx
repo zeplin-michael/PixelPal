@@ -15,7 +15,7 @@ export default function Credits() {
     },
     {
       name: "MarzeeQ Williams",
-      role: "example",
+      role: "Project Manager",
       description: "example",
     },
     {
@@ -25,8 +25,8 @@ export default function Credits() {
     },
     {
       name: "Tyler Llorens",
-      role: "exapmle",
-      description: "example",
+      role: "Backend",
+      description: "Backend...",
     },
     {
       name: "Zeplin Rowe",
