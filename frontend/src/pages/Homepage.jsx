@@ -24,7 +24,6 @@ export default function Homepage() {
 
   return (
     // logo for link to homepage
-
     <div className="homepage">
       <main className="homepage-main">
         <h2 className="homepage-title">Welcome to PixelPal</h2>
