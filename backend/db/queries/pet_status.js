@@ -1,12 +1,24 @@
 import db from "#db/client";
 
+function parsePetStatus(status) {
+  if (!status) return status;
+  return {
+    ...status,
+    hunger: Number(status.hunger),
+    cleanliness: Number(status.cleanliness),
+    happiness: Number(status.happiness),
+    energy: Number(status.energy),
+    health: Number(status.health),
+  };
+}
+
 // pulls pet status
 export async function getPetStatusByPetId(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
   const {
     rows: [status],
   } = await db.query(sql, [petId]);
-  return status;
+  return parsePetStatus(status);
 }
 
 // updates every status
@@ -40,7 +52,7 @@ export async function updatePetStatus({
     dead,
     petId,
   ]);
-  return status;
+  return parsePetStatus(status);
 }
 
 // add a calculation to make decay affect health======================
@@ -89,6 +101,16 @@ export async function decayPetStatusIfNeeded(petId) {
     dead: current.dead,
   };
 
+
+  //     const averageStat = (
+  //   updated.hunger +
+  //   updated.cleanliness +
+  //   updated.happiness +
+  //   updated.energy
+  // ) / 4;
+  // updated.health = Math.round(averageStat);
+
+
   // Base health as average of core stats
   let health =
     (updated.hunger +
@@ -97,7 +119,7 @@ export async function decayPetStatusIfNeeded(petId) {
       updated.energy) /
     4;
 
-  // 💀 Apply penalties for any stat that hit 0
+  //  Apply penalties for any stat that hit 0
   const penaltyPerZeroStat = 5;
   const zeroStats = ["hunger", "cleanliness", "happiness", "energy"].filter(
     (stat) => updated[stat] === 0
@@ -118,15 +140,15 @@ export async function decayPetStatusIfNeeded(petId) {
          dead = $6
      WHERE pet_id = $7`,
     [
-      updated.hunger,
-      updated.cleanliness,
-      updated.happiness,
-      updated.energy,
-      updated.health,
+      Math.ceil(updated.hunger),
+      Math.ceil(updated.cleanliness),
+      Math.ceil(updated.happiness),
+      Math.ceil(updated.energy),
+      Math.ceil(updated.health),
       updated.dead,
       petId,
     ]
   );
 
-  return { ...current, ...updated };
+  return parsePetStatus({ ...current, ...updated });
 }

@@ -24,20 +24,36 @@ export default function Homepage() {
 
   return (
     // logo for link to homepage
-
     <div className="homepage">
       <main className="homepage-main">
         <h2 className="homepage-title">Welcome to PixelPal</h2>
         <p className="homepage-subtitle">Adopt a virtual pet today!</p>
 
         <div className="pet-placeholder">
-          <img
-            className="homepage-image"
-            src="/img/game-play/alien_idle_360.gif"
-            alt="Animated pet"
-            onClick={() => (token ? navigate("/profile") : navigate("/login"))}
-          />
+          <div className="scroll-down-arrows">
+            <span className="arrow">↓</span>
+            <span className="arrow">↓</span>
+            <span className="arrow">↓</span>
+          </div>
+
+          <div className="homepage-image-container">
+            <span className="click-me-text">Click Me</span>
+            <img
+              className="homepage-image"
+              src="/img/game-play/alien_idle_360.gif"
+              alt="Animated pet"
+              onClick={() =>
+                token ? navigate("/profile") : navigate("/login")
+              }
+            />
+          </div>
+          <div className="scroll-down-arrows">
+            <span className="arrow">↓</span>
+            <span className="arrow">↓</span>
+            <span className="arrow">↓</span>
+          </div>
         </div>
+
         <div style={{ height: "85vh" }}></div>
       </main>
       <div className={`learn-more-overlay${showLearnMore ? " visible" : ""}`}>

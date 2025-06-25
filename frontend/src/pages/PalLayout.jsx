@@ -3,10 +3,12 @@ import { useNavigate } from "react-router";
 import "./PalLayout.css";
 import { usePet } from "../api/PetContext";
 import useMutation from "../api/useMutation";
+import useIncrementOverallStat from "../api/useIncrementOverallStat";
 
-import Bath from "./game-page/components/bath";
-import Bed from "./game-page/components/bed";
-import Meal from "./game-page/components/meal";
+import Clean from "./game-page/components/clean";
+import Sleep from "./game-page/components/sleep";
+import Feed from "./game-page/components/feed";
+import Play from "./game-page/components/play";
 import Default from "./game-page/components/default";
 import CreatePetForm from "./ProfilePage/CreatePetForm";
 
@@ -39,6 +41,11 @@ export default function PalLayout() {
   // Track which scene to show (optional, you can keep this local)
   const [currentScene, setCurrentScene] = useState(null);
 
+  // Increment overall stats
+  const [incrementStat, incrementing, incrementError] = useIncrementOverallStat(
+    pet ? pet.id : null
+  );
+
   // Redirect to deathscreen if pet is dead
   useEffect(() => {
     if (pet && pet.dead) {
@@ -51,31 +58,37 @@ export default function PalLayout() {
     await feedPet();
     setCurrentScene("feed");
     refreshPet();
+    await incrementStat("total_meals");
   }
   async function handlePlay() {
     await playPet();
     setCurrentScene("play");
     refreshPet();
+    await incrementStat("total_play_sessions");
   }
   async function handleSleep() {
     await sleepPet();
     setCurrentScene("sleep");
     refreshPet();
+    await incrementStat("total_sleep_sessions");
   }
   async function handleClean() {
     await cleanPet();
     setCurrentScene("clean");
     refreshPet();
+    await incrementStat("total_baths");
   }
 
   function renderScene() {
     switch (currentScene) {
       case "feed":
-        return <Meal />;
+        return <Feed />;
       case "clean":
-        return <Bath />;
+        return <Clean />;
       case "sleep":
-        return <Bed />;
+        return <Sleep />;
+      case "play":
+        return <Play />;
       default:
         return <Default />;
     }

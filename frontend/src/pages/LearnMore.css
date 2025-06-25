@@ -5,6 +5,7 @@
   min-height: 100vh;
   background: #ffd6b9;
   padding: 2rem 0;
+  font-family: "Silkscreen", sans-serif;
 }
 
 .learnmore-main {
@@ -23,7 +24,7 @@
   margin-bottom: 0.5rem;
   color: #ff8b5c;
   text-align: center;
-  font-family: "Lexend Deca", monospace, sans-serif;
+
   letter-spacing: 1px;
   text-shadow: 1px 1px 0 #fff, 2px 2px 0 #ffb27b;
 }
@@ -33,7 +34,6 @@
   color: #ff7716;
   margin-bottom: 2rem;
   text-align: center;
-  font-family: "Lexend Deca", monospace, sans-serif;
 }
 
 .feature-gallery {
@@ -49,6 +49,9 @@
     gap: 2.2rem;
     justify-content: center;
     align-items: flex-start;
+  }
+  .learnmore-modal-overlay {
+    position: unset;
   }
 }
 
@@ -83,7 +86,9 @@
   object-fit: contain;
   margin-bottom: 0.7rem;
   border-radius: 0.4rem;
-  background: #fff;
+
+  background: #fff5ed;
+
   box-shadow: 0 1px 4px #ffb27b44;
   image-rendering: pixelated;
   border: 1.5px solid #ffb27b;
@@ -107,13 +112,38 @@
     flex-direction: column;
     gap: 1.2rem;
     align-items: center;
+    justify-content: center;
   }
+
+  .feature-item {
+    background: #d7fdd6;
+    border: 2px solid #ffb27b;
+    box-shadow: 0 2px 8px rgba(34, 34, 59, 0.07);
+  }
+
+  .feature-item:hover,
+  .feature-item:focus-visible {
+    background: #b6e5b6;
+    box-shadow: 0 8px 24px #b6e5b6cc;
+    outline: 2px solid #ff7716;
+  }
+
   .learnmore-main {
     padding: 1rem;
   }
 
-  .learnmore-more-overlay {
-    position: relative;
+  .learnmore-modal-overlay,
+  .learn-more-overlay {
+    position: unset !important;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  .learnmore,
+  .learnmore-main {
+    background: #d7fdd6;
+    border: none;
+    box-shadow: none;
   }
 }
 
@@ -191,23 +221,11 @@
   color: #ff7716;
   font-size: 1.1rem;
   margin-top: 0;
-  font-family: "Lexend Deca", monospace, sans-serif;
+
   text-align: left;
 }
 
 /* Responsive: stack vertically on small screens */
-@media (max-width: 400px) {
-  .learnmore-modal-content {
-    display: block;
-    align-items: center;
-  }
-  .learnmore-modal-right {
-    text-align: center;
-  }
-  .learnmore-modal-desc {
-    text-align: center;
-  }
-}
 
 .learnmore-modal-close {
   position: absolute;

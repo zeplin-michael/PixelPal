@@ -9,19 +9,23 @@ export default function Credits() {
         "Worked on front end pages and User story. Layout, Profile, Learn More, Gallery, Credits",
     },
     {
-      name: "Stacey Lee",
-      role: "example",
-      description: "example",
+      name: "Stacy Lee",
+      role: "Frontend",
+      description:
+        "Worked on front end pages and wireframe. Activity pages for game including bathing, feeding, sleeping, and playing functions for the pet",
     },
     {
       name: "MarzeeQ Williams",
       role: "Project Manager",
-      description: "example",
+      description:
+        "Worked on the auth and styling of the pages. connected the frontend to the backend",
+
     },
     {
       name: "Rachel Davis",
-      role: "example",
-      description: "example",
+      role: "front-end",
+      description:
+        "Worked on pitch, presentation, project management and front end pages. Deathscreen.",
     },
     {
       name: "Tyler Llorens",
@@ -30,8 +34,9 @@ export default function Credits() {
     },
     {
       name: "Zeplin Rowe",
-      role: "exapmle",
-      description: "example",
+      role: "Animation",
+      description:
+        "Worked on animation and sprites of pals, did slight work within the backend and frontend styling.",
     },
   ];
   return (

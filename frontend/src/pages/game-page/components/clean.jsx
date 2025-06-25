@@ -1,13 +1,13 @@
-function Bed() {
+function Clean() {
   return (
     <div>
-      <h1>bed time</h1>
+      <h1>clean</h1>
       <div className="scene-img-container">
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/img/game-play/BedTime.png"
-            alt="bed time image"
+            src="/img/Alien_bath.gif"
+            alt="clean img"
           />
         </div>
       </div>
@@ -15,4 +15,4 @@ function Bed() {
   );
 }
 
-export default Bed;
+export default Clean;
