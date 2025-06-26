@@ -27,22 +27,17 @@ router.get("/", async (req, res) => {
 });
 
 // POST /pets - create new pet ================= double check this
-router.post("/", requireBody(["name"]), async (req, res) => {
+router.post("/", requireBody(["name", "avatar"]), async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, avatar } = req.body;
 
     // Basic input validation
     if (typeof name !== "string" || name.trim() === "") {
       return res.status(400).json({ error: "Invalid pet name." });
     }
 
-    // Check that req.user exists (added by requireUser middleware)
-    if (!req.user || !req.user.id) {
-      return res.status(401).json({ error: "Unauthorized. User not found." });
-    }
-
     // Create pet
-    const pet = await createPet(req.user.id, name);
+    const pet = await createPet(req.user.id, name, avatar);
 
     // Get status for the newly created pet
     const petStatus = await getPetStatusByPetId(pet.id);
@@ -133,5 +128,5 @@ router.put("/:id/sleep", async (req, res) => {
 // DELETE /pets/:id
 router.delete("/:id", async (req, res) => {
   await deletePet(req.pet.id);
-  res.send({ message: "Pet deleted." });
+  res.send({ message: `Pet ${req.pet.name} deleted.` });
 });

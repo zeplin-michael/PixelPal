@@ -1,4 +1,6 @@
-function Clean() {
+import { getAvatarActionImg } from "../../utils/avatarMeta";
+
+function Clean({ avatar }) {
   return (
     <div>
       <h1>clean</h1>
@@ -6,7 +8,7 @@ function Clean() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/assets/pals/green_alien/gn_alien_bath.gif"
+            src={getAvatarActionImg(avatar, "bath")}
             alt="clean img"
           />
         </div>

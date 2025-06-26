@@ -70,7 +70,8 @@ const createPetSteps = [
     img: "/assets/pals/gold_robot/gld_robot_playing.gif",
     alt: "Create Pet",
     label: "Create Your Pet",
-    description: "Fill out the form to create your very own PixelPal!",
+    description:
+      "Go to your profile page and fill out the form to create your very own PixelPal!",
   },
 ];
 
@@ -92,7 +93,7 @@ export default function LearnMore() {
         <p className="learnmore-text">{subtitle}</p>
 
         <div className="feature-gallery">
-          {features.map((feature) => (
+          {features.map((feature, idx) => (
             <div
               key={feature.key}
               className="feature-item"
@@ -104,6 +105,7 @@ export default function LearnMore() {
               role="button"
               aria-label={`Learn more about ${feature.label}`}
             >
+              <span className="feature-number">{idx + 1}</span>
               <img
                 src={feature.img}
                 alt={feature.alt}

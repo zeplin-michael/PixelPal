@@ -31,7 +31,7 @@ export default function ProfilePage() {
   // If pet exists, show pet profile
   return (
     <div className="profile-container">
-      <h2>Your Pet</h2>
+      <h2>Your Pals</h2>
       <PetProfile pet={pet} />
     </div>
   );

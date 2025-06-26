@@ -1,4 +1,6 @@
-function Play() {
+import { getAvatarActionImg } from "../../utils/avatarMeta";
+
+function Play({ avatar }) {
   return (
     <div>
       <h1>play</h1>
@@ -6,7 +8,7 @@ function Play() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/assets/pals/green_alien/gn_alien_playing.gif"
+            src={getAvatarActionImg(avatar, "playing")}
             alt="playing img"
           />
         </div>

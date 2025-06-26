@@ -19,22 +19,22 @@ export default function PalLayout() {
   // Mutations for each action
   const { mutate: feedPet, loading: feeding } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.id}/feed` : null,
+    pet ? `/pets/${pet.user_id}/feed` : null,
     []
   );
   const { mutate: playPet, loading: playing } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.id}/play` : null,
+    pet ? `/pets/${pet.user_id}/play` : null,
     []
   );
   const { mutate: sleepPet, loading: sleeping } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.id}/sleep` : null,
+    pet ? `/pets/${pet.user_id}/sleep` : null,
     []
   );
   const { mutate: cleanPet, loading: cleaning } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.id}/clean` : null,
+    pet ? `/pets/${pet.user_id}/clean` : null,
     []
   );
 
@@ -82,15 +82,15 @@ export default function PalLayout() {
   function renderScene() {
     switch (currentScene) {
       case "feed":
-        return <Feed />;
+        return <Feed avatar={pet.avatar_url} />;
       case "clean":
-        return <Clean />;
+        return <Clean avatar={pet.avatar_url} />;
       case "sleep":
-        return <Sleep />;
+        return <Sleep avatar={pet.avatar_url} />;
       case "play":
-        return <Play />;
+        return <Play avatar={pet.avatar_url} />;
       default:
-        return <Default />;
+        return <Default avatar={pet.avatar_url} />;
     }
   }
 

@@ -2,26 +2,29 @@ import React, { useState } from "react";
 import "./ProfilePage.css";
 import { usePet } from "../../api/PetContext";
 import useMutation from "../../api/useMutation";
+import { AVATAR_META, getAvatarActionImg } from "../utils/avatarMeta";
+
+const AVATAR_OPTIONS = Object.entries(AVATAR_META).map(([value, meta]) => ({
+  label: value.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase()),
+  value,
+  img: getAvatarActionImg(value, "idle"),
+}));
 
 function CreatePetForm() {
   const { refreshPet } = usePet();
   const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState(AVATAR_OPTIONS[0].value);
+  const [showAvatarPopup, setShowAvatarPopup] = useState(false);
 
-  // Set up the mutation: method, endpoint, tags to invalidate (if any)
-  const { mutate, loading, error } = useMutation(
-    "POST",
-    "/pets",
-    [] // You could add a tag like ["pet"] if your useQuery uses tags
-  );
+  const { mutate, loading, error } = useMutation("POST", "/pets", []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = await mutate({ name });
+    const success = await mutate({ name, avatar });
     if (success) {
-      await refreshPet(); // Refetch pet after creation
-      setName(""); // Optionally clear the input
+      await refreshPet();
+      setName("");
     }
-    // error is handled by the hook
   };
 
   return (
@@ -33,6 +36,57 @@ function CreatePetForm() {
         required
         disabled={loading}
       />
+      <div className="avatar-popup-selector">
+        <button
+          type="button"
+          className="avatar-select-btn"
+          onClick={() => setShowAvatarPopup(true)}
+          disabled={loading}
+        >
+          <img
+            src={getAvatarActionImg(avatar, "idle")}
+            alt="Selected avatar"
+            className="avatar-img"
+          />
+          <span>Select Avatar</span>
+        </button>
+        {showAvatarPopup && (
+          <div
+            className="avatar-popup-overlay"
+            onClick={() => setShowAvatarPopup(false)}
+          >
+            <div className="avatar-popup" onClick={(e) => e.stopPropagation()}>
+              <h4>Choose Your Avatar</h4>
+              <div className="avatar-popup-list">
+                {AVATAR_OPTIONS.map((opt) => (
+                  <button
+                    type="button"
+                    key={opt.value}
+                    className={`avatar-popup-option${
+                      avatar === opt.value ? " selected" : ""
+                    }`}
+                    onClick={() => {
+                      setAvatar(opt.value);
+                      setShowAvatarPopup(false);
+                    }}
+                  >
+                    <img src={opt.img} alt={opt.label} className="avatar-img" />
+                    <span>{opt.label}</span>
+                  </button>
+                ))}
+              </div>
+              <button
+                className="avatar-popup-close"
+                type="button"
+                onClick={() => setShowAvatarPopup(false)}
+                aria-label="Close"
+              >
+                &times;
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
       <button type="submit" disabled={loading}>
         {loading ? "Creating..." : "Create Pal"}
       </button>
