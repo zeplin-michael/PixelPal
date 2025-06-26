@@ -6,7 +6,7 @@
 import { createContext, useContext, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 
-export const API = "https://pixelpal-44w4.onrender.com";
+export const API = import.meta.env.VITE_API_URL;
 
 const ApiContext = createContext();
 
