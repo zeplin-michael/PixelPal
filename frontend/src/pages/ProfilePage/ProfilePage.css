@@ -8,19 +8,8 @@
   background-color: hsl(25, 100%, 86%);
   background-image: radial-gradient(#ffc59c 0.12rem, transparent 0.12rem),
     radial-gradient(#ffb27b 0.12rem, transparent 0.12rem);
-  background-size: 225px;
+  background-size: 2rem 2rem;
   background-position: 0 0, 1rem 1rem;
-}
-
-.profile-container > h3 {
-  font-weight: bold;
-  font-size: 30px;
-  text-align: center;
-  text-shadow: 4px 4px 2px #ffffff;
-  background-color: hsla(25, 100%, 86%, 0.841);
-  margin: 10px;
-  padding: 0px;
-  border-radius: 10px;
 }
 
 .pet-profile {
