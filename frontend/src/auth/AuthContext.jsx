@@ -12,30 +12,22 @@ export function AuthProvider({ children }) {
   }, [token]);
 
   const register = async (credentials) => {
-    // API +
-    const response = await fetch(
-      "https://pixelpal-44w4.onrender.com/users/register",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credentials),
-      }
-    );
+    const response = await fetch(API + "/users/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
+    });
     const result = await response.text();
     if (!response.ok) throw Error(result);
     setToken(result);
   };
 
   const login = async (credentials) => {
-    // API +
-    const response = await fetch(
-      "https://pixelpal-44w4.onrender.com/users/login",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credentials),
-      }
-    );
+    const response = await fetch(API + "/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials),
+    });
     const result = await response.text();
     if (!response.ok) throw Error(result);
     setToken(result);
