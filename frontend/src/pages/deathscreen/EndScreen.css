@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: url("./gravestone_img.png") no-repeat center center; */
+  background: url("/death_page/gravestone.png") no-repeat center center;
   background-size: contain;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   padding: 2rem;
