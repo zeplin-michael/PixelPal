@@ -76,7 +76,8 @@ router.put("/:id/feed", async (req, res) => {
     }
 
     await feedPet(req.pet.id);
-    res.send({ message: "Pet fed." });
+     const petStatus = await getPetStatusByPetId(req.pet.id);
+    res.send({ message: "Pet fed.", petStatus });
   } catch (err) {
     console.error("Error feeding pet:", err);
     res.status(500).send("An error occurred while feeding the pet.");
