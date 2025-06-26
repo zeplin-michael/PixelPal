@@ -11,7 +11,7 @@ export default function Gallery() {
         <div className="feature-grid">
           <div className="gallery-item">
             <img
-              src="/gallery_page/mercat.png"
+              src="/gallery_page/catfish.png"
               alt="PixelPal"
               className="feature-image"
             />
@@ -20,7 +20,7 @@ export default function Gallery() {
 
           <div className="gallery-item">
             <img
-              src="/gallery_page/bird.png"
+              src="/gallery_page/chickenfly.png"
               alt="PixelPal 2"
               className="feature-image"
             />
