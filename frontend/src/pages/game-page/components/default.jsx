@@ -1,4 +1,6 @@
-function Default() {
+import { getAvatarActionImg } from "../../utils/avatarMeta";
+
+function Default({ avatar }) {
   return (
     <div>
       <h1>HELLO!</h1>
@@ -6,7 +8,7 @@ function Default() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/assets/pals/green_alien/gn_alien_idle.gif"
+            src={getAvatarActionImg(avatar, "idle")}
             alt="default idle img"
           />
         </div>

@@ -1,4 +1,6 @@
-function Sleep() {
+import { getAvatarActionImg } from "../../utils/avatarMeta";
+
+function Sleep({ avatar }) {
   return (
     <div>
       <h1>sleep</h1>
@@ -6,7 +8,7 @@ function Sleep() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/assets/pals/green_alien/gn_alien_sleeping.gif"
+            src={getAvatarActionImg(avatar, "sleeping")}
             alt="sleep image"
           />
         </div>

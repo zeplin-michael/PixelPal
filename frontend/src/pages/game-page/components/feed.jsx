@@ -1,4 +1,6 @@
-function Feed() {
+import { getAvatarActionImg } from "../../utils/avatarMeta";
+
+function Feed({ avatar }) {
   return (
     <div>
       <h1>feed</h1>
@@ -6,7 +8,7 @@ function Feed() {
         <div className="scene-img-frame">
           <img
             className="scene-img"
-            src="/assets/pals/green_alien/gn_alien_eating.gif"
+            src={getAvatarActionImg(avatar, "eating")}
             alt="feed image"
           />
         </div>
