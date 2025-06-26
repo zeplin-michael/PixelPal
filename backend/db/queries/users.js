@@ -45,4 +45,10 @@ export async function getUserById(id) {
   return user;
 }
 
-// DONE
+export async function deleteUserById(id) {
+  const sql = `DELETE FROM users WHERE id = $1 RETURNING *`;
+  const {
+    rows: [user],
+  } = await db.query(sql, [id]);
+  return user;
+}

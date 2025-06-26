@@ -22,7 +22,6 @@ export async function getPetStatusByPetId(petId) {
 }
 
 // updates every status
-// check if throws error=====================
 export async function updatePetStatus({
   hunger,
   cleanliness,
@@ -55,8 +54,6 @@ export async function updatePetStatus({
   return parsePetStatus(status);
 }
 
-// add a calculation to make decay affect health======================
-
 export async function decayPetStatusIfNeeded(petId) {
   const sql = `SELECT * FROM pet_status WHERE pet_id = $1`;
   const { rows } = await db.query(sql, [petId]);
@@ -66,16 +63,21 @@ export async function decayPetStatusIfNeeded(petId) {
   const current = rows[0];
 
   const decayRates = {
-    hunger: 0.2,
-    cleanliness: 0.4,
-    happiness: 1.0,
+    hunger: 0.5,
+    cleanliness: 0.2,
+    happiness: 0.4,
     energy: 0.3,
   };
 
+  // function minutesSince(timestamp) {
+  //   if (!timestamp) return 0;
+  //   const minutes = Math.floor((Date.now() - new Date(timestamp)) / 60000);
+  //   return minutes;
+  // }
+
   function minutesSince(timestamp) {
-    if (!timestamp) return 0;
-    const minutes = Math.floor((Date.now() - new Date(timestamp)) / 60000);
-    return minutes;
+    if (!timestamp) return 0; // Treat as "just now" instead of unlimited decay
+    return Math.floor((Date.now() - new Date(timestamp)) / 60000);
   }
 
   const updated = {
@@ -101,7 +103,6 @@ export async function decayPetStatusIfNeeded(petId) {
     dead: current.dead,
   };
 
-
   //     const averageStat = (
   //   updated.hunger +
   //   updated.cleanliness +
@@ -109,7 +110,6 @@ export async function decayPetStatusIfNeeded(petId) {
   //   updated.energy
   // ) / 4;
   // updated.health = Math.round(averageStat);
-
 
   // Base health as average of core stats
   let health =
@@ -120,7 +120,7 @@ export async function decayPetStatusIfNeeded(petId) {
     4;
 
   //  Apply penalties for any stat that hit 0
-  const penaltyPerZeroStat = 5;
+  const penaltyPerZeroStat = 2;
   const zeroStats = ["hunger", "cleanliness", "happiness", "energy"].filter(
     (stat) => updated[stat] === 0
   ).length;

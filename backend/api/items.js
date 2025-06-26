@@ -30,8 +30,6 @@ router.post(
   validateItemFields,
 
   async (req, res) => {
-    const item = await createItem(req.body);
-    res.status(201).send(item);
     try {
       const item = await createItem(req.body);
       res.status(201).send(item);

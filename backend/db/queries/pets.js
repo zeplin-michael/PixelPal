@@ -32,19 +32,11 @@ export async function getPetById(id) {
   return pet;
 }
 
-// gets singular pet
-// doesn't support mulitple pets of user
-export async function getPetByUserId(userId) {
-  const sql = `
-    SELECT pets.*, pet_status.*
-    FROM pets
-    JOIN pet_status ON pets.id = pet_status.pet_id
-    WHERE user_id = $1
-  `;
-  const {
-    rows: [pet],
-  } = await db.query(sql, [userId]);
-  return pet;
+// gets all pets by user
+export async function getPetsByUserId(userId) {
+  const sql = `SELECT * FROM pets WHERE user_id = $1 ORDER BY id`;
+  const { rows: pets } = await db.query(sql, [userId]);
+  return pets;
 }
 
 // gets full status of pet
@@ -124,5 +116,3 @@ export async function deletePet(petId) {
   `;
   await db.query(sql, [petId]);
 }
-
-// DONE

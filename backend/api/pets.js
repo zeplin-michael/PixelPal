@@ -21,9 +21,9 @@ router.use(requireUser);
 
 // GET /pets - get current user's pet
 router.get("/", async (req, res) => {
-  const pet = await getPetByUserId(req.user.id);
-  if (!pet) return res.status(404).send("Pet not found.");
-  res.send(pet);
+  const pets = await getPetByUserId(req.user.id);
+  if (!pets) return res.status(404).send("Pet not found.");
+  res.send(pets);
 });
 
 // POST /pets - create new pet ================= double check this
@@ -81,7 +81,8 @@ router.put("/:id/feed", async (req, res) => {
     }
 
     await feedPet(req.pet.id);
-    res.send({ message: "Pet fed." });
+    const petStatus = await getPetStatusByPetId(req.pet.id);
+    res.json({ message: "Pet fed.", petStatus });
   } catch (err) {
     console.error("Error feeding pet:", err);
     res.status(500).send("An error occurred while feeding the pet.");
@@ -98,7 +99,8 @@ router.put("/:id/clean", async (req, res) => {
     const petStatus = await getPetStatusByPetId(req.pet.id);
     res.json({ message: "Pet cleaned.", petStatus });
   } catch (err) {
-    console.log(err);
+    console.error("Error cleaning pet:", err);
+    res.status(500).send("An error occurred while cleaning the pet.");
   }
 });
 

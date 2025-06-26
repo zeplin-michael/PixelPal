@@ -34,7 +34,13 @@ export async function getItemById(id) {
 }
 
 //updates item by id
-export async function updateItemById(name, description, image_url, price, id) {
+export async function updateItemById({
+  name,
+  description,
+  image_url,
+  price,
+  id,
+}) {
   const sql = `UPDATE items
      SET name = $1, description = $2, image_url = $3, price = $4
      WHERE id = $5
