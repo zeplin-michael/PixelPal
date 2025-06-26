@@ -13,10 +13,8 @@ export default function ProfilePage() {
   if (!token) {
     return (
       <div className="profile-container">
-        <h3 className="container-login">
-          You are not logged in, please login to view your profile or create a
-          pal!
-        </h3>
+        You are not logged in, please login to view your profile or create a
+        pal!
       </div>
     );
     // If no pet, show create form
