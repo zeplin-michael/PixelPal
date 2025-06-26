@@ -12,7 +12,6 @@ export async function getShopInventory() {
 }
 
 // gets item from shop inventory
-// changed function to differentiate food and clothing in the shop===================
 export async function buyItemForPet({ itemId, userId, petId }) {
   // Fetch item details including price and type
   const {
