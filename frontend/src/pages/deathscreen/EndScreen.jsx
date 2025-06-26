@@ -8,16 +8,13 @@ import { motion } from "framer-motion";
 import useQuery from "../../api/useQuery";
 import "./EndScreen.css";
 import { usePet } from "../../api/PetContext";
+import gravestone from "/death_page/gravestone.png";
 
 const Tombstone = () => (
   //
   <>
     <div id="gravestone-emoji">🪦</div>
-    <img
-      src="/death_page/gravestone.png"
-      alt="Gravestone"
-      className="background"
-    />
+    <img src={gravestone} alt="Gravestone" className="background" />
     <br />
     <h2>R.I.P.</h2>
   </>
