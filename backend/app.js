@@ -11,7 +11,7 @@ import overallStatsRouter from "#api/pet_overall_stats";
 import cors from "cors";
 import morgan from "morgan";
 
-app.use(cors({ origin: ["https://thepixelpal.netlify.app"] }));
+app.use(cors({ origin: process.env.CORS_ORIGIN ?? /localhost/ }));
 
 app.use(morgan("dev"));
 
