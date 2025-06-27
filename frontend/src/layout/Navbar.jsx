@@ -26,7 +26,7 @@ export default function Navbar() {
           <div className="navbar-brand">
             <NavLink id="brand" to="/">
               <img
-                src="/home_page/home-icon.svg"
+                src="/home_page/home-icon.png"
                 alt="Home"
                 className="navbar-home-icon"
               />

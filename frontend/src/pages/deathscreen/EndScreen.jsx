@@ -3,6 +3,7 @@
 // This component uses Framer Motion for animations and CSS for styling.
 // Sound effect from pixabay.com, created by Lesiakower.
 // License: CC0 1.0 Universal (CC0 1.0) Public
+import { getAvatarActionImg } from "../utils/avatarMeta";
 
 import { motion } from "framer-motion";
 import useQuery from "../../api/useQuery";
@@ -98,6 +99,7 @@ const Options = ({ onSelect }) => {
                 }}
               >
                 <h3>Lifetime Stats</h3>
+                <img src={getAvatarActionImg(avatar, "death")} alt="dead pet" />
                 <p>Total Meals: {stats.total_meals}</p>
                 <p>Total Baths: {stats.total_baths}</p>
                 <p>Total Play Sessions: {stats.total_play_sessions}</p>

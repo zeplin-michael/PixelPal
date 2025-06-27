@@ -6,9 +6,11 @@
 
   flex-grow: 1;
   background-color: hsl(25, 100%, 86%);
-  background-image: radial-gradient(#ffc59c 0.12rem, transparent 0.12rem),
+  /* background-image: radial-gradient(#ffc59c 0.12rem, transparent 0.12rem),
     radial-gradient(#ffb27b 0.12rem, transparent 0.12rem);
-  background-size: 2rem 2rem;
+  background-size: 2rem 2rem; */
+  background-image: url("assets/misc/background-1.gif");
+  background-size: 400px;
   background-position: 0 0, 1rem 1rem;
 }
 

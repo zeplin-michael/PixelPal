@@ -31,19 +31,19 @@ header .navbar-container.scrolled {
 .navbar-home-icon {
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #ffc79f;
-  border-radius: 5px;
-  padding: 0.2em;
-  border: 1px solid #ffaf77;
-  image-rendering: pixelated;
+  /* background-color: #ffc79f; */
+  border-radius: 0px;
+  /* padding: 0.2em; */
+  /* border: 1px solid #ffaf77; */
+  /* image-rendering: pixelated; */
 }
 
-.navbar-home-icon:hover {
+/* .navbar-home-icon:hover {
   background-color: #ffaf77;
   border: 1px solid #ffc79f;
   cursor: pointer;
   transform: translateY(2px);
-}
+} */
 
 a {
   text-decoration: none;
