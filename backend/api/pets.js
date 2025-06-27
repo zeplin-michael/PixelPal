@@ -7,7 +7,8 @@ import requireUser from "#middleware/requireUser";
 
 import {
   createPet,
-  getPetByUserId,
+  getPetsByUserId,
+  getPetById,
   feedPet,
   cleanPet,
   playWithPet,
@@ -19,11 +20,11 @@ import { getPetStatusByPetId } from "#db/queries/pet_status";
 
 router.use(requireUser);
 
-// GET /pets - get current user's pet
+// GET /pets - get current user's pets
 router.get("/", async (req, res) => {
-  const pet = await getPetByUserId(req.user.id);
-  if (!pet) return res.status(404).send("Pet not found.");
-  res.send(pet);
+  const pets = await getPetsByUserId(req.user.id);
+  if (!pets) return res.status(404).send("Pet not found.");
+  res.send(pets);
 });
 
 // POST /pets - create new pet ================= double check this
@@ -54,7 +55,7 @@ router.post("/", requireBody(["name", "avatar"]), async (req, res) => {
 
 // Route param middleware: load pet status
 router.param("id", async (req, res, next, id) => {
-  const pet = await getPetByUserId(id);
+  const pet = await getPetById(id);
   if (!pet) return res.status(404).send("Pet not found.");
   if (pet.dead) {
     return res.status(400).send({ message: "Cannot interact with dead pet." });
@@ -76,7 +77,7 @@ router.put("/:id/feed", async (req, res) => {
     }
 
     await feedPet(req.pet.id);
-     const petStatus = await getPetStatusByPetId(req.pet.id);
+    const petStatus = await getPetStatusByPetId(req.pet.id);
     res.send({ message: "Pet fed.", petStatus });
   } catch (err) {
     console.error("Error feeding pet:", err);

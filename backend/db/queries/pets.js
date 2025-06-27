@@ -34,17 +34,15 @@ export async function getPetById(id) {
 
 // gets singular pet
 // doesn't support mulitple pets of user
-export async function getPetByUserId(userId) {
+export async function getPetsByUserId(userId) {
   const sql = `
     SELECT pets.*, pet_status.*
     FROM pets
     JOIN pet_status ON pets.id = pet_status.pet_id
     WHERE user_id = $1
   `;
-  const {
-    rows: [pet],
-  } = await db.query(sql, [userId]);
-  return pet;
+  const { rows: pets } = await db.query(sql, [userId]);
+  return pets;
 }
 
 // gets full status of pet

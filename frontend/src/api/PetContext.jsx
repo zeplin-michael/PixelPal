@@ -12,12 +12,13 @@ const PetContext = createContext();
 
 export function PetProvider({ children }) {
   const { token } = useAuth();
-  const [pet, setPet] = useState(null);
+  //pets is an array of objects
+  const [pets, setPets] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch pet from backend
-  const fetchPet = useCallback(async () => {
+  // Fetch pets from backend
+  const fetchPets = useCallback(async () => {
     if (!token) return;
     setLoading(true);
     setError(null);
@@ -27,10 +28,10 @@ export function PetProvider({ children }) {
       });
       if (res.ok) {
         const data = await res.json();
-        setPet(data);
+        setPets(data);
         // console.log("pet fetched", data);
       } else {
-        setPet(null);
+        setPets(null);
       }
     } catch (e) {
       setError(e.message);
@@ -43,14 +44,14 @@ export function PetProvider({ children }) {
   useEffect(() => {
     if (!token) return;
 
-    fetchPet();
-    const interval = setInterval(fetchPet, 5000);
+    fetchPets();
+    const interval = setInterval(fetchPets, 5000);
 
     return () => clearInterval(interval);
-  }, [fetchPet, token]);
+  }, [fetchPets, token]);
 
   // Expose pet, loading, error, and a manual refresh
-  const value = { pet, setPet, loading, error, refreshPet: fetchPet };
+  const value = { pets, setPets, loading, error, refreshPets: fetchPets };
 
   return <PetContext.Provider value={value}>{children}</PetContext.Provider>;
 }
