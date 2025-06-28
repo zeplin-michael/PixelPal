@@ -40,6 +40,7 @@ export async function getPetsByUserId(userId) {
     FROM pets
     JOIN pet_status ON pets.id = pet_status.pet_id
     WHERE user_id = $1
+    ORDER BY pets.birthday ASC, pets.id ASC
   `;
   const { rows: pets } = await db.query(sql, [userId]);
   return pets;

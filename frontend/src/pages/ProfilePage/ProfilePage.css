@@ -316,6 +316,10 @@
   font-weight: bold;
   color: #ff7716;
   transition: border 0.2s, background 0.2s, color 0.2s;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .avatar-select-btn .avatar-img {
@@ -330,7 +334,6 @@
 .avatar-select-btn:focus {
   background: #ff9950;
   color: #fff;
-  border: 2px solid #ff7716;
 }
 
 .avatar-popup-overlay {
@@ -401,11 +404,11 @@
   background: #fff8f3;
   font-size: 1.1rem;
   color: #ff7716;
+  border: 2px solid #ff9950;
 }
 
 .avatar-popup-option.selected,
 .avatar-popup-option:hover {
-  border: 2px solid #ff9950;
   background: #ff9950;
   color: #fff;
 }
@@ -454,6 +457,7 @@
   width: 100%;
   max-width: 60rem;
   margin: 2rem auto 0 auto;
+  padding-bottom: 2rem;
   justify-items: center;
   align-items: stretch;
 }
@@ -519,8 +523,7 @@
   border-radius: 1rem;
   box-shadow: 0 8px 32px #ffb27b33;
   padding: 2.5rem 2rem 2rem 2rem;
-  max-width: 28rem;
-  width: 95vw;
+  height: 60%;
   position: relative;
   animation: popIn 0.25s cubic-bezier(0.4, 0.8, 0.4, 1.2);
 }
@@ -559,4 +562,83 @@
 }
 .modal-close:hover {
   color: #ff8b5c;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 60rem;
+  padding: 5rem;
+}
+
+.toggle-dead-btn {
+  position: relative;
+  background: #ffb27b;
+  border: 3px solid #ffb27b;
+  border-radius: 10px;
+  width: 5rem;
+  height: 5rem;
+
+  color: #ff7716;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px #ffb27b44;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+  margin-left: 1rem;
+  outline: none;
+}
+.toggle-dead-btn:hover,
+.toggle-dead-btn:focus {
+  background: #ffb27b;
+  color: #fff;
+  border: 3px solid #ff7716;
+  transform: scale(1.08);
+}
+
+.toggle-dead-btn span[role="img"] {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.toggle-dead-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.toggle-dead-btn:hover .toggle-dead-tooltip,
+.toggle-dead-btn:focus .toggle-dead-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dead-pet-card {
+  background: #fff8f3;
+  border: 2px solid #ffb27b;
+  border-radius: 0.8rem;
+  padding: 1.2rem 1rem;
+  margin-top: 1.2rem;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 2px 8px #ffb27b22;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
