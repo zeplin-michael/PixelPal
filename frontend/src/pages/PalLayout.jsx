@@ -10,7 +10,7 @@ import Sleep from "./game-page/components/sleep";
 import Feed from "./game-page/components/feed";
 import Play from "./game-page/components/play";
 import Default from "./game-page/components/default";
-import CreatePetForm from "./ProfilePage/CreatePetForm";
+import CreatePetForm from "./ProfilePage/CreatePetForm/CreatePetForm";
 
 export default function PalLayout() {
   const navigate = useNavigate();

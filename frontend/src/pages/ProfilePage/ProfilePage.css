@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   flex-grow: 1;
   background-color: hsl(25, 100%, 86%);
@@ -569,7 +568,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 60rem;
+  background-color: #ffc59c;
+  border-bottom: 2px solid #ffb27b;
   padding: 5rem;
 }
 
