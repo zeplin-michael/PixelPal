@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./PalLayout.css";
+import { useSelectedPet } from "../api/SelectedPetContext";
 import { usePet } from "../api/PetContext";
 import useMutation from "../api/useMutation";
 import useIncrementOverallStat from "../api/useIncrementOverallStat";
@@ -14,27 +15,27 @@ import CreatePetForm from "./ProfilePage/CreatePetForm/CreatePetForm";
 
 export default function PalLayout() {
   const navigate = useNavigate();
-  const { pet, loading, error, refreshPet } = usePet();
-
+  const { pets, refreshPets } = usePet();
+  const { selectedPet, setSelectedPet } = useSelectedPet();
   // Mutations for each action
   const { mutate: feedPet, loading: feeding } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.user_id}/feed` : null,
+    selectedPet ? `/pets/${selectedPet.id}/feed` : null,
     []
   );
   const { mutate: playPet, loading: playing } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.user_id}/play` : null,
+    selectedPet ? `/pets/${selectedPet.id}/play` : null,
     []
   );
   const { mutate: sleepPet, loading: sleeping } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.user_id}/sleep` : null,
+    selectedPet ? `/pets/${selectedPet.id}/sleep` : null,
     []
   );
   const { mutate: cleanPet, loading: cleaning } = useMutation(
     "PUT",
-    pet ? `/pets/${pet.user_id}/clean` : null,
+    selectedPet ? `/pets/${selectedPet.id}/clean` : null,
     []
   );
 
@@ -43,75 +44,81 @@ export default function PalLayout() {
 
   // Increment overall stats
   const [incrementStat, incrementing, incrementError] = useIncrementOverallStat(
-    pet ? pet.id : null
+    selectedPet ? selectedPet.id : null
   );
 
   // Redirect to deathscreen if pet is dead
   useEffect(() => {
-    if (pet && pet.dead) {
+    if (selectedPet && selectedPet.dead) {
       navigate("/deathscreen");
     }
-  }, [pet, navigate]);
+  }, [selectedPet, navigate]);
+
+  // Sync selectedPet with latest pets array
+  useEffect(() => {
+    if (!selectedPet || !pets) return;
+    const updated = pets.find((p) => p.id === selectedPet.id);
+    if (updated && updated !== selectedPet) {
+      setSelectedPet(updated);
+    }
+  }, [pets, selectedPet, setSelectedPet]);
 
   // Action handlers
   async function handleFeed() {
     await feedPet();
     setCurrentScene("feed");
-    refreshPet();
+    refreshPets();
     await incrementStat("total_meals");
   }
   async function handlePlay() {
     await playPet();
     setCurrentScene("play");
-    refreshPet();
+    refreshPets();
     await incrementStat("total_play_sessions");
   }
   async function handleSleep() {
     await sleepPet();
     setCurrentScene("sleep");
-    refreshPet();
+    refreshPets();
     await incrementStat("total_sleep_sessions");
   }
   async function handleClean() {
     await cleanPet();
     setCurrentScene("clean");
-    refreshPet();
+    refreshPets();
     await incrementStat("total_baths");
   }
 
   function renderScene() {
     switch (currentScene) {
       case "feed":
-        return <Feed avatar={pet.avatar_url} />;
+        return <Feed avatar={selectedPet.avatar_url} />;
       case "clean":
-        return <Clean avatar={pet.avatar_url} />;
+        return <Clean avatar={selectedPet.avatar_url} />;
       case "sleep":
-        return <Sleep avatar={pet.avatar_url} />;
+        return <Sleep avatar={selectedPet.avatar_url} />;
       case "play":
-        return <Play avatar={pet.avatar_url} />;
+        return <Play avatar={selectedPet.avatar_url} />;
       default:
-        return <Default avatar={pet.avatar_url} />;
+        return <Default avatar={selectedPet.avatar_url} />;
     }
   }
 
-  // Loading and error states
-  if (loading && !pet) return <div>Loading your pet...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!pet) return <CreatePetForm />;
+  if (!selectedPet) return <CreatePetForm />;
 
   return (
     <div className="layout">
       <div className="scene-container">
         {renderScene()}
         <div className="stats-bar">
-          <p>💗 Health: {pet.health}</p>
-          <p>🍔 Food: {pet.hunger}</p>
-          <p>🎲 Play: {pet.happiness}</p>
-          <p>🛏️ Sleep: {pet.energy}</p>
-          <p>🛁 Bath: {pet.cleanliness}</p>
+          <p>💗 Health: {selectedPet.health}</p>
+          <p>🍔 Food: {selectedPet.hunger}</p>
+          <p>🎲 Play: {selectedPet.happiness}</p>
+          <p>🛏️ Sleep: {selectedPet.energy}</p>
+          <p>🛁 Bath: {selectedPet.cleanliness}</p>
         </div>
       </div>
-      {!pet.dead && (
+      {!selectedPet.dead && (
         <div className="button-row">
           <button onClick={handleFeed} disabled={feeding}>
             Feed

@@ -5,14 +5,17 @@ import App from "./App.jsx";
 import { AuthProvider } from "./auth/AuthContext.jsx";
 import "./index.css";
 import { PetProvider } from "./api/PetContext";
+import { SelectedPetProvider } from "./api/SelectedPetContext";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <ApiProvider>
       <PetProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <SelectedPetProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </SelectedPetProvider>
       </PetProvider>
     </ApiProvider>
   </AuthProvider>

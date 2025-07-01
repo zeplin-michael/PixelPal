@@ -26,6 +26,7 @@
   width: 100%;
   max-width: 350px;
   gap: 0.5rem;
+  transition: transform 0.2s;
 }
 
 .pet-profile h3 {
@@ -58,6 +59,18 @@
 .pet-profile a:focus {
   background-color: #ff7716;
   color: #fff;
+}
+
+.pet-profile:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 24px #ffb27b22;
+  border: 2.5px solid #ff7716;
+  cursor: pointer;
+}
+
+.pet-profile.selected {
+  border: 2px solid #ff7716;
+  background-color: #ffb27b;
 }
 
 .dead-pet-stats {

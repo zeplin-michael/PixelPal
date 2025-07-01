@@ -1,18 +1,34 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
-import useQuery from "../../../api/useQuery";
-import { getAvatarActionImg } from "../../utils/avatarMeta";
-import StatsInfoModal from "./StatsInfoModal";
+import { useSelectedPet } from "../../../api/SelectedPetContext";
 
-function AlivePetProfile({ pet }) {
-  const [showStatsInfo, setShowStatsInfo] = useState(false);
+import { getAvatarActionImg } from "../../utils/avatarMeta";
+
+function AlivePetProfile({ pet, onShowStats }) {
+  const { selectedPet, setSelectedPet } = useSelectedPet();
 
   return (
-    <div className="pet-profile">
+    <div
+      className={`pet-profile ${selectedPet?.id === pet.id ? "selected" : ""}`}
+      onClick={() => {
+        if (!selectedPet || selectedPet.id !== pet.id) {
+          setSelectedPet(pet);
+        }
+      }}
+      tabIndex={0}
+      role="button"
+      aria-label={`Select ${pet.name}`}
+      onKeyDown={(e) =>
+        (e.key === "Enter" || e.key === " ") && setSelectedPet(pet)
+      }
+    >
       <button
         className="stats-info-btn"
         aria-label="What do these stats mean?"
-        onClick={() => setShowStatsInfo(true)}
+        onClick={(e) => {
+          e.stopPropagation();
+          onShowStats();
+        }}
         tabIndex={0}
       >
         ?
@@ -29,11 +45,8 @@ function AlivePetProfile({ pet }) {
       <p>Cleanliness: {pet.cleanliness}</p>
       <p>Happiness: {pet.happiness}</p>
       <p>Energy: {pet.energy}</p>
-      <p>Coins: {pet.coins}</p>
+
       <Link to="/pal">Play</Link>
-      {showStatsInfo && (
-        <StatsInfoModal onClose={() => setShowStatsInfo(false)} />
-      )}
     </div>
   );
 }

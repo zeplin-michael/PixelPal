@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { usePet } from "../../api/PetContext";
 import { useAuth } from "../../auth/AuthContext";
+import { useSelectedPet } from "../../api/SelectedPetContext";
 import "./ProfilePage.css";
 import CreatePetForm from "./CreatePetForm/CreatePetForm";
 import PetGrid from "./Profile/PetGrid";
@@ -12,8 +13,17 @@ export default function ProfilePage() {
   const { token } = useAuth();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showDead, setShowDead] = useState(false);
-
+  const { setSelectedPet, selectedPet } = useSelectedPet();
   if (error) return <div>Error: {error}</div>;
+
+  const handleGridClick = (e) => {
+    // Only deselect if the click is directly on the profile container, not a child
+    if (e.target === e.currentTarget) {
+      if (selectedPet !== null) {
+        setSelectedPet(null);
+      }
+    }
+  };
 
   if (!token) {
     return (
@@ -38,8 +48,8 @@ export default function ProfilePage() {
   const deadPets = pets.filter((pet) => pet.dead);
 
   return (
-    <div className="profile-container">
-      <div className="profile-header">
+    <div className="profile-container" onClick={handleGridClick}>
+      <div className="profile-header" onClick={handleGridClick}>
         <h2>{showDead ? "Your Fallen Pals" : "Your Pals"}</h2>
         <ToggleDeadButton showDead={showDead} setShowDead={setShowDead} />
       </div>
@@ -63,7 +73,12 @@ export default function ProfilePage() {
         />
       )}
       {showCreateModal && !showDead && (
-        <CreatePetForm onClose={() => setShowCreateModal(false)} />
+        <CreatePetForm
+          onClose={() => {
+            setShowCreateModal(false);
+            setSelectedPet(null);
+          }}
+        />
       )}
     </div>
   );

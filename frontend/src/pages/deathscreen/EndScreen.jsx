@@ -7,7 +7,7 @@
 import { motion } from "framer-motion";
 import useQuery from "../../api/useQuery";
 import "./EndScreen.css";
-import { usePet } from "../../api/PetContext";
+import { useSelectedPet } from "../../api/SelectedPetContext";
 import gravestone from "/death_page/gravestone.png";
 
 const Tombstone = () => (
@@ -25,14 +25,14 @@ const Options = ({ onSelect }) => {
     const audio = new Audio("/death_page/8-bit-game-over-sound-effect.mp3");
     audio.play();
   };
-  const { pet } = usePet();
+  const { selectedPet } = useSelectedPet();
   const {
     data: stats,
     loading,
     error,
   } = useQuery(
-    pet ? `/pet_overall_stats/${pet.id}` : null,
-    pet ? `overallStats-${pet.id}` : null
+    selectedPet ? `/pet_overall_stats/${selectedPet.id}` : null,
+    selectedPet ? `overallStats-${selectedPet.id}` : null
   );
 
   return (

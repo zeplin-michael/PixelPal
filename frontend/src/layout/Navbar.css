@@ -31,10 +31,9 @@ header .navbar-container.scrolled {
 .navbar-home-icon {
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #ffc79f;
+
   border-radius: 5px;
-  padding: 0.2em;
-  border: 1px solid #ffaf77;
+
   image-rendering: pixelated;
 }
 
