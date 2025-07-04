@@ -5,7 +5,8 @@ Use the links below to jump to each section:
 
 - [Project Structure](./Project_Structure.md)
 - [User Flow](./User_Flow.md)
-
+- [Contexts](./Contexts/Contexts.md)
+- [Custom Hooks](./Custom_Hooks/Hooks.md)
 - [Styling Conventions](./Styling_Conventions.md)
 - [Pages](./pages/pages.md)
 
@@ -22,6 +23,7 @@ PixelPal is a virtual pet web application where users can create, care for, and 
   2. Document any new context, hooks, or major UI changes.
   3. Keep the "User Flow" and "Component Architecture" sections up to date.
   4. Make sure to include Logic flow for every page and component.
+  5. I want a detailed explanation of how to use the context, hooks, and components, inputs and outputs, and examples on how to use it.
 
 ---
 
