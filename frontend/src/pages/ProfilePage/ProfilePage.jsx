@@ -7,6 +7,7 @@ import CreatePetForm from "./CreatePetForm/CreatePetForm";
 import PetGrid from "./Profile/PetGrid";
 import ToggleDeadButton from "./Profile/ToggleDeadButton";
 import NoPetsMessage from "./Profile/NoPetsMessage";
+import { Link } from "react-router";
 
 export default function ProfilePage() {
   const { pets, loading, error } = usePet();
@@ -14,6 +15,7 @@ export default function ProfilePage() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showDead, setShowDead] = useState(false);
   const { setSelectedPet, selectedPet } = useSelectedPet();
+
   if (error) return <div>Error: {error}</div>;
 
   const handleGridClick = (e) => {
@@ -28,8 +30,14 @@ export default function ProfilePage() {
   if (!token) {
     return (
       <div className="profile-container">
-        You are not logged in, please login to view your profile or create a
-        pal!
+        <div className="login-link">
+          <Link to="/login">
+            <h4>
+              You are not logged in, please login to view your profile or create
+              a pal!
+            </h4>
+          </Link>
+        </div>
       </div>
     );
     // If no pet, show create form
@@ -37,7 +45,6 @@ export default function ProfilePage() {
   if (!pets) {
     return (
       <div className="profile-container">
-        <h2>You don't have a pal yet!</h2>
         <CreatePetForm />
       </div>
     );

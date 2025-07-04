@@ -32,8 +32,7 @@ export async function getPetById(id) {
   return pet;
 }
 
-// gets singular pet
-// doesn't support mulitple pets of user
+// gets all pets for user
 export async function getPetsByUserId(userId) {
   const sql = `
     SELECT pets.*, pet_status.*

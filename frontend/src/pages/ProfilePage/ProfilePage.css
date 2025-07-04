@@ -11,6 +11,13 @@
   background-position: 0 0, 1rem 1rem;
 }
 
+.no-pets-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .pet-profile {
   position: relative;
   display: flex;
@@ -642,7 +649,6 @@
 }
 
 .dead-pet-card {
-  background: #fff8f3;
   border: 2px solid #ffb27b;
   border-radius: 0.8rem;
   padding: 1.2rem 1rem;
@@ -654,4 +660,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.dead-pet-card li {
+  list-style: none;
+}
+
+.login-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem 1.5rem;
+  flex-basis: 100%;
+}
+
+.login-link h4 {
+  background-color: #ffc59c;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: #444444;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.login-link h4:hover {
+  background-color: #ff9a53;
+  color: #fff;
+  transition: background-color 0.2s, color 0.2s;
+  transform: scale(1.02);
 }

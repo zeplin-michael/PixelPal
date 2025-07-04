@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./PalLayout.css";
-import { useSelectedPet } from "../api/SelectedPetContext";
-import { usePet } from "../api/PetContext";
-import useMutation from "../api/useMutation";
-import useIncrementOverallStat from "../api/useIncrementOverallStat";
+import { useSelectedPet } from "../../api/SelectedPetContext";
+import { usePet } from "../../api/PetContext";
+import useMutation from "../../api/useMutation";
+import useIncrementOverallStat from "../../api/useIncrementOverallStat";
 
-import Clean from "./game-page/components/clean";
-import Sleep from "./game-page/components/sleep";
-import Feed from "./game-page/components/feed";
-import Play from "./game-page/components/play";
-import Default from "./game-page/components/default";
-import CreatePetForm from "./ProfilePage/CreatePetForm/CreatePetForm";
+import Clean from "./components/clean";
+import Sleep from "./components/sleep";
+import Feed from "./components/feed";
+import Play from "./components/play";
+import Default from "./components/default";
+import CreatePetForm from "../ProfilePage/CreatePetForm/CreatePetForm";
 
 export default function PalLayout() {
   const navigate = useNavigate();

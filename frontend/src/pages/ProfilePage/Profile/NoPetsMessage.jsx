@@ -2,8 +2,8 @@ import React from "react";
 
 export default function NoPetsMessage({ message, showAddButton, onAddPet }) {
   return (
-    <div style={{ textAlign: "center" }}>
-      <p style={{ margin: "2rem" }}>{message}</p>
+    <div className="no-pets-message">
+      <h2 style={{ margin: "2rem" }}>{message}</h2>
       {showAddButton && (
         <button
           className="add-pet-card"

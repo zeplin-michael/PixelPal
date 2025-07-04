@@ -7,7 +7,7 @@ import EndScreen from "./pages/deathscreen/EndScreen";
 import Homepage from "./pages/Homepage";
 
 import Gallery from "./pages/Gallery";
-import PalLayout from "./pages/PalLayout";
+import PalLayout from "./pages/game-page/PalLayout";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 import Credits from "./pages/Credits";
