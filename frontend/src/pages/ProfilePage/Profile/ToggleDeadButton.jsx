@@ -1,4 +1,5 @@
 import React from "react";
+import "./ToggleDeadButton.css";
 
 export default function ToggleDeadButton({ showDead, setShowDead }) {
   return (

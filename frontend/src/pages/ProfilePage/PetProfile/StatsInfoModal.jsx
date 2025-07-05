@@ -1,4 +1,5 @@
 import React from "react";
+import "./StatsInfoModal.css";
 
 const STAT_DESCRIPTIONS = {
   health: "Overall well-being of your pet. If it drops to 0, your pet dies.",

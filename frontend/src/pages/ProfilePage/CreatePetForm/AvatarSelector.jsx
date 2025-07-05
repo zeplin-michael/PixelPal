@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AVATAR_META, getAvatarActionImg } from "../../utils/avatarMeta";
+import "./AvatarSelector.css";
 
 const AVATAR_OPTIONS = Object.entries(AVATAR_META).map(([value, meta]) => ({
   label: value.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase()),

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./ModalOverlay.css";
 function ModalOverlay({ onClose, children }) {
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains("modal-overlay")) {

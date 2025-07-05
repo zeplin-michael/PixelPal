@@ -1,0 +1,39 @@
+/* Modal overlay and content */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(34, 34, 59, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s;
+}
+.modal-content {
+  background: #ffc59c;
+  border: 2.5px solid #ffb27b;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px #ffb27b33;
+  padding: 2.5rem 2rem 2rem 2rem;
+  height: 60%;
+  position: relative;
+  animation: popIn 0.25s cubic-bezier(0.4, 0.8, 0.4, 1.2);
+}
+.modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ff7716;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+.modal-close:hover {
+  color: #ff8b5c;
+}

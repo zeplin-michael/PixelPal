@@ -1,4 +1,5 @@
 import React from "react";
+import "./NoPetsMessage.css";
 
 export default function NoPetsMessage({ message, showAddButton, onAddPet }) {
   return (

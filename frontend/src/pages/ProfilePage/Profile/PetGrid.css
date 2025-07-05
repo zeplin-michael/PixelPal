@@ -1,0 +1,11 @@
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 60rem;
+  margin: 2rem auto 0 auto;
+  padding-bottom: 2rem;
+  justify-items: center;
+  align-items: stretch;
+}

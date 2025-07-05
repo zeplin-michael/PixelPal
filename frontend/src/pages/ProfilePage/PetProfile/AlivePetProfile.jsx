@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 import { useSelectedPet } from "../../../api/SelectedPetContext";
-
+import "./AlivePetProfile.css";
 import { getAvatarActionImg } from "../../utils/avatarMeta";
 
 function AlivePetProfile({ pet, onShowStats }) {

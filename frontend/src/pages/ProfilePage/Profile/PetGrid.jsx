@@ -1,6 +1,7 @@
 import React from "react";
 import PetProfile from "../PetProfile/PetProfile";
 import { useSelectedPet } from "../../../api/SelectedPetContext";
+import "./PetGrid.css";
 
 export default function PetGrid({ pets, showAddButton, onAddPet }) {
   const { setSelectedPet, selectedPet } = useSelectedPet();

@@ -1,0 +1,57 @@
+.create-pet-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: #ffc59c;
+  border: 2.5px solid #ffb27b;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 24px #ffb27b22;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 350px;
+}
+
+.create-pet-form input {
+  font-size: 1.1rem;
+  padding: 0.6em 1em;
+  border-radius: 0.5em;
+  border: 2px solid #ffb27b;
+  background: #fff8f3;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 220px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.create-pet-form input:focus {
+  border: 2px solid #ff7716;
+}
+
+.create-pet-form button {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #ffb27b;
+  color: #fff;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.6em 1.5em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #ffb27b33;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.create-pet-form button:hover,
+.create-pet-form button:focus {
+  background: #ff7716;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.create-pet-form [style*="color: red"] {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #ff3b3b !important;
+}

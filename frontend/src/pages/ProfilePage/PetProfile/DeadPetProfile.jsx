@@ -1,7 +1,7 @@
 import React from "react";
 import useQuery from "../../../api/useQuery";
 import { getAvatarActionImg } from "../../utils/avatarMeta";
-
+import "./DeadPetProfile.css";
 function DeadPetProfile({ pet }) {
   const {
     data: stats,

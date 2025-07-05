@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../ProfilePage.css";
+import "./CreatePetForm.css";
 import { usePet } from "../../../api/PetContext";
 import useMutation from "../../../api/useMutation";
 import ModalOverlay from "./ModalOverlay";

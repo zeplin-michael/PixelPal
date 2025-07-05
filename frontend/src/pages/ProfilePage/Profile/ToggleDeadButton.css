@@ -1,0 +1,54 @@
+.toggle-dead-btn {
+  position: relative;
+  background: #ffb27b;
+  border: 3px solid #ffb27b;
+  border-radius: 10px;
+  width: 5rem;
+  height: 5rem;
+
+  color: #ff7716;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px #ffb27b44;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+  margin-left: 1rem;
+  outline: none;
+}
+.toggle-dead-btn:hover,
+.toggle-dead-btn:focus {
+  background: #ffb27b;
+  color: #fff;
+  border: 3px solid #ff7716;
+  transform: scale(1.08);
+}
+
+.toggle-dead-btn span[role="img"] {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.toggle-dead-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.toggle-dead-btn:hover .toggle-dead-tooltip,
+.toggle-dead-btn:focus .toggle-dead-tooltip {
+  visibility: visible;
+  opacity: 1;
+}

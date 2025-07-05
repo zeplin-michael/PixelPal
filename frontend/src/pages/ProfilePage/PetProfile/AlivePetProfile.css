@@ -1,0 +1,71 @@
+.pet-profile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffc59c;
+  border: 2.5px solid #ffb27b;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 24px #ffb27b22;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 350px;
+  gap: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.pet-profile h3 {
+  color: #ff7716;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.pet-profile p {
+  font-size: 1.1rem;
+  color: #222;
+  margin: 0.2rem 0;
+}
+
+.pet-profile a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #ffb27b;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #ff7716;
+  margin-top: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pet-profile a:hover,
+.pet-profile a:focus {
+  background-color: #ff7716;
+  color: #fff;
+}
+
+.pet-profile:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 24px #ffb27b22;
+  border: 2.5px solid #ff7716;
+  cursor: pointer;
+}
+
+.pet-profile.selected {
+  border: 2px solid #ff7716;
+  background-color: #ffb27b;
+}
+
+.pet-profile-avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 0.5em;
+  border: 2px solid #ffb27b;
+  background: #fff;
+  margin-bottom: 0.5rem;
+}
