@@ -14,6 +14,7 @@ export default function ProfilePage() {
   const { token } = useAuth();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showDead, setShowDead] = useState(false);
+  const [showAddButton, setShowAddButton] = useState(true);
   const { setSelectedPet, selectedPet } = useSelectedPet();
 
   if (error) return <div>Error: {error}</div>;
@@ -69,13 +70,13 @@ export default function ProfilePage() {
       ) : alivePets.length > 0 ? (
         <PetGrid
           pets={alivePets}
-          showAddButton
+          showAddButton={showAddButton}
           onAddPet={() => setShowCreateModal(true)}
         />
       ) : (
         <NoPetsMessage
           message="You don't have a pal yet!"
-          showAddButton
+          showAddButton={showAddButton}
           onAddPet={() => setShowCreateModal(true)}
         />
       )}

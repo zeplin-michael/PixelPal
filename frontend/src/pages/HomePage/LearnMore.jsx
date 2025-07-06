@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useAuth } from "../auth/AuthContext";
+import { useAuth } from "../../auth/AuthContext";
 import "./LearnMore.css";
+import ModalOverlay from "../../General-Components/Modal/ModalOverlay";
 
 const playFeatures = [
   {
@@ -117,41 +118,25 @@ export default function LearnMore() {
         </div>
 
         {open && (
-          <div
-            className="learnmore-modal-overlay"
-            onClick={() => setOpen(null)}
-          >
-            <div
-              className="learnmore-modal"
-              onClick={(e) => e.stopPropagation()}
-              tabIndex={-1}
-            >
-              <button
-                className="learnmore-modal-close"
-                onClick={() => setOpen(null)}
-                aria-label="Close"
-              >
-                &times;
-              </button>
-              <div className="learnmore-modal-content">
-                <div className="learnmore-modal-left">
-                  <h3 className="learnmore-modal-title">
-                    {features.find((f) => f.key === open).label}
-                  </h3>
-                  <img
-                    src={features.find((f) => f.key === open).img}
-                    alt={features.find((f) => f.key === open).alt}
-                    className="feature-image modal-image"
-                  />
-                </div>
-                <div className="learnmore-modal-right">
-                  <p className="learnmore-modal-desc">
-                    {features.find((f) => f.key === open).description}
-                  </p>
-                </div>
+          <ModalOverlay onClose={() => setOpen(null)}>
+            <div className="learnmore-modal-content">
+              <div className="learnmore-modal-left">
+                <h3 className="learnmore-modal-title">
+                  {features.find((f) => f.key === open).label}
+                </h3>
+                <img
+                  src={features.find((f) => f.key === open).img}
+                  alt={features.find((f) => f.key === open).alt}
+                  className="feature-image modal-image"
+                />
+              </div>
+              <div className="learnmore-modal-right">
+                <p className="learnmore-modal-desc">
+                  {features.find((f) => f.key === open).description}
+                </p>
               </div>
             </div>
-          </div>
+          </ModalOverlay>
         )}
       </main>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CreatePetForm.css";
 import { usePet } from "../../../api/PetContext";
 import useMutation from "../../../api/useMutation";
-import ModalOverlay from "./ModalOverlay";
+import ModalOverlay from "../../../General-Components/Modal/ModalOverlay";
 import AvatarSelector from "./AvatarSelector";
 
 function CreatePetForm({ onClose }) {

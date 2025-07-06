@@ -18,7 +18,7 @@
   border-radius: 1rem;
   box-shadow: 0 8px 32px #ffb27b33;
   padding: 2.5rem 2rem 2rem 2rem;
-  height: 60%;
+
   position: relative;
   animation: popIn 0.25s cubic-bezier(0.4, 0.8, 0.4, 1.2);
 }

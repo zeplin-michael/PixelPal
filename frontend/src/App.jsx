@@ -4,7 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import EndScreen from "./pages/deathscreen/EndScreen";
 
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/HomePage/Homepage";
 
 import Gallery from "./pages/Gallery";
 import PalLayout from "./pages/game-page/PalLayout";

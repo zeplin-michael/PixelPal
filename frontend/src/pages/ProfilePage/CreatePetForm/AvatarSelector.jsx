@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AVATAR_META, getAvatarActionImg } from "../../utils/avatarMeta";
 import "./AvatarSelector.css";
+import ModalOverlay from "../../../General-Components/Modal/ModalOverlay";
 
 const AVATAR_OPTIONS = Object.entries(AVATAR_META).map(([value, meta]) => ({
   label: value.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase()),
@@ -27,40 +28,27 @@ function AvatarSelector({ avatar, setAvatar, disabled }) {
         <span>Select Avatar</span>
       </button>
       {showAvatarPopup && (
-        <div
-          className="avatar-popup-overlay"
-          onClick={() => setShowAvatarPopup(false)}
-        >
-          <div className="avatar-popup" onClick={(e) => e.stopPropagation()}>
-            <h4>Choose Your Avatar</h4>
-            <div className="avatar-popup-list">
-              {AVATAR_OPTIONS.map((opt) => (
-                <button
-                  type="button"
-                  key={opt.value}
-                  className={`avatar-popup-option${
-                    avatar === opt.value ? " selected" : ""
-                  }`}
-                  onClick={() => {
-                    setAvatar(opt.value);
-                    setShowAvatarPopup(false);
-                  }}
-                >
-                  <img src={opt.img} alt={opt.label} className="avatar-img" />
-                  <span>{opt.label}</span>
-                </button>
-              ))}
-            </div>
-            <button
-              className="avatar-popup-close"
-              type="button"
-              onClick={() => setShowAvatarPopup(false)}
-              aria-label="Close"
-            >
-              &times;
-            </button>
+        <ModalOverlay onClose={() => setShowAvatarPopup(false)}>
+          <h4>Choose Your Avatar</h4>
+          <div className="avatar-popup-list">
+            {AVATAR_OPTIONS.map((opt) => (
+              <button
+                type="button"
+                key={opt.value}
+                className={`avatar-popup-option${
+                  avatar === opt.value ? " selected" : ""
+                }`}
+                onClick={() => {
+                  setAvatar(opt.value);
+                  setShowAvatarPopup(false);
+                }}
+              >
+                <img src={opt.img} alt={opt.label} className="avatar-img" />
+                <span>{opt.label}</span>
+              </button>
+            ))}
           </div>
-        </div>
+        </ModalOverlay>
       )}
     </div>
   );

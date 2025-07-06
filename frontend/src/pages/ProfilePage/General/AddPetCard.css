@@ -1,0 +1,39 @@
+.add-pet-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffc59c;
+  border: 2.5px dashed #ffb27b;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px #ffb27b22;
+  cursor: pointer;
+  min-height: 14rem;
+  min-width: 14rem;
+  max-width: 350px;
+  width: 100%;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  font-size: 2.5rem;
+  color: #ff7716;
+  outline: none;
+  position: relative;
+}
+.add-pet-card:focus,
+.add-pet-card:hover {
+  background: #ffb27b;
+  border-color: #ff7716;
+  color: #fff;
+  transform: scale(1.04);
+}
+.add-pet-plus {
+  font-size: 4rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.add-pet-label {
+  font-size: 1.1rem;
+  color: #ff7716;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}

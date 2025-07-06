@@ -9,7 +9,10 @@ function ModalOverlay({ onClose, children }) {
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
-      <div className="modal-content animate-modal">
+      <div
+        className="modal-content animate-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           className="modal-close"
           type="button"

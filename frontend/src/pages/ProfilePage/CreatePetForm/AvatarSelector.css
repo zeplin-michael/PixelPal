@@ -92,31 +92,6 @@
   color: #fff;
 }
 
-.avatar-popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 214, 185, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.avatar-popup {
-  background: #ffc59c;
-  border: 2.5px solid #ff9950;
-  border-radius: 1rem;
-  box-shadow: 0 8px 32px #ff995044;
-  padding: 2.5rem 2rem 2rem 2rem;
-  max-width: 40rem;
-  width: 95vw;
-  position: relative;
-  text-align: center;
-}
-
 .avatar-popup-list {
   background: #ffd6b9;
   border-radius: 0.7em;
@@ -177,20 +152,4 @@
   background: #fff;
   margin-bottom: 0.5em;
   box-shadow: 0 2px 8px #ff995044;
-}
-
-.avatar-popup-close {
-  position: absolute;
-  top: 0.7rem;
-  right: 1.2rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #ff9950;
-  cursor: pointer;
-  transition: color 0.2s;
-  z-index: 10;
-}
-.avatar-popup-close:hover {
-  color: #ff7716;
 }
