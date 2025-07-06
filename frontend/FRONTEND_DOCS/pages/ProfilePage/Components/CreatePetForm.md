@@ -28,16 +28,3 @@
 - **Usage:** Used inside `CreatePetForm`.
 
 ---
-
-### **ModalOverlay**
-
-- **Purpose:** Handles modal background and close logic for modals.
-- **Inputs:**
-  - `onClose` (function): Closes the modal
-  - `children`: Modal content
-- **Outputs:**
-  - Renders modal overlay and content
-  - Calls `onClose` when background is clicked
-- **Usage:** Used by `CreatePetForm` and any other modal.
-
----

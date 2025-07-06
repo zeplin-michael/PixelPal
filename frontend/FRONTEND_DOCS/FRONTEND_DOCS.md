@@ -9,6 +9,7 @@ Use the links below to jump to each section:
 - [Custom Hooks](./Custom_Hooks/Hooks.md)
 - [Styling Conventions](./Styling_Conventions.md)
 - [Pages](./pages/pages.md)
+- [General Components](./pages/General-Components/General-Components.md)
 
 ## Overview
 
