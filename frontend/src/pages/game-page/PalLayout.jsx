@@ -4,7 +4,6 @@ import "./PalLayout.css";
 import { useSelectedPet } from "../../api/SelectedPetContext";
 import { usePet } from "../../api/PetContext";
 import useMutation from "../../api/useMutation";
-import useIncrementOverallStat from "../../api/useIncrementOverallStat";
 
 import Clean from "./components/clean";
 import Sleep from "./components/sleep";
@@ -17,6 +16,24 @@ export default function PalLayout() {
   const navigate = useNavigate();
   const { pets, refreshPets } = usePet();
   const { selectedPet, setSelectedPet } = useSelectedPet();
+  // Track which scene to show (optional, you can keep this local)
+  const [currentScene, setCurrentScene] = useState(null);
+
+  // Redirect to deathscreen if pet is dead
+  useEffect(() => {
+    if (selectedPet && selectedPet.dead) {
+      navigate("/deathscreen");
+    }
+  }, [selectedPet, navigate]);
+
+  // Sync selectedPet with latest pets array
+  useEffect(() => {
+    if (!selectedPet || !pets) return;
+    const updated = pets.find((p) => p.id === selectedPet.id);
+    if (updated && updated !== selectedPet) {
+      setSelectedPet(updated);
+    }
+  }, [pets, selectedPet, setSelectedPet]);
   // Mutations for each action
   const { mutate: feedPet, loading: feeding } = useMutation(
     "PUT",
@@ -39,54 +56,26 @@ export default function PalLayout() {
     []
   );
 
-  // Track which scene to show (optional, you can keep this local)
-  const [currentScene, setCurrentScene] = useState(null);
-
-  // Increment overall stats
-  const [incrementStat, incrementing, incrementError] = useIncrementOverallStat(
-    selectedPet ? selectedPet.id : null
-  );
-
-  // Redirect to deathscreen if pet is dead
-  useEffect(() => {
-    if (selectedPet && selectedPet.dead) {
-      navigate("/deathscreen");
-    }
-  }, [selectedPet, navigate]);
-
-  // Sync selectedPet with latest pets array
-  useEffect(() => {
-    if (!selectedPet || !pets) return;
-    const updated = pets.find((p) => p.id === selectedPet.id);
-    if (updated && updated !== selectedPet) {
-      setSelectedPet(updated);
-    }
-  }, [pets, selectedPet, setSelectedPet]);
-
   // Action handlers
   async function handleFeed() {
     await feedPet();
     setCurrentScene("feed");
     refreshPets();
-    await incrementStat("total_meals");
   }
   async function handlePlay() {
     await playPet();
     setCurrentScene("play");
     refreshPets();
-    await incrementStat("total_play_sessions");
   }
   async function handleSleep() {
     await sleepPet();
     setCurrentScene("sleep");
     refreshPets();
-    await incrementStat("total_sleep_sessions");
   }
   async function handleClean() {
     await cleanPet();
     setCurrentScene("clean");
     refreshPets();
-    await incrementStat("total_baths");
   }
 
   function renderScene() {

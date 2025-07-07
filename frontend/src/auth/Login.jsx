@@ -5,7 +5,7 @@ import { useAuth } from "./AuthContext";
 
 /** A form that allows users to log into an existing account. */
 export default function Login() {
-  const { login, token } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);

@@ -6,7 +6,6 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(sessionStorage.getItem("token"));
-
   useEffect(() => {
     if (token) sessionStorage.setItem("token", token);
   }, [token]);

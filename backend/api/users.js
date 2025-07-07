@@ -4,18 +4,17 @@ export default router;
 
 import { createUser, getUserByUsernameAndPassword } from "#db/queries/users";
 import requireBody from "#middleware/requireBody";
+import requireUser from "#middleware/requireUser";
 import { createToken } from "#utils/jwt";
 
 router
   .route("/register")
-  // requireBody(["username", "password"]
-  .post(async (req, res) => {
-    console.log("Function!");
+  .post(requireBody(["username", "password"]), async (req, res) => {
     const { username, password } = req.body;
     try {
       const user = await createUser(username, password);
       const token = await createToken({ id: user.id });
-      res.status(201).send(token);
+      res.send(token);
     } catch (err) {
       if (err.code === "23505") {
         // PostgreSQL unique violation
@@ -36,3 +35,5 @@ router
     const token = await createToken({ id: user.id });
     res.send(token);
   });
+
+router.route("/coins").get(requireUser, async (req, res) => {});

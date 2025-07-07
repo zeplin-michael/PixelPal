@@ -16,6 +16,7 @@ import {
   deletePet,
 } from "#db/queries/pets";
 
+import { incrementPetStat } from "#db/queries/pet_overall_stats";
 import { getPetStatusByPetId } from "#db/queries/pet_status";
 
 router.use(requireUser);
@@ -78,6 +79,7 @@ router.put("/:id/feed", async (req, res) => {
 
     await feedPet(req.pet.id);
     const petStatus = await getPetStatusByPetId(req.pet.id);
+    await incrementPetStat(req.pet.id, "total_meals");
     res.send({ message: "Pet fed.", petStatus });
   } catch (err) {
     console.error("Error feeding pet:", err);
@@ -93,6 +95,7 @@ router.put("/:id/clean", async (req, res) => {
     }
     await cleanPet(req.pet.id);
     const petStatus = await getPetStatusByPetId(req.pet.id);
+    await incrementPetStat(req.pet.id, "total_baths");
     res.json({ message: "Pet cleaned.", petStatus });
   } catch (err) {
     console.log(err);
@@ -107,6 +110,7 @@ router.put("/:id/play", async (req, res) => {
     }
     await playWithPet(req.pet.id);
     const petStatus = await getPetStatusByPetId(req.pet.id);
+    await incrementPetStat(req.pet.id, "total_play_sessions");
     res.json({ message: "Pet played with.", petStatus });
   } catch (err) {
     console.log(err);
@@ -121,6 +125,7 @@ router.put("/:id/sleep", async (req, res) => {
     }
     await restPet(req.pet.id);
     const petStatus = await getPetStatusByPetId(req.pet.id);
+    await incrementPetStat(req.pet.id, "total_sleep_sessions");
     res.json({ message: "Pet rested.", petStatus });
   } catch (err) {
     console.log(err);
